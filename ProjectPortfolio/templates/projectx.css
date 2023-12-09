@@ -1,0 +1,51 @@
+.maindiv{
+    display:flex;
+    justify-content: space-between;
+   
+    
+    align-items: center;
+}
+
+a{
+    margin-left: 75px;
+    margin-left: 75px;
+    text-decoration: none;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+}
+
+.maindiv{
+  
+   
+    height:65px;
+    background-color: rgb(78, 119, 180);
+    opacity:0.7;
+    padding-right: 70px;
+    border-radius: 10px;
+    position: fixed;
+    right:5px;
+    left:5px;
+    
+  
+    
+    
+}
+
+body{
+    background-image:url('OIP\ \(18\).jpg');
+   
+   
+}
+
+
+
+
+
+
+.inner10{
+    
+}
+
+
