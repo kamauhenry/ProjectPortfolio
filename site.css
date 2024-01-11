@@ -1,0 +1,222 @@
+.MainHeader{
+    display: flex;
+    position: fixed;
+    top: 0;
+    right:0;
+    left:0;
+    justify-content: space-between;
+    background-color: black;
+    padding-top: 0px;
+    margin:0;
+    opacity: 90%;
+    width:100%;
+    padding-right: 0px;
+    height: 10%;
+}
+.MainHeader a{
+    color: white;
+    text-decoration: none;
+    font-size:x-large;
+    font-weight: 300;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    
+}
+a:hover{
+    opacity: 1;
+}
+
+.nameof{
+    margin-right: 350px;
+    padding-left: 40px;
+    padding-top: 10px;
+}
+.link0,.link1,.link2,.link4,.link3{
+    display:flex;
+    justify-content:space-between;
+    padding-top: 12px;
+    text-decoration: none;
+    font-style: normal;
+    justify-content: center;
+    padding-right: 5px;
+    margin-right: 10px;
+    padding-left: 0px;
+    position: relative;
+    
+}
+.link0{
+    
+    position: relative;
+}
+.link1{
+    position: relative;
+}
+.tt1{
+    position: absolute;
+    color: white;
+    bottom: -1px;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: all 0.14s;
+    
+}
+.link0:hover .tt1{
+    opacity: 1;
+}
+.tt2{
+    position: absolute;
+    color: white;
+    bottom: -1px;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: all 0.14s;
+    
+}
+.link1:hover .tt2{
+    opacity: 1;
+}
+.tt3{
+    position: absolute;
+    color: white;
+    bottom: -1px;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: all 0.14s;
+    
+}
+.link2:hover .tt3{
+    opacity: 1;
+}
+.tt4{
+    position: absolute;
+    color: white;
+    bottom: -1px;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px;
+    opacity: 0;
+    transition: all 0.14s;
+    
+}
+.link3:hover .tt4{
+    opacity: 1;
+}
+
+
+.html{
+    background-color: lightslategrey;
+}
+h1 {
+  margin: 0.67em 0;
+  font-size: 20px;
+  color: white;
+}
+Main{
+    padding-top: 80px;
+    padding-left: 10px;
+    
+    justify-content: center;
+    
+    
+}
+.about b{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+}
+.about1{
+    top: 0;
+}
+.about{
+    width: 100%;
+    padding-left: 40px;
+    display: flex;
+}
+.abouth{
+    font-size:50px;
+    font-family:Arial, Helvetica, sans-serif;
+    bottom: 0;
+
+}
+.btn11{
+    font-size: x-large;
+    padding-top: 20px;
+  
+
+   
+}
+.btn12{
+    color: beige;
+    background-color: brown;
+    border-radius: 30px;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+.photo1{
+    height:470px;
+    width: 340px;
+    background-image: url(/photos/Screenshot\ \(186\).png);
+    position: absolute;
+    
+}
+.myphoto{
+    height:500px;
+    width: 100px;
+    padding-left: 0px;
+    background-color: black;
+    opacity: 90%;
+    width: 40%;
+    padding-left: 60px;
+    
+}
+.temp2{
+    padding-top: 10%;
+}
+
+.t1{
+    padding-right: 100px;
+}
+.me {
+    display: flex;
+    width: 100%;
+    padding-top: 40px;
+}
+.project{
+    display: contents;
+}
+.skills{
+    display: contents;
+}
+.skills-div{
+    display: flex;
+}
+
+.temp1, .temp2 {
+    width: 48%; /* Adjusted to allow for some space between the columns */
+    margin: 0 1%; /* Added margin for better spacing between columns */
+}
+
+
+img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+}
+
+
+.btn12.clicked {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: 2px solid #4CAF50; /* Green border */
+}
+.btn12:hover {
+    background-color: #008CBA; /* Change background color on hover */
+    color: white; /* White text color on hover */
+    border: 2px solid #008CBA; /* Change border color on hover */
+}
