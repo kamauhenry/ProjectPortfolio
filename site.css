@@ -1,56 +1,54 @@
-.MainHeader{
+.MainHeader {
     display: flex;
     position: fixed;
     top: 0;
-    right:0;
-    left:0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Ensure it's on top */
     justify-content: space-between;
+    align-items: center;
     background-color: black;
-    padding-top: 0px;
-    margin:0;
-    opacity: 90%;
-    width:100%;
-    padding-right: 0px;
-    height: 10%;
-}
-.MainHeader a{
-    color: white;
-    text-decoration: none;
-    font-size:x-large;
-    font-weight: 300;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
-    
-}
-a:hover{
-    opacity: 1;
+    padding: 10px 20px;
+    height: 60px; /* Adjust height as needed */
+    opacity: 0.9; /* Adjust opacity as needed */
+    width: 100%;
 }
 
-.nameof{
-    margin-right: 350px;
+.nameof {
     padding-left: 40px;
-    padding-top: 10px;
 }
-.link0,.link1,.link2,.link4,.link3{
-    display:flex;
-    justify-content:space-between;
-    padding-top: 12px;
-    text-decoration: none;
-    font-style: normal;
+
+.links-container {
+    display: flex;
     justify-content: center;
-    padding-right: 5px;
+    align-items: center;
+}
+
+.links-container > div {
     margin-right: 10px;
-    padding-left: 0px;
-    position: relative;
-    
 }
-.link0{
-    
-    position: relative;
+
+.links-container > div:last-child {
+    margin-right: 0;
 }
-.link1{
-    position: relative;
+
+.MainHeader a {
+    color: white;
+    text-decoration: none;
+    font-size: large; /* Adjust font size as needed */
+    font-weight: 300;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    padding: 10px 20px;
 }
+
+.links-container > div:hover {
+    background-color: #333; /* Background color on hover */
+}
+
+.links-container > div.selected {
+    background-color: #3a3838; /* Background color when selected */
+}
+
 .tt1{
     position: absolute;
     color: white;
@@ -62,9 +60,7 @@ a:hover{
     transition: all 0.14s;
     
 }
-.link0:hover .tt1{
-    opacity: 1;
-}
+
 .tt2{
     position: absolute;
     color: white;
@@ -76,6 +72,8 @@ a:hover{
     transition: all 0.14s;
     
 }
+
+
 .link1:hover .tt2{
     opacity: 1;
 }
@@ -138,6 +136,8 @@ Main{
     width: 100%;
     padding-left: 40px;
     display: flex;
+    margin-bottom: 0px;
+   
 }
 .abouth{
     font-size:50px;
@@ -156,9 +156,10 @@ Main{
     color: beige;
     background-color: brown;
     border-radius: 30px;
-    width: 100px;
-    height: 30px;
+    
     border: none;
+    display: inline; /* Change display to inline */
+    padding: 5px 10px; /* Adjust padding as needed */
 }
 .photo1{
     height:470px;
@@ -175,15 +176,22 @@ Main{
     opacity: 90%;
     width: 40%;
     padding-left: 60px;
+
     
-}
-.temp2{
-    padding-top: 10%;
 }
 
 .t1{
     padding-right: 100px;
+    
 }
+.t1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    align-items: center; /* Center horizontally */
+    height: 60vh; /* Adjust as needed */
+}
+
 .me {
     display: flex;
     width: 100%;
@@ -191,12 +199,7 @@ Main{
 }
 .project{
     display: contents;
-}
-.skills{
-    display: contents;
-}
-.skills-div{
-    display: flex;
+    margin-top: 220px;
 }
 
 .temp1, .temp2 {
@@ -220,3 +223,229 @@ img {
     color: white; /* White text color on hover */
     border: 2px solid #008CBA; /* Change border color on hover */
 }
+
+
+.skills{
+    margin-top: 40px;
+}
+.p-div{
+    margin-top: 80px;
+    padding-top:  20px;
+    margin-top: 10px;
+    justify-content: center; 
+    
+}
+.skills-div {
+    margin-top: 30px ;
+    margin-bottom: 30px ;
+    max-width: 800px; /* Adjust as needed */
+    display: flex; /* Add display flex */
+    justify-content: center; /* Center items horizontally */
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 20%;
+    
+
+}
+.skills-div{
+    justify-content: center;
+}
+.skills-div ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items horizontally */
+}
+
+.skills-div li {
+    display: inline-flex; /* Change to inline-flex */
+    margin-bottom: 10px;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.borderBlack {
+    border: 1px solid #000000;
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-gray-800 {
+    color: #2d3748;
+}
+
+.dark:bg-white-10 {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark:text-white-80 {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 50px;
+    
+}
+
+.service {
+    flex-basis: calc(33.33% - 20px); /* Adjust the width as per your requirement */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-top: 20px;
+}
+
+/* Additional styling for better layout */
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.service img {
+    max-width: 100%;
+    height: auto;
+}
+
+.service h4 {
+    margin-top: 10px; /* Adjust spacing as needed */
+}
+
+.service p {
+    margin-top: 10px; /* Adjust spacing as needed */
+}
+h3 {
+    text-align: center;
+}
+
+.services_offered {
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+
+.contact-section {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.cv-request {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+
+
+.process-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.process-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.process-step {
+    position: relative; /* Ensure relative positioning for absolute arrow */
+    width: 200px;
+    margin: 0 20px;
+}
+
+.step-icon {
+    background-color: #007bff;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 60px;
+    margin: 0 auto 20px;
+}
+
+.step-icon i {
+    font-size: 24px;
+}
+
+.step-text h4 {
+    margin-bottom: 10px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrow i {
+    color: #007bff;
+    font-size: 24px;
+}
+
