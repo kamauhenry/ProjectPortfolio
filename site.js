@@ -4,6 +4,12 @@ function openGitHub() {
 
     document.querySelector(".btn12").classList.add("clicked");
 }
+function openlinkedin() {
+   
+    window.open("https://www.linkedin.com/in/henry-kamau-b59959224/");
+
+    document.querySelector(".btn12").classList.add("clicked");
+}
 // Define the scrollToElement function
 function scrollToElement(elementId) {
     const element = document.getElementById(elementId);
@@ -15,28 +21,38 @@ function scrollToElement(elementId) {
 function highlightActiveLink() {
     const sections = document.querySelectorAll('div[id^=""]');
     let currentSection = '';
-
-    // Determine the current active section
-    sections.forEach(section => {
+  
+    // Function to update active link on scroll
+    const updateActiveLink = () => {
+      sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (window.scrollY >= sectionTop) {
-            currentSection = section.id;
+          currentSection = section.id;
+          return; // Exit loop after finding the first visible section
         }
-    });
-
-    // Remove active class from all links
-    const links = document.querySelectorAll('.links-container a');
-    links.forEach(link => {
-        link.classList.remove('active');
-    });
-
-    // Add active class to the corresponding link
-    const activeLink = document.querySelector(`.links-container a[href="#${currentSection}"]`);
-    if (activeLink) {
+      });
+  
+      // Remove active class from all links
+      const links = document.querySelectorAll('.links-container a');
+      links.forEach(link => link.classList.remove('active'));
+  
+      // Add active class to the corresponding link
+      const activeLink = document.querySelector(`.links-container a[href="#${currentSection}"]`);
+      if (activeLink) {
         activeLink.classList.add('active');
-    }
-}
-
+      }
+    };
+  
+    // Add event listener to window scroll event
+    window.addEventListener('scroll', updateActiveLink);
+  
+    // Call the function initially to highlight on page load
+    updateActiveLink();
+  }
+  
+  // Call the highlightActiveLink function after DOM is loaded
+  window.onload = highlightActiveLink;
+  
 // Call the function when the page loads
 window.onload = function() {
     highlightActiveLink();
@@ -117,4 +133,40 @@ document.querySelectorAll('.links-container > div').forEach(link => {
         this.classList.add('selected');
     });
 });
+window.addEventListener('scroll', reveal);
+function reveal(){
+    var reveals = document.querySelectorAll('.reveal');
 
+    for(var i = 0; i < reveals.length; i++){
+
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 50;
+
+        if(revealtop < windowheight - revealpoint){
+            reveals[i].classList.add('active');
+        }
+        else{
+            reveals[i].classList.remove('active');
+        }
+    }
+}
+
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('.MainHeader  .links-container .link#link a');
+
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop ;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height){
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('MainHeader link a[href*=' + id + ']').classList.add('active');
+            });
+        };
+    });
+}
