@@ -170,3 +170,18 @@ window.onscroll = () => {
         };
     });
 }
+
+let buttons = document.querySelectorAll('.btn12');
+
+// Add a click event listener to each button
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Add the 'clicked' class to the clicked button
+        this.classList.add('clicked');
+
+        // Remove the 'clicked' class after 1 second (1000 milliseconds)
+        setTimeout(() => {
+            this.classList.remove('clicked');
+        }, 1000);
+    });
+});
