@@ -1,12 +1,12 @@
 function openGitHub() {
    
-    window.open("https://github.com/kamauhenry");
+    window.open("https://www.linkedin.com/in/henry-kamau-b59959224/");
 
     document.querySelector(".btn12").classList.add("clicked");
 }
 function openlinkedin() {
    
-    window.open("https://www.linkedin.com/in/henry-kamau-b59959224/");
+    window.open("https://github.com/kamauhenry");
 
     document.querySelector(".btn12").classList.add("clicked");
 }
