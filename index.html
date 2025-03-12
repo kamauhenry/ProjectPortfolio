@@ -3,321 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Kamau - Software Engineer</title>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS (optional, but helpful for responsive design) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="site.css">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    
-    <div class="MainHeader">
+    <nav class="MainHeader">
         <div class="nameof">
-            <a href="https://wa.me/0717024056" target="_blank">
-                <h1>cvc</h1>
+            <a href="#about">
+                <h1>Henry Kamau</h1>
             </a>
         </div>
         
-        <div class="links-container">
-            <div class="link" id="link0" onclick="scrollToElement('about')">
-                <a href="#about">About</a>
-            
-            </div>
-            
-            <div class="link" id="link5" onclick="scrollToElement('Skillsl')">
-                <a href="#Skillsl">Skills</a>
-            </div>
-            <div class="link" id="link6" onclick="scrollToElement('Skills2')">
-                <a href="#Skills2">My work</a>
-            </div>
-            <div class="link" id="link3" onclick="scrollToElement('servicesl')">
-                <a href="#servicesl">Services</a>
-            </div>
-            <div class="link" id="link2" onclick="scrollToElement('processl')">
-                <a href="#processl">Process</a>
-            </div>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
         
-            <div class="link" id="link4" onclick="scrollToElement('contactl')">
-                <a href="#contactl">Contact</a>
+        <div class="links-container">
+            <div class="link" hx-get="#about" hx-target="main" hx-swap="innerHTML">
+                <a href="#about">About</a>
+            </div>
+            <div class="link" hx-get="#skills" hx-target="main" hx-swap="innerHTML">
+                <a href="#skills">Skills</a>
+            </div>
+            <div class="link" hx-get="#projects" hx-target="main" hx-swap="innerHTML">
+                <a href="#projects">Projects</a>
+            </div>
+            <div class="link" hx-get="#services" hx-target="main" hx-swap="innerHTML">
+                <a href="#services">Services</a>
+            </div>
+            <div class="link" hx-get="#process" hx-target="main" hx-swap="innerHTML">
+                <a href="#process">Process</a>
+            </div>
+            <div class="link" hx-get="#contact" hx-target="main" hx-swap="innerHTML">
+                <a href="#contact">Contact</a>
             </div>
         </div>
-    </div>
+    </nav>
     
-    
-    <section>
-        <section  id="about">
-            <div class="about " id="about" >
-                <div class="t1">
-                    <div class="abouth">
-                        <h2>
-                            Hey, I'm Henry.
-                        </h2>
-                    </div>
-                    <div class="about1">
-                        <b>
-                            Software Engineer and Data Scientiest from
-                            <br> 
-                            Mombasa,Kenya.I create Custom website 
-                            <br>
-                            to help businesses do better online. 
-                        </b>
-                    </div>
-                    <div class="btn11">
-                        
-                        <button class="btn12" type="button" onclick="openGitHub()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
-                            </svg>
-                        </button>
-                        <button class="btn12" type="button" onclick="openlinkedin()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                            </svg>
-                        </button>
-                        <button class="btn12" type="button" >
-                            <a href="#contact">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"          fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.   795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-                                </svg>
-                            </a>
-                        </button>
-                    </div>
-                </div>
-                <div class="myphoto">
-                    <div class="photo1"></div>
-                </div>
-            </div>
-        </section>
-        <section id="skills">
-            <div class="skills reveal" id="Skillsl">
-                <div class="p-div">
-                    <div class="p-div01">
-                        <h3 class="p-div00">
-                        My Skills
-                        </h3>
-                    </div>
-                </div>
-
-                <div class="skills-div">
-                    <ul class="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">HTML</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">CSS</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">JavaScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">Django </li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">PowerBI</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">python</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">Prompt engineering </li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">HTML</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">CSS</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">JavaScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">JavaScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                    
-                    </ul>
-                </div>
-                <div class="p-div">
-                    <div class="p-div01">
-                        <h3 class="p-div00">
-                        Areas of Interest 
-                        </h3>
-                    </div>
-                </div>
-
-                <div class="skills-div">
-                    <ul class="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">Machine Learning </li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">CSS</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">JavaScript</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">Django </li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">PowerBI</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">python</li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">Prompt engineering </li>
-                        <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80" style="opacity: 1; transform: none;">TypeScript</li>
-                        
-                    
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-        <section id="project">
-            <div class="skill0 reveal" id="Skills2"></div>
-            <div class="project reveal" id="project1" >
-                <div class="t123 reveal" id ="project-container" >
-                    <h3 >Projects Done </h3>
-                </div>
-                <div class="me reveal">
-                    <div class="temp1">
-                        <div class="jpg1">
-                            <img src="photos/invgmt.png" alt="first">
-                        </div>
-                        <div class="jpg2">
-                        
-                            <img src="photos/invgmt.png" alt="first">
-                        </div>
-                        
-                    </div>
-                    <div class="temp2">
-                        <div class=" about project 1">
-                            <div>
-                                <h2>INVGMT: Construction Site Inventory Management and Labour Tracking</h2>
-                            
-                                <p>
-                                    INVGMT is a comprehensive web application developed using Django and Microsoft SQL Server. Specialized for construction sites, it efficiently manages inventory and tracks labour activities. The key features include:
-                                </p>
-                            
-                                <h3>Inventory Management:</h3>
-                                <p>
-                                    INVGMT facilitates seamless tracking of construction site inventory. It manages the inflow of items to the site, tracks issuance to laborers, and records the return of unused items. The system provides detailed records of items used, promoting efficient resource utilization.
-                                </p>
-                            
-                                <h3>Tenant-Based Structure:</h3>
-                                <p>
-                                    Utilizing Django's tenant structure, INVGMT ensures a secure and isolated environment for each construction project. This enhances data privacy and organization, allowing for effective management of multiple construction sites.
-                                </p>
-                            
-                                <h3>Labour Tracking:</h3>
-                                <p>
-                                    The web app includes a robust labour tracking system, estimating project completion time based on the current workforce. It contributes to effective project management by providing insights into the labor activities.
-                                </p>
-                            
-                                <h3>Dashboard Analytics:</h3>
-                                <p>
-                                    The dashboard utilizes JavaScript graphs to visually represent data. It displays records of items used, total spending on labour and inventory, and provides insightful graphs illustrating item trends and monthly spending patterns.
-                                </p>
-                            
-                                <p>
-                                    INVGMT stands as a testament to my proficiency in web application development, Django, Microsoft SQL Server, and my ability to address specific industry needs. The project showcases an organized and secure solution for construction site inventory and labour management.
-                                </p>
+    <main>
+        <!-- About Section -->
+        <section id="about" class="section-padding reveal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="about-content">
+                            <h2 class="section-title">Hey, I'm Henry.</h2>
+                            <p class="section-subtitle">
+                                Software Engineer and Data Scientist from Mombasa, Kenya.
+                                I create custom websites to help businesses do better online.
+                            </p>
+                            <div class="social-links">
+                                <button class="social-btn" onclick="openLinkedin()">
+                                    <i class="fab fa-linkedin"></i>
+                                </button>
+                                <button class="social-btn" onclick="openGitHub()">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                                <a href="#contact" class="social-btn">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
                             </div>
                         </div>
-                    </div>        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-image">
+                            <!-- Using a container for the image to style it better -->
+                            <div class="image-container"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="services">
-            <div class="services reveal" id="servicesl">
-                <div class="services_offered" id="SO">
-                    <h3> Services Offered </h3>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding reveal">
+            <div class="container">
+                <h2 class="section-title text-center">My Skills</h2>
+                <div class="skills-container">
+                    <ul class="skills-list">
+                        <li class="skill-item">HTML</li>
+                        <li class="skill-item">CSS</li>
+                        <li class="skill-item">JavaScript</li>
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">Django</li>
+                        <li class="skill-item">PowerBI</li>
+                        <li class="skill-item">Prompt Engineering</li>
+                        <li class="skill-item">TypeScript</li>
+                        <li class="skill-item">SQL</li>
+                        <li class="skill-item">React</li>
+                        <li class="skill-item">Data Analysis</li>
+                    </ul>
                 </div>
                 
-                <div class="service-container">
-                    <div class="service">
-                        <img src="photos\coding.jpg" alt="Software Development Icon">
-                        <h4>Software Development</h4>
-                        <p>I design and develop custom web and mobile applications to meet your specific needs. From simple websites to complex enterprise applications, I have the skills and experience to bring your ideas to life.</p>
-                    </div>
-                    <div class="service">
-                        <img src="photos\solution_icon.jpg" alt="Solution Innovation Icon">
-                        <h4>Solution Innovation</h4>
-                        <p>I approach challenges creatively, combining my technical expertise with innovative thinking to develop solutions that go beyond the ordinary. I work closely with you to understand your unique needs and develop solutions that are effective, efficient, and scalable.</p>
-                    </div>
-                    <div class="service">
-                        <img src="photos\problem_solving_icon.jpg" alt="Problem Solving Icon">
-                        <h4>Problem Solving</h4>
-                        <p>Our problem-solving approach aims to tackle challenges systematically, leveraging our expertise to identify and resolve issues efficiently.</p>
-                    </div>
-                        
+                <h2 class="section-title text-center mt-5">Areas of Interest</h2>
+                <div class="skills-container">
+                    <ul class="skills-list">
+                        <li class="skill-item">Machine Learning</li>
+                        <li class="skill-item">Web Development</li>
+                        <li class="skill-item">Data Science</li>
+                        <li class="skill-item">AI Applications</li>
+                        <li class="skill-item">Business Intelligence</li>
+                        <li class="skill-item">UI/UX Design</li>
+                    </ul>
                 </div>
             </div>
         </section>
-        <section id="process">
-            <div class="process-section reveal" id="processl">
-                <h3>Our Process</h3>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding reveal">
+            <div class="container">
+                <h2 class="section-title text-center">Projects</h2>
+                
+                <div class="project-card" hx-get="project-details.html" hx-trigger="click" hx-target="#project-details" hx-swap="innerHTML">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="project-image">
+                                <img src="photos/invgmt.png" alt="INVGMT Project Screenshot" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="project-info">
+                                <h3>INVGMT: Construction Site Inventory Management</h3>
+                                <p>A comprehensive web application for construction sites that manages inventory and tracks labor activities efficiently.</p>
+                                <div class="project-tech">
+                                    <span class="tech-badge">Django</span>
+                                    <span class="tech-badge">SQL Server</span>
+                                    <span class="tech-badge">JavaScript</span>
+                                    <span class="tech-badge">Data Analytics</span>
+                                </div>
+                                <button class="btn-view-details">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="project-details"></div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding reveal">
+            <div class="container">
+                <h2 class="section-title text-center">Services Offered</h2>
+                
+                <div class="row services-container">
+                    <div class="col-md-4">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Software Development</h3>
+                            <p>I design and develop custom web and mobile applications to meet your specific needs. From simple websites to complex enterprise applications.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Solution Innovation</h3>
+                            <p>I approach challenges creatively, combining technical expertise with innovative thinking to develop solutions that go beyond the ordinary.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h3>Problem Solving</h3>
+                            <p>My problem-solving approach aims to tackle challenges systematically, leveraging expertise to identify and resolve issues efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="section-padding reveal">
+            <div class="container">
+                <h2 class="section-title text-center">My Process</h2>
+                
                 <div class="process-container">
                     <div class="process-step">
                         <div class="step-icon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="step-text">
-                            <h4>Client Sends Work</h4>
-                            <p>Client submits work request</p>
+                        <div class="step-content">
+                            <h3>1. Discovery</h3>
+                            <p>Understanding your needs and requirements through detailed discussion</p>
                         </div>
                     </div>
-                    <div class="arrow">
+                    
+                    <div class="process-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
+                    
                     <div class="process-step">
                         <div class="step-icon">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <div class="step-text">
-                            <h4>Work in Progress</h4>
-                            <p>You work on the project</p>
+                        <div class="step-content">
+                            <h3>2. Development</h3>
+                            <p>Building your solution with regular updates and feedback integration</p>
                         </div>
                     </div>
-                    <div class="arrow">
+                    
+                    <div class="process-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
+                    
                     <div class="process-step">
                         <div class="step-icon">
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        <div class="step-text">
-                            <h4>Work Completed</h4>
-                            <p>Project delivered to the client</p>
+                        <div class="step-content">
+                            <h3>3. Delivery</h3>
+                            <p>Finalizing and deploying your solution with thorough testing</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="contact">  
-            <div class="contact-section reveal" id="contactl">
-                <h3>Contact Us</h3>
-                <div class="contact-form" >
-                    <form id  = "contact-form">
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding reveal">
+            <div class="container">
+                <h2 class="section-title text-center">Contact Me</h2>
+                
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="contact-form-container">
+                            <form id="contact-form" hx-post="send-email.php" hx-swap="outerHTML" hx-indicator="#form-indicator">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit">
+                                    <span>Send Message</span>
+                                    <div id="form-indicator" class="htmx-indicator">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </div>
+                                </button>
+                            </form>
+                            
+                            <div class="cv-request">
+                                <h4>Request CV</h4>
+                                <p>If you'd like to request my CV, please mention it in your message above.</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-                <div class="cv-request">
-                    <h4>Request CV</h4>
-                    <p>If you'd like to request my CV, please fill out the form above and mention it in your message.</p>
+                    </div>
                 </div>
             </div>
         </section>
-    </Main>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    </main>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Henry Kamau. All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-links text-md-end">
+                        <a href="https://www.linkedin.com/in/henry-kamau-b59959224/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/kamauhenry" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="site.js"></script>
-    <script>
-        // Call the function when the page loads
-        window.onload = function() {
-            highlightActiveLink();
-        };
-    
-        // Or call the function when the user scrolls
-        window.onscroll = function() {
-            highlightActiveLink();
-        };
-    </script>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> 
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
