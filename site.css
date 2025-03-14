@@ -11,6 +11,19 @@
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.link.htmx-request a {
+    color: var(--primary-color);
+}
+
+
+#content.htmx-request::before {
+    content: "Loading...";
+    display: block;
+    text-align: center;
+    padding: 2rem;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -41,12 +54,22 @@ body {
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
 }
+.section-padding {
+    padding: 80px 0;
+    display: block;
+}
+
+main {
+    padding-top: 70px;
+    min-height: 100vh;
+    display: block; /* Ensure main is visible */
+}
 
 .reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.5s, transform 0.7s;
-    position: relative;
+    
 }
 
 .reveal.active {

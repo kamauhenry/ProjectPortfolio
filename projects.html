@@ -1,0 +1,55 @@
+<section id="projects" class="section-padding reveal">
+    <div class="container">
+        <h2 class="section-title text-center">Projects</h2>
+        
+        <!-- INVGMT Project -->
+        <div class="project-card" hx-get="/project-details.html" hx-trigger="click" hx-target="#project-details" hx-swap="innerHTML">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="project-image">
+                        <img src="/photos/invgmt.png" alt="INVGMT Project Screenshot" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="project-info">
+                        <h3>INVGMT: Construction Site Inventory Management</h3>
+                        <p>A comprehensive web application for construction sites that manages inventory and tracks labor activities efficiently.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">SQL Server</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Data Analytics</span>
+                        </div>
+                        <button class="btn-view-details">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kolzimodo Insurance Project -->
+        <div class="project-card">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="project-image">
+                        <img src="/photos/kolzimodo-insurance.png" alt="Kolzimodo Insurance Screenshot" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="project-info">
+                        <h3>Kolzimodo Insurance</h3>
+                        <p>An insurance application with an integrated blog, designed to provide insurance solutions and informative content.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Next.js</span>
+                            <span class="tech-badge">Vercel</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">CSS</span>
+                        </div>
+                        <a href="https://kolzimodoinsurance.vercel.app/" target="_blank" class="btn-view-details">Visit Site</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-details"></div>
+    </div>
+</section>
