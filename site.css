@@ -303,11 +303,261 @@ main {
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
     transition: background-color var(--transition-speed);
 }
 
 .btn-view-details:hover {
     background-color: var(--hover-color);
+}
+
+.btn-view-details.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    text-decoration: none;
+}
+
+.btn-view-details.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* SNB Featured Project */
+.snb-featured {
+    border: 2px solid var(--primary-color);
+    position: relative;
+}
+
+.project-featured-badge {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 0 0 6px 6px;
+    letter-spacing: 0.5px;
+}
+
+.snb-metrics {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.snb-metric {
+    text-align: center;
+}
+
+.snb-metric strong {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.snb-metric span {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+/* SNB Detail Page */
+.snb-detail {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+.snb-detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.snb-detail-header h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+.snb-detail-subtitle {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.snb-detail-subtitle a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.snb-detail-subtitle a:hover {
+    text-decoration: underline;
+}
+
+.snb-detail-overview {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.snb-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    text-align: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.metric-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.metric-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-top: 0.25rem;
+}
+
+.metric-sub {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+}
+
+.snb-section {
+    margin-bottom: 2rem;
+}
+
+.snb-section h3 {
+    font-size: 1.4rem;
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.snb-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.snb-tech-col h4 {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.snb-contributions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contribution-card {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background-color: #fafbfc;
+    border-radius: var(--border-radius);
+    border: 1px solid #e9ecef;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.contribution-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contribution-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.contribution-content h4 {
+    font-size: 1.05rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contribution-content p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.contribution-content .project-tech {
+    margin: 0;
+}
+
+.snb-arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.arch-item {
+    padding: 1rem;
+    background-color: #fafbfc;
+    border-radius: var(--border-radius);
+    border: 1px solid #e9ecef;
+}
+
+.arch-item strong {
+    display: block;
+    color: var(--dark-color);
+    margin-bottom: 0.35rem;
+}
+
+.arch-item p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.snb-detail-footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
 }
 
 /* Services Section */
@@ -578,6 +828,31 @@ main {
     
     .project-info {
         padding-top: 1.5rem;
+    }
+
+    .snb-metrics {
+        gap: 1rem;
+    }
+
+    .snb-metric strong {
+        font-size: 1rem;
+    }
+
+    .contribution-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .snb-detail {
+        padding: 1.25rem;
+    }
+
+    .snb-detail-footer {
+        flex-direction: column;
+    }
+
+    .snb-detail-footer .btn-view-details {
+        text-align: center;
     }
 }
 

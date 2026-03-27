@@ -1,9 +1,53 @@
 <section id="projects" class="section-padding reveal">
     <div class="container">
         <h2 class="section-title text-center">Projects</h2>
-        
+
+        <!-- SNB Sacco Platform — Flagship Project -->
+        <div class="project-card snb-featured" onclick="document.getElementById('snb-details-btn').click()">
+            <div class="project-featured-badge">Featured Project</div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="project-image">
+                        <img src="/photos/snb-sacco.png" alt="SNB Sacco Platform Screenshot" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="project-info">
+                        <h3>SNB Sacco Platform</h3>
+                        <p>A multi-tenant SACCO banking platform serving organizations across Kenya. Handles the full lifecycle of member management, deposits, loans, and disbursements for Saccos, Chamas, welfare associations, and cooperatives.</p>
+                        <div class="snb-metrics">
+                            <div class="snb-metric">
+                                <strong>438</strong>
+                                <span>Commits</span>
+                            </div>
+                            <div class="snb-metric">
+                                <strong>10+</strong>
+                                <span>Modules</span>
+                            </div>
+                            <div class="snb-metric">
+                                <strong>Full Stack</strong>
+                                <span>Role</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">Vue 3</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">M-Pesa</span>
+                            <span class="tech-badge">Docker</span>
+                        </div>
+                        <div class="project-actions">
+                            <button id="snb-details-btn" class="btn-view-details" hx-get="/snb-details.html" hx-target="#project-details" hx-swap="innerHTML" onclick="event.stopPropagation()">View Details</button>
+                            <a href="http://pendo.co.ke/" target="_blank" class="btn-view-details btn-outline" onclick="event.stopPropagation()">Pendo Media</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- INVGMT Project -->
-        <div class="project-card" hx-get="/project-details.html" hx-trigger="click" hx-target="#project-details" hx-swap="innerHTML">
+        <div class="project-card">
             <div class="row">
                 <div class="col-md-5">
                     <div class="project-image">
@@ -21,6 +65,7 @@
                             <span class="tech-badge">Data Analytics</span>
                         </div>
                         <button class="btn-view-details">View Details</button>
+                        <a href="https://github.com/kamauhenry/Invmgt" target="_blank" class="btn-view-details">View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +76,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="project-image">
-                        <img src="/photos/kolzimodo-insurance.png" alt="Kolzimodo Insurance Screenshot" class="img-fluid">
+                        <img src="/photos/Kolzimodo-insurance.png" alt="Kolzimodo Insurance Screenshot" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -50,6 +95,31 @@
             </div>
         </div>
         
+        <!-- Property Management System -->
+        <div class="project-card">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="project-image">
+                        <img src="/photos/property-management.png" alt="Property Management System Screenshot" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="project-info">
+                        <h3>Property Management System</h3>
+                        <p>Full-stack real estate management platform with property listings, user accounts, inquiries, communications, and reporting.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                        <a href="https://github.com/kamauhenry/Property_Management_System" target="_blank" class="btn-view-details">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="project-details"></div>
     </div>
 </section>

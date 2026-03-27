@@ -1,0 +1,180 @@
+<div class="snb-detail reveal active">
+    <div class="snb-detail-header">
+        <h2>SNB Sacco Platform</h2>
+        <p class="snb-detail-subtitle">Multi-Tenant SACCO Banking Platform &mdash; Built at <a href="http://pendo.co.ke/" target="_blank">Pendo Media</a></p>
+    </div>
+
+    <div class="snb-detail-overview">
+        <p>SNB is a comprehensive Savings and Credit Cooperative management platform serving organizations across Kenya. It handles the full lifecycle of member management, deposits, loans, and disbursements for Saccos, Chamas, welfare associations, and cooperatives — with dedicated admin and member self-service portals.</p>
+    </div>
+
+    <!-- Metrics -->
+    <div class="snb-metrics-grid">
+        <div class="metric-card">
+            <div class="metric-number">438</div>
+            <div class="metric-label">Total Commits</div>
+            <div class="metric-sub">270 Backend + 168 Frontend</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number">10+</div>
+            <div class="metric-label">Core Modules</div>
+            <div class="metric-sub">Registration, Loans, Treasury, Finance</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number">2</div>
+            <div class="metric-label">Major Features from Scratch</div>
+            <div class="metric-sub">Standing Order V2, Group Wizard</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number">6</div>
+            <div class="metric-label">Team Members</div>
+            <div class="metric-sub">Collaborative Development</div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="snb-section">
+        <h3>Tech Stack</h3>
+        <div class="snb-tech-grid">
+            <div class="snb-tech-col">
+                <h4>Backend</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Laravel (PHP 8.x)</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">RESTful API</span>
+                    <span class="tech-badge">PHPUnit</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>Frontend</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Vue 3</span>
+                    <span class="tech-badge">Vuex</span>
+                    <span class="tech-badge">Vue Router</span>
+                    <span class="tech-badge">Bootstrap 5</span>
+                    <span class="tech-badge">ApexCharts</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>Infrastructure</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Bitbucket Pipelines</span>
+                    <span class="tech-badge">Nginx</span>
+                    <span class="tech-badge">M-Pesa (Daraja)</span>
+                    <span class="tech-badge">DomPDF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Contributions -->
+    <div class="snb-section">
+        <h3>Key Contributions</h3>
+        <div class="snb-contributions">
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-cogs"></i></div>
+                <div class="contribution-content">
+                    <h4>Standing Order Engine V2 — Built from Scratch</h4>
+                    <p>Designed the complete V2 standing order architecture with source-resolved orchestration, execution pipeline, repository contracts with read/write separation, and full API endpoints. Built matching Vue frontend with Vuex store, settings CRUD, batch monitoring, and observability screens.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Backend + Frontend</span>
+                        <span class="tech-badge">Architecture Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-users"></i></div>
+                <div class="contribution-content">
+                    <h4>Group Setup Wizard — Built from Scratch</h4>
+                    <p>Built a complete 5-step group setup wizard supporting Chamas, welfare associations, and cooperatives. Features dynamic checklists based on account type, auto-derived disbursement modes, auto-creation of deposit products per sub-account, and progress persistence with event-driven updates. Full PHPUnit test coverage.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">12 Commits</span>
+                        <span class="tech-badge">PHPUnit Tests</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <div class="contribution-content">
+                    <h4>Loan Management System</h4>
+                    <p>End-to-end loan processing: maker-checker approval workflows with multi-level approval, loan appraisal, amortization schedule generation, collateral management, guarantee system, and loan exports. Frontend includes full application lifecycle UI with optimized API calls.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">15+ Commits</span>
+                        <span class="tech-badge">Maker-Checker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="contribution-content">
+                    <h4>Dashboard & Analytics</h4>
+                    <p>Built admin dashboard statistics API with consolidated repository, DataSummarizerService with batched processing, and backfill command for historical data. Refactored frontend dashboards consuming optimized endpoints with significantly reduced API calls.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Data Pipeline</span>
+                        <span class="tech-badge">ApexCharts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-id-card"></i></div>
+                <div class="contribution-content">
+                    <h4>Registration & Member Management</h4>
+                    <p>Built Chama/Group registration with DRY principles, unified company+user registration, group invite system with SMS notifications, OTP verification, multi-step member onboarding (6 steps + invite flow), and section counter auto-numbering with concurrency-safe retry logic.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">18 Commits</span>
+                        <span class="tech-badge">SMS Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-server"></i></div>
+                <div class="contribution-content">
+                    <h4>DevOps & Deployment</h4>
+                    <p>Configured multi-server deployment for SNB-Sacco and SNB-Jamii on the same physical server. Parameterized Docker Compose files, set up Bitbucket Pipelines CI/CD, path-based routing with Nginx reverse proxy, and custom force-deploy pipelines for any branch.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">CI/CD</span>
+                        <span class="tech-badge">Nginx</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Architecture -->
+    <div class="snb-section">
+        <h3>Architecture</h3>
+        <div class="snb-arch-grid">
+            <div class="arch-item">
+                <strong>Backend Pattern</strong>
+                <p>Repository + Service layer, Event/Listener, Form Request validation</p>
+            </div>
+            <div class="arch-item">
+                <strong>Frontend Structure</strong>
+                <p>Modular Vuex stores, role-based routing, component-driven UI</p>
+            </div>
+            <div class="arch-item">
+                <strong>Deployment</strong>
+                <p>Docker containers on Linux servers via Bitbucket Pipelines</p>
+            </div>
+            <div class="arch-item">
+                <strong>Live Instances</strong>
+                <p>SNB-Sacco (test.snb.or.ke) & SNB-Jamii (test.snbjamii.com)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="snb-detail-footer">
+        <a href="http://pendo.co.ke/" target="_blank" class="btn-view-details">Visit Pendo Media</a>
+        <button class="btn-view-details btn-outline" onclick="document.getElementById('project-details').innerHTML=''">Close Details</button>
+    </div>
+</div>
