@@ -39,13 +39,18 @@ function setupNavigation() {
         });
     }
 
-    // Prevent re-fetching same page
-    document.querySelectorAll('.link').forEach(function (link) {
-        link.addEventListener('click', function (e) {
+    // Prevent re-fetching same page — use hx-get as the identifier
+    document.querySelectorAll('[hx-get]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
             var currentPage = document.body.getAttribute('data-current-page');
-            var targetPage = link.getAttribute('data-page');
+            var targetPage = el.getAttribute('hx-get');
             if (currentPage === targetPage) {
                 e.preventDefault();
+                e.stopPropagation();
+                // Cancel any HTMX request that may have started
+                if (typeof htmx !== 'undefined') {
+                    htmx.trigger(el, 'htmx:abort');
+                }
             }
         });
     });
@@ -53,10 +58,12 @@ function setupNavigation() {
     // Update state after HTMX swap
     document.body.addEventListener('htmx:afterSwap', function (e) {
         var path = e.detail.pathInfo ? e.detail.pathInfo.requestPath : '';
+        // Track current page by hx-get path
+        if (path) {
+            document.body.setAttribute('data-current-page', path);
+        }
         var requestedLink = document.querySelector('.link[hx-get="' + path + '"]');
         if (requestedLink) {
-            var newPage = requestedLink.getAttribute('data-page');
-            document.body.setAttribute('data-current-page', newPage);
             document.querySelectorAll('.link').forEach(function (l) {
                 l.classList.remove('active');
             });
@@ -206,6 +213,31 @@ function initCounterAnimation() {
         counterObserver.observe(el);
     });
 }
+
+// ── SNB Modal ───────────────────────────────────────────
+
+function openSnbModal() {
+    var modal = document.getElementById('snb-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeSnbModal(e) {
+    // If called from overlay click, only close if clicking the overlay itself
+    if (e && e.target !== e.currentTarget) return;
+    var modal = document.getElementById('snb-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSnbModal();
+});
 
 // ── Social Media Links ──────────────────────────────────
 
