@@ -7,9 +7,7 @@
             <!-- SNB Sacco Platform — Featured -->
             <div class="project-card-featured stagger-item" onclick="document.getElementById('snb-details-btn').click()">
                 <div class="project-featured-image">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="12" y1="9" x2="12" y2="21"/><circle cx="7" cy="6" r="1" fill="#9CA3AF"/><circle cx="12" cy="6" r="1" fill="#9CA3AF"/><path d="M7 14h2m-2 3h2m3-3h2m-2 3h2"/>
-                    </svg>
+                    <img src="/photos/pendo-logo.png" alt="Pendo Media - SNB Sacco Platform" style="max-width: 180px; opacity: 0.7;">
                 </div>
                 <div class="project-featured-info">
                     <span class="project-label">Featured Project</span>
@@ -38,7 +36,7 @@
                         <span class="tech-badge">Docker</span>
                     </div>
                     <div class="project-actions">
-                        <button id="snb-details-btn" class="btn-project btn-project-primary" hx-get="/snb-details.html" hx-target="#project-details" hx-swap="innerHTML" onclick="event.stopPropagation()">View Details</button>
+                        <button id="snb-details-btn" class="btn-project btn-project-primary" hx-get="/snb-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.stopPropagation(); openSnbModal()">View Details</button>
                         <a href="http://pendo.co.ke/" target="_blank" class="btn-project btn-project-outline" onclick="event.stopPropagation()">Pendo Media</a>
                     </div>
                 </div>
@@ -179,8 +177,14 @@
                 </div>
             </div>
 
-            <div id="project-details"></div>
+        </div>
+    </div>
 
+    <!-- SNB Details Modal Overlay -->
+    <div id="snb-modal" class="project-modal-overlay" onclick="closeSnbModal(event)">
+        <div class="project-modal">
+            <button class="project-modal-close" onclick="closeSnbModal()">&times;</button>
+            <div id="snb-modal-body"></div>
         </div>
     </div>
 </section>
