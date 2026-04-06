@@ -616,8 +616,50 @@ main {
     color: white;
 }
 
-.btn-project-primary:hover {
-    background: var(--color-accent);
+.project-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Project Image SVG Placeholder */
+.project-image-placeholder {
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    border-radius: var(--border-radius);
+    transition: transform 0.5s;
+}
+
+.project-card:hover .project-image-placeholder {
+    transform: scale(1.02);
+}
+
+.project-image-placeholder svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover .project-image-placeholder svg {
+    opacity: 0.7;
+}
+
+/* SNB Featured Project */
+.snb-featured {
+    border: 2px solid var(--primary-color);
+    position: relative;
+}
+
+.project-featured-badge {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    background-color: var(--primary-color);
     color: white;
 }
 
