@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lenis Smooth Scroll
     if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
+        var lenis = new Lenis({
             duration: 1.2,
             easing: function (t) {
                 return Math.min(1, 1.001 - Math.pow(2, -10 * t));
@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
     setupNavigation();
     setupScrollDirection();
     initAnimations();
+    initMagneticButtons();
+    initCounterAnimation();
 });
 
 // ── Navigation ──────────────────────────────────────────
@@ -65,8 +67,18 @@ function setupNavigation() {
         if (navLinks) navLinks.classList.remove('active');
         if (hamburger) hamburger.classList.remove('open');
 
-        // Re-init animations for new content
+        // Re-init animations and interactions for new content
         initAnimations();
+        initMagneticButtons();
+        initCounterAnimation();
+
+        // Page transition animation
+        var contentDiv = document.querySelector('#content');
+        if (contentDiv) {
+            contentDiv.style.animation = 'none';
+            contentDiv.offsetHeight; // force reflow
+            contentDiv.style.animation = '';
+        }
 
         // Scroll to top smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -114,6 +126,85 @@ function initAnimations() {
     reveals.forEach(function (section) {
         observer.observe(section);
     });
+
+    // Stagger grid items (project cards, service cards, skill items)
+    var staggerContainers = document.querySelectorAll('.projects-grid, .services-grid, .skills-list, .skill-tags');
+    var staggerObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var items = entry.target.querySelectorAll('.stagger-item:not(.stagger-visible)');
+                items.forEach(function (item, i) {
+                    item.style.transitionDelay = (i * 0.08) + 's';
+                    setTimeout(function () {
+                        item.classList.add('stagger-visible');
+                    }, 50);
+                });
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    staggerContainers.forEach(function (container) {
+        staggerObserver.observe(container);
+    });
+}
+
+// ── Magnetic Buttons ────────────────────────────────────
+
+function initMagneticButtons() {
+    var buttons = document.querySelectorAll('.btn-primary-cta, .nav-cta');
+    buttons.forEach(function (btn) {
+        if (btn.dataset.magnetic) return; // already initialized
+        btn.dataset.magnetic = 'true';
+
+        btn.addEventListener('mousemove', function (e) {
+            var rect = btn.getBoundingClientRect();
+            var x = e.clientX - rect.left - rect.width / 2;
+            var y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = 'translate(' + (x * 0.12) + 'px, ' + (y * 0.12) + 'px)';
+        });
+
+        btn.addEventListener('mouseleave', function () {
+            btn.style.transform = '';
+        });
+    });
+}
+
+// ── Counter Animation ───────────────────────────────────
+
+function initCounterAnimation() {
+    var counters = document.querySelectorAll('.metric-number[data-count]');
+    if (!counters.length) return;
+
+    var counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                var target = parseInt(entry.target.getAttribute('data-count'));
+                var display = entry.target.getAttribute('data-display') || String(target);
+                var duration = 1500;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    // Cubic ease-out
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    entry.target.textContent = Math.floor(eased * target);
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        entry.target.textContent = display;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function (el) {
+        counterObserver.observe(el);
+    });
 }
 
 // ── Social Media Links ──────────────────────────────────
@@ -154,6 +245,6 @@ document.body.addEventListener('htmx:responseError', function (e) {
     console.error('HTMX request failed:', e.detail);
     var contentDiv = document.querySelector('#content');
     if (contentDiv) {
-        contentDiv.innerHTML = '<div style="text-align:center;padding:4rem 2rem;"><p style="color:#6B7280;">Something went wrong. Please try again.</p></div>';
+        contentDiv.innerHTML = '<div style="text-align:center;padding:4rem 2rem;"><p style="color:var(--color-text-muted);">Something went wrong. Please try again.</p></div>';
     }
 });
