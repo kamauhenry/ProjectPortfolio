@@ -1,31 +1,65 @@
-<section id="about" class="section-padding reveal">
+<section id="about" class="hero reveal">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="about-content">
-                    <h2 class="section-title">Hey, I'm Henry.</h2>
-                    <p class="section-subtitle">
-                        Software Engineer and Data Scientist from Mombasa, Kenya.
-                        I create custom websites to help businesses do better online.
-                    </p>
-                    <div class="social-links">
-                        <button class="social-btn" onclick="openLinkedin()">
-                            <i class="fab fa-linkedin"></i>
-                        </button>
-                        <button class="social-btn" onclick="openGitHub()">
-                            <i class="fab fa-github"></i>
-                        </button>
-                        <a href="/#contact" class="social-btn" hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Software Engineer & Data Scientist — Nairobi, Kenya</p>
+            <h1 class="hero-headline">
+                I build digital<br>
+                products that<br>
+                <span class="hero-accent">work.</span>
+            </h1>
+            <p class="hero-subtitle">Custom web applications, data solutions, and payment integrations for businesses ready to grow.</p>
+            <div class="hero-actions">
+                <a class="btn-primary-cta" hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML" href="/#projects">
+                    <span class="btn-text">View My Work</span>
+                    <span class="btn-arrow">&rarr;</span>
+                </a>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/henry-kamau-b59959224/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/kamauhenry" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="profile-image">
-                    <div class="image-container"></div>
-                </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-decorative-blob"></div>
+            <div class="hero-image-wrapper">
+                <img src="/photos/passport.jpg" alt="Henry Kamau">
             </div>
         </div>
     </div>
 </section>
+
+<div class="about-detail reveal">
+    <div class="container">
+        <div class="about-detail-grid">
+            <div class="about-text">
+                <h2 class="section-title">A bit about me</h2>
+                <p>I'm a Software Engineer and Data Scientist based in Nairobi, Kenya. I specialize in building full-stack web applications with Django, Laravel, React, and Vue.js. I also work with data analytics, AI integrations, and M-Pesa payment systems for businesses across East Africa.</p>
+            </div>
+            <div class="about-skills">
+                <h3>Technologies</h3>
+                <div class="skill-tags">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Django</span>
+                    <span class="skill-item">Laravel</span>
+                    <span class="skill-item">PHP</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">TypeScript</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Vue.js</span>
+                    <span class="skill-item">Next.js</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">PostgreSQL</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">Redis</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">M-Pesa</span>
+                    <span class="skill-item">REST APIs</span>
+                    <span class="skill-item">PowerBI</span>
+                    <span class="skill-item">Data Analytics</span>
+                    <span class="skill-item">Machine Learning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
