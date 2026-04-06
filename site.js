@@ -1,107 +1,159 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // EmailJS Initialization
     if (typeof emailjs !== 'undefined') {
-        emailjs.init('KcL0gOD3nsp9DtqMo'); // Your public key
-    } else {
-        console.warn('EmailJS not loaded');
+        emailjs.init('KcL0gOD3nsp9DtqMo');
     }
 
-    // Setup event listeners
-    setupEventListeners();
+    // Lenis Smooth Scroll
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: function (t) {
+                return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+            }
+        });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+
+    setupNavigation();
+    setupScrollDirection();
     initAnimations();
 });
 
-// Social Media Links
+// ── Navigation ──────────────────────────────────────────
+
+function setupNavigation() {
+    var hamburger = document.querySelector('.hamburger-menu');
+    var navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+    }
+
+    // Prevent re-fetching same page
+    document.querySelectorAll('.link').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            var currentPage = document.body.getAttribute('data-current-page');
+            var targetPage = link.getAttribute('data-page');
+            if (currentPage === targetPage) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    // Update state after HTMX swap
+    document.body.addEventListener('htmx:afterSwap', function (e) {
+        var path = e.detail.pathInfo ? e.detail.pathInfo.requestPath : '';
+        var requestedLink = document.querySelector('.link[hx-get="' + path + '"]');
+        if (requestedLink) {
+            var newPage = requestedLink.getAttribute('data-page');
+            document.body.setAttribute('data-current-page', newPage);
+            document.querySelectorAll('.link').forEach(function (l) {
+                l.classList.remove('active');
+            });
+            requestedLink.classList.add('active');
+        }
+
+        // Close mobile menu
+        if (navLinks) navLinks.classList.remove('active');
+        if (hamburger) hamburger.classList.remove('open');
+
+        // Re-init animations for new content
+        initAnimations();
+
+        // Scroll to top smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ── Scroll-Direction Navbar ─────────────────────────────
+
+function setupScrollDirection() {
+    var lastScroll = 0;
+    var nav = document.getElementById('main-nav');
+    if (!nav) return;
+
+    window.addEventListener('scroll', function () {
+        var current = window.scrollY;
+        if (current > lastScroll && current > 80) {
+            nav.classList.add('nav-hidden');
+        } else {
+            nav.classList.remove('nav-hidden');
+        }
+        lastScroll = current;
+    }, { passive: true });
+}
+
+// ── Animations ──────────────────────────────────────────
+
+function initAnimations() {
+    var reveals = document.querySelectorAll('.reveal:not(.active)');
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+
+                // Stagger children with .reveal-child class
+                var children = entry.target.querySelectorAll('.reveal-child');
+                children.forEach(function (child, i) {
+                    child.style.transitionDelay = (i * 0.08) + 's';
+                    child.classList.add('active');
+                });
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(function (section) {
+        observer.observe(section);
+    });
+}
+
+// ── Social Media Links ──────────────────────────────────
+
 function openLinkedin() {
-    window.open("https://www.linkedin.com/in/henry-kamau-b59959224/", "_blank");
-    animateButtonClick(document.querySelector('.social-btn:nth-child(1)'));
+    window.open('https://www.linkedin.com/in/henry-kamau-b59959224/', '_blank');
 }
 
 function openGitHub() {
-    window.open("https://github.com/kamauhenry", "_blank");
-    animateButtonClick(document.querySelector('.social-btn:nth-child(2)'));
+    window.open('https://github.com/kamauhenry', '_blank');
 }
 
-function animateButtonClick(button) {
-    if (!button) return;
-    button.classList.add('clicked');
-    setTimeout(() => button.classList.remove('clicked'), 500);
-}
+// ── EmailJS Form Submission ─────────────────────────────
 
-// EmailJS Form Submission
 function sendEmail(event) {
     event.preventDefault();
-    
-    const form = event.target;
-    const indicator = form.querySelector('#form-indicator');
-    indicator.style.display = 'inline-block'; // Show spinner
-    
+
+    var form = event.target;
+    var indicator = form.querySelector('#form-indicator');
+    if (indicator) indicator.style.display = 'inline-block';
+
     emailjs.sendForm('service_27rl3pt', 'service_27rl3pt', form)
-        .then(() => {
+        .then(function () {
             alert('Message sent successfully!');
-            form.reset(); // Clear form
-            indicator.style.display = 'none'; // Hide spinner
+            form.reset();
+            if (indicator) indicator.style.display = 'none';
         })
-        .catch(error => {
+        .catch(function (error) {
             console.error('EmailJS error:', error);
             alert('Failed to send message. Please try again.');
-            indicator.style.display = 'none'; // Hide spinner
+            if (indicator) indicator.style.display = 'none';
         });
 }
 
-function setupEventListeners() {
-    const hamburger = document.querySelector('.hamburger-menu');
-    const navLinks = document.querySelector('.links-container');
+// ── HTMX Error Handling ─────────────────────────────────
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('open');
-    });
-
-    // Prevent re-fetching if already on the page
-    document.querySelectorAll('.link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            const currentPage = document.body.getAttribute('data-current-page');
-            const targetPage = link.getAttribute('data-page');
-            if (currentPage === targetPage) {
-                e.preventDefault(); // Stop HTMX request
-                return;
-            }
-        });
-    });
-
-    // Update current page after HTMX swap
-    document.body.addEventListener('htmx:afterSwap', (e) => {
-        const requestedLink = document.querySelector(`.link[hx-get="${e.detail.path}"]`);
-        if (requestedLink) {
-            const newPage = requestedLink.getAttribute('data-page');
-            document.body.setAttribute('data-current-page', newPage);
-            // Update active link styling
-            document.querySelectorAll('.link').forEach(l => l.classList.remove('active'));
-            requestedLink.classList.add('active');
-        }
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('open');
-        initAnimations();
-    });
-}
-
-// Reveal Animation on Scroll
-function initAnimations() {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    reveals.forEach(section => observer.observe(section));
-}
-document.body.addEventListener('htmx:responseError', (e) => {
+document.body.addEventListener('htmx:responseError', function (e) {
     console.error('HTMX request failed:', e.detail);
-    const contentDiv = document.querySelector('#content');
-    contentDiv.innerHTML = '<p>Sorry, something went wrong. Please try again.</p>';
+    var contentDiv = document.querySelector('#content');
+    if (contentDiv) {
+        contentDiv.innerHTML = '<div style="text-align:center;padding:4rem 2rem;"><p style="color:#6B7280;">Something went wrong. Please try again.</p></div>';
+    }
 });

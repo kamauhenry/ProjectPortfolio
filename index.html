@@ -6,79 +6,71 @@
     <title>Henry Kamau - Software Engineer</title>
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/site.css">
 </head>
 <body>
-    <nav class="MainHeader">
-        <div class="nameof">
-            <a href="/" hx-get="/about.html" hx-target="#content" hx-swap="innerHTML">
-                <h1>Fundi Wa Website</h1>
-            </a>
+    <nav class="MainHeader" id="main-nav">
+        <a href="/" class="nav-logo" hx-get="/about.html" hx-target="#content" hx-swap="innerHTML">
+            Fundi Wa Website
+        </a>
+
+        <div class="hamburger-menu" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-        
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        
-        <div class="links-container">
-            <div class="link" hx-get="/about.html" hx-target="#content" hx-swap="innerHTML">
-                <a href="/#about">About</a>
-            </div>
-            <div class="link" hx-get="/skills.html" hx-target="#content" hx-swap="innerHTML">
-                <a href="/#skills">Skills</a>
-            </div>
+
+        <div class="nav-links">
             <div class="link" hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML">
-                <a href="/#projects">Projects</a>
+                <a href="/#projects">Work</a>
             </div>
             <div class="link" hx-get="/services.html" hx-target="#content" hx-swap="innerHTML">
                 <a href="/#services">Services</a>
             </div>
-            <div class="link" hx-get="/process.html" hx-target="#content" hx-swap="innerHTML">
-                <a href="/#process">Process</a>
+            <div class="link" hx-get="/about.html" hx-target="#content" hx-swap="innerHTML">
+                <a href="/#about">About</a>
             </div>
-            <div class="link" hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML">
-                <a href="/#contact">Contact</a>
-            </div>
+            <a class="nav-cta" hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML" href="/#contact">Let's Talk</a>
         </div>
     </nav>
 
     <main>
         <div id="content" class="section-padding">
-            <!-- Default content (loads About section initially) -->
-            <section id="about" class="reveal">
+            <section id="about" class="hero reveal">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="about-content">
-                                <h2 class="section-title">Hey, I'm Henry Kamau.</h2>
-                                <p class="section-subtitle">
-                                    Software Engineer and Data Scientist from Nairobi, Kenya.
-                                    I create custom websites to help businesses do better online.
-                                </p>
-                                <div class="social-links">
-                                    <button class="social-btn" onclick="openLinkedin()">
-                                        <i class="fab fa-linkedin"></i>
-                                    </button>
-                                    <button class="social-btn" onclick="openGitHub()">
-                                        <i class="fab fa-github"></i>
-                                    </button>
-                                    <a href="/#contact" class="social-btn" hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                </div>
+                    <div class="hero-content">
+                        <p class="hero-eyebrow">Software Engineer & Data Scientist — Nairobi, Kenya</p>
+                        <h1 class="hero-headline">
+                            I build digital<br>
+                            products that<br>
+                            <span class="hero-accent">work.</span>
+                        </h1>
+                        <p class="hero-subtitle">Custom web applications, data solutions, and payment integrations for businesses ready to grow.</p>
+                        <div class="hero-actions">
+                            <a class="btn-primary-cta" hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML" href="/#projects">
+                                <span class="btn-text">View My Work</span>
+                                <span class="btn-arrow">&rarr;</span>
+                            </a>
+                            <div class="hero-social">
+                                <a href="https://www.linkedin.com/in/henry-kamau-b59959224/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/kamauhenry" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="profile-image">
-                                <div class="image-container"></div>
-                            </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-decorative-blob"></div>
+                        <div class="hero-image-wrapper">
+                            <img src="/photos/passport.jpg" alt="Henry Kamau">
                         </div>
                     </div>
                 </div>
@@ -88,24 +80,36 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="social-links text-md-end">
-                        <div class="col-md-6">
-                            <p>© 2025 Henry Kamau. All rights reserved.</p>
-                        </div>
-                        <a href="https://www.linkedin.com/in/henry-kamau-b59959224/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/kamauhenry" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="/#contact" hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML"><i class="fas fa-envelope"></i></a>
-                    </div>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Fundi Wa Website</h3>
+                    <p class="footer-tagline">Building digital solutions from Nairobi to the world.</p>
                 </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML" href="/#projects">Work</a></li>
+                        <li><a hx-get="/services.html" hx-target="#content" hx-swap="innerHTML" href="/#services">Services</a></li>
+                        <li><a hx-get="/about.html" hx-target="#content" hx-swap="innerHTML" href="/#about">About</a></li>
+                        <li><a hx-get="/contact.html" hx-target="#content" hx-swap="innerHTML" href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/henry-kamau-b59959224/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/kamauhenry" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Henry Kamau. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
