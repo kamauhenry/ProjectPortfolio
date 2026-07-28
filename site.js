@@ -239,6 +239,24 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeSnbModal();
 });
 
+
+// ── Sereniminds Modal ────────────────────────────────────
+
+function openSerenimindsModal() {
+    var modal = document.getElementById('snb-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeSerenimindsModal() {
+    var modal = document.getElementById('snb-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
 // ── Social Media Links ──────────────────────────────────
 
 function openLinkedin() {

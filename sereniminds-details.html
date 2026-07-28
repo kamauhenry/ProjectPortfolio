@@ -1,0 +1,177 @@
+<div class="snb-detail reveal active">
+    <div class="snb-detail-header">
+        <h2>Sereniminds Wellness Clinic</h2>
+        <p class="snb-detail-subtitle">Clinic Management System &mdash; UI/UX Prototype</p>
+    </div>
+
+    <div class="snb-detail-overview">
+        <p>A comprehensive clinic management system prototype for a mental health &amp; psychology clinic in Nairobi, Kenya. Designed to handle the full clinic workflow: appointment scheduling across 2 consultation rooms, clinical documentation (EHR/SOAP notes), billing with KRA eTIMS fiscalization, M-PESA payments, petty cash management, consultant payments, and TCA/follow-up tracking — 42 fully interactive views.</p>
+    </div>
+
+    <!-- Metrics -->
+    <div class="snb-metrics-grid">
+        <div class="metric-card">
+            <div class="metric-number" data-count="42" data-display="42">0</div>
+            <div class="metric-label">Interactive Views</div>
+            <div class="metric-sub">Dashboard, Clinical, Billing, Admin, Client Portal</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number" data-count="29" data-display="29">0</div>
+            <div class="metric-label">Sidebar Sections</div>
+            <div class="metric-sub">Full navigation hierarchy</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number" data-count="3" data-display="3">0</div>
+            <div class="metric-label">Reference Designs</div>
+            <div class="metric-sub">Dribbble — Dia Studio, VALMAX, Diana Larussa</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-number" data-count="14" data-display="14">0</div>
+            <div class="metric-label">Permission Groups</div>
+            <div class="metric-sub">Role-based access control editor</div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="snb-section">
+        <h3>Tech Stack (Planned)</h3>
+        <div class="snb-tech-grid">
+            <div class="snb-tech-col">
+                <h4>Backend</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Django 5.1</span>
+                    <span class="tech-badge">DRF</span>
+                    <span class="tech-badge">PostgreSQL 16</span>
+                    <span class="tech-badge">Celery + Redis</span>
+                    <span class="tech-badge">django-allauth</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>Frontend</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">React 19</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Vite</span>
+                    <span class="tech-badge">Plus Jakarta Sans</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>Integrations</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">KRA eTIMS OSCU</span>
+                    <span class="tech-badge">M-PESA Daraja C2B</span>
+                    <span class="tech-badge">REST API (~80 endpoints)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="snb-section">
+        <h3>Key Features</h3>
+        <div class="snb-contributions">
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="contribution-content">
+                    <h4>Appointment Scheduling</h4>
+                    <p>Day view with Room A / Room B timeline columns inspired by surgery schedule design. 60-minute sessions with 15-minute buffers. Floating room model — any clinician, any room, with conflict detection.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Dual-Room</span>
+                        <span class="tech-badge">75-min Slots</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-notes-medical"></i></div>
+                <div class="contribution-content">
+                    <h4>Clinical Documentation (EHR)</h4>
+                    <p>SOAP-style note editor with DSM-5/ICD-10 diagnosis lookup, consent status tracking per-note per-clinician, progress notes, treatment plans, outcome measures, and supportive clinical data uploads.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">SOAP Notes</span>
+                        <span class="tech-badge">DSM-5 / ICD-10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-file-invoice"></i></div>
+                <div class="contribution-content">
+                    <h4>Billing &amp; Fiscalization</h4>
+                    <p>Full billing lifecycle: M-PESA PayBill → payment callback → invoice marked paid → KRA eTIMS OSCU real-time submission → ETR receipt generated. Consultant payments with eTIMS invoices. Petty cash with two-step approval workflow.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">eTIMS</span>
+                        <span class="tech-badge">M-PESA</span>
+                        <span class="tech-badge">KES Currency</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-user-friends"></i></div>
+                <div class="contribution-content">
+                    <h4>Client Portal</h4>
+                    <p>Complete client-facing experience: secure login, 3-step intake wizard, appointment booking, payment history, profile management. Paperless registration with all background data collected online.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Intake Wizard</span>
+                        <span class="tech-badge">Self-Service</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-building"></i></div>
+                <div class="contribution-content">
+                    <h4>EAP &amp; Training Management</h4>
+                    <p>Employee Assistance Program organization tracking with detailed org profiles (Overview, Employees, Sessions, Reports tabs). Workshop/program training management with filter chips and expandable rows.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">EAP</span>
+                        <span class="tech-badge">Training Tracking</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-chart-pie"></i></div>
+                <div class="contribution-content">
+                    <h4>Financial Reporting</h4>
+                    <p>Complete financial suite: Balance Sheet, Income Statement (P&amp;L), General Ledger, Trial Balance, Payroll, Debtors &amp; Creditors registers. All denominated in KES with eTIMS receipt references.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">6 Financial Views</span>
+                        <span class="tech-badge">KRA Compliant</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Design -->
+    <div class="snb-section">
+        <h3>Design System</h3>
+        <div class="snb-arch-grid">
+            <div class="arch-item">
+                <strong>Color Palette</strong>
+                <p>Dark sidebar (#1A1D26), light bg (#F5F7FA), blue accent (#4F8CFF), with green/amber/red/purple semantic colors</p>
+            </div>
+            <div class="arch-item">
+                <strong>Typography</strong>
+                <p>Plus Jakarta Sans + DM Sans. Token-based type scale with CSS custom properties</p>
+            </div>
+            <div class="arch-item">
+                <strong>References</strong>
+                <p>Anchored to 3 real Dribbble designs — Dia Studio Dental Dashboard, VALMAX Dia Clinic, Diana Larussa Surgery Schedule</p>
+            </div>
+            <div class="arch-item">
+                <strong>Architecture</strong>
+                <p>42 SPA views toggled via CSS visibility, dark fixed sidebar, scrollable main content area</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="snb-detail-footer">
+        <a href="/sereniminds/" class="btn-project btn-project-primary">View Live Demo &rarr;</a>
+        <button class="btn-project btn-project-outline" onclick="closeSerenimindsModal()">Close Details</button>
+    </div>
+</div>

@@ -193,7 +193,10 @@
                         <span class="tech-badge">UI/UX Prototype</span>
                         <span class="tech-badge">Client Portal</span>
                     </div>
-                    <a href="/sereniminds/" class="btn-project btn-project-outline">View Demo</a>
+                    <div class="project-actions">
+                        <button id="sereniminds-details-btn" class="btn-project btn-project-primary" hx-get="/sereniminds-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.stopPropagation(); openSerenimindsModal()">View Details</button>
+                        <a href="/sereniminds/" class="btn-project btn-project-outline" onclick="event.stopPropagation()">Live Demo</a>
+                    </div>
                 </div>
             </div>
 
