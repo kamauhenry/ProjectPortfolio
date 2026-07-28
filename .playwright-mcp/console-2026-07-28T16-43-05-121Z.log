@@ -1,0 +1,7 @@
+[    1353ms] [LOG] Current route.path: / @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
+[    1354ms] [LOG] isExcludedRoute result: false @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
+[    1452ms] [LOG] MainLayout mounted, setting up resize listener and showing cookie consent... @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
+[    1452ms] [LOG] Cookie consent already given: accepted @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
+[    1453ms] [LOG] Loading Google Analytics... @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
+[    1824ms] [LOG] Google Sign-In script loaded @ https://mustardimports.store/:70
+[    3399ms] [LOG] Setting up IntersectionObserver for sentinel @ https://mustardimports.store/static/assets/index.CAAaz3El.js:1
