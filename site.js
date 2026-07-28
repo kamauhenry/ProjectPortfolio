@@ -276,7 +276,7 @@ function sendEmail(event) {
     var indicator = form.querySelector('#form-indicator');
     if (indicator) indicator.style.display = 'inline-block';
 
-    emailjs.sendForm('service_27rl3pt', 'service_27rl3pt', form)
+    emailjs.sendForm('service_27rl3pt', 'template_6kiu6mm', form)
         .then(function () {
             alert('Message sent successfully!');
             form.reset();
