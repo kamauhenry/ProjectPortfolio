@@ -36,6 +36,15 @@
   --radius-sm:8px;
   --radius-lg:14px;
   --radius-xl:20px;
+  /* v6 new tokens */
+  --red3:#FEE2E2;
+  --red4:#991B1B;
+  --skeleton-base:#E5E7EB;
+  --skeleton-shine:#F3F4F6;
+  --menu-shadow:0 4px 16px rgba(0,0,0,.12);
+  --tab-bar-height:56px;
+  --connector:#E5E7EB;
+  --empty-max-w:380px;
 }
 [data-theme="dark"]{
   --bg:#0F1117;
@@ -53,9 +62,145 @@
   --shadow-sm:0 1px 2px rgba(0,0,0,.2);
   --shadow:0 1px 3px rgba(0,0,0,.3),0 4px 12px rgba(0,0,0,.2);
   --shadow-lg:0 4px 24px rgba(0,0,0,.4);
+  /* v6 dark tokens */
+  --red3:#3B1515;
+  --red4:#FCA5A5;
+  --amber:#CC7A00;
+  --skeleton-base:#252830;
+  --skeleton-shine:#2D3039;
+  --menu-shadow:0 4px 16px rgba(0,0,0,.4);
+  --connector:#252830;
 }
 html{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 body{display:flex;min-height:100dvh}
+
+/* ── v6: FOCUS RINGS (P0 accessibility) ── */
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,
+.nav-item:focus-visible,.nav-kid:focus-visible,.nav-parent:focus-visible,
+.chip:focus-visible,.tmpl-chip:focus-visible,.view-tab:focus-visible,
+.panel-act:focus-visible,.kebab-trigger:focus-visible,.theme-btn:focus-visible{
+  outline:2px solid var(--blue);outline-offset:2px;
+}
+
+/* ── v6: EMPTY STATE ── */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;text-align:center;max-width:var(--empty-max-w);margin:0 auto}
+.empty-icon{font-size:48px;margin-bottom:16px;opacity:.8}
+.empty-title{font-weight:600;font-size:16px;margin-bottom:6px;color:var(--text)}
+.empty-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.empty-cta{padding:10px 24px;border-radius:20px;background:var(--blue);color:#fff;border:none;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font);transition:all .15s}
+.empty-cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* ── v6: LOADING SKELETON ── */
+.skeleton{background:linear-gradient(90deg,var(--skeleton-base) 25%,var(--skeleton-shine) 50%,var(--skeleton-base) 75%);background-size:200% 100%;animation:sk-shimmer 1.5s infinite;border-radius:var(--radius-sm)}
+@keyframes sk-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-text{height:14px;margin-bottom:8px}
+.skeleton-text.short{width:60%}
+.skeleton-text.medium{width:80%}
+.skeleton-avatar{width:32px;height:32px;border-radius:50%}
+.skeleton-icon{width:36px;height:36px;border-radius:10px}
+.skeleton-val{height:30px;width:60px;margin-top:10px}
+.skeleton-lbl{height:12px;width:90px;margin-top:6px}
+.skeleton-trend{height:11px;width:70px;margin-top:6px}
+.skeleton-kpi{padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column}
+.skeleton-table-row{display:flex;gap:20px;padding:13px 20px;align-items:center}
+.skeleton-table-row .skeleton-cell{height:14px;border-radius:4px;background:var(--skeleton-base)}
+.skeleton-cal-block{height:50px;border-radius:8px}
+
+/* ── v6: KEBAB MENU ── */
+.kebab-menu{position:relative;display:inline-block}
+.kebab-trigger{width:32px;height:32px;border:none;background:transparent;cursor:pointer;border-radius:8px;color:var(--text3);font-size:16px;font-weight:700;display:grid;place-items:center;transition:all .15s}
+.kebab-trigger:hover{background:var(--bg);color:var(--text)}
+.kebab-dropdown{display:none;position:absolute;right:0;top:100%;margin-top:4px;min-width:160px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--menu-shadow);z-index:150;overflow:hidden;animation:kd-slide .15s ease}
+.kebab-dropdown.open{display:block}
+@keyframes kd-slide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.kebab-item{display:block;width:100%;padding:9px 14px;border:none;background:transparent;text-align:left;font-size:12px;font-weight:500;color:var(--text);cursor:pointer;font-family:var(--font);transition:background .1s}
+.kebab-item:hover{background:var(--bg)}
+.kebab-item.danger{color:var(--red)}
+.kebab-item.danger:hover{background:var(--red2)}
+
+/* ── v6: MODAL / CONFIRMATION DIALOG ── */
+.v6-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300;align-items:center;justify-content:center}
+.v6-modal.open{display:flex}
+.modal-box{background:var(--surface);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);width:440px;max-width:90vw;max-height:85vh;overflow-y:auto;animation:md-scale .2s ease}
+@keyframes md-scale{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal-header{padding:18px 24px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-weight:600;font-size:15px}
+.modal-close{width:28px;height:28px;border:none;background:transparent;cursor:pointer;border-radius:6px;color:var(--text3);font-size:14px;display:grid;place-items:center}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-body{padding:20px 24px;font-size:13px;color:var(--text2);line-height:1.6}
+.modal-footer{padding:14px 24px;border-top:1px solid var(--border2);display:flex;justify-content:flex-end;gap:8px}
+.btn{padding:9px 20px;border-radius:20px;font-weight:600;font-size:12px;cursor:pointer;font-family:var(--font);border:1px solid var(--border);transition:all .15s}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-secondary{background:transparent;color:var(--text2)}
+.btn-secondary:hover{background:var(--bg)}
+.btn-danger{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-danger:hover{filter:brightness(1.1)}
+
+/* ── v6: CONFLICT BANNER ── */
+.conflict-banner{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--red3);border:1px solid var(--red);border-radius:var(--radius-lg);margin-bottom:12px}
+.conflict-banner .cb-icon{font-size:18px;flex-shrink:0}
+.conflict-banner .cb-text{flex:1}
+.conflict-banner .cb-title{font-size:13px;font-weight:600;color:var(--red)}
+.conflict-banner .cb-detail{font-size:11px;color:var(--text2);margin-top:1px}
+.conflict-banner .cb-actions{display:flex;gap:6px;flex-shrink:0}
+.cb-btn{padding:7px 16px;border-radius:16px;font-weight:600;font-size:11px;cursor:pointer;font-family:var(--font);border:none;transition:all .15s}
+.cb-btn.resolve{background:var(--red);color:#fff}
+.cb-btn.resolve:hover{filter:brightness(1.1)}
+.cb-btn.dismiss{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.cb-btn.dismiss:hover{background:var(--bg)}
+
+/* ── v6: BULK TOOLBAR ── */
+.bulk-toolbar{display:none;align-items:center;gap:8px;padding:10px 16px;background:var(--blue2);border:1px solid var(--blue);border-radius:var(--radius);margin-bottom:8px;animation:anim-up .2s ease}
+.bulk-toolbar.show{display:flex}
+.bulk-count{font-size:13px;font-weight:600;color:var(--blue)}
+.bulk-action{padding:6px 14px;border-radius:16px;font-weight:600;font-size:11px;cursor:pointer;font-family:var(--font);border:none;background:var(--blue);color:#fff;transition:all .15s}
+.bulk-action:hover{filter:brightness(1.1)}
+.bulk-clear{font-size:11px;color:var(--text2);cursor:pointer;border:none;background:transparent;font-family:var(--font)}
+.bulk-clear:hover{color:var(--text)}
+
+/* ── v6: APPROVAL TIMELINE ── */
+.approval-timeline{display:flex;align-items:center;gap:0;padding:16px 24px}
+.timeline-step{display:flex;align-items:center;gap:8px;flex:1}
+.timeline-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:2px solid var(--connector)}
+.timeline-dot.done{background:var(--green);border-color:var(--green)}
+.timeline-dot.current{background:var(--blue);border-color:var(--blue);box-shadow:0 0 0 4px rgba(79,140,255,.15)}
+.timeline-dot.future{background:var(--border)}
+.timeline-label{font-size:11px;font-weight:500;white-space:nowrap}
+.timeline-label.done{color:var(--green)}
+.timeline-label.current{color:var(--blue);font-weight:600}
+.timeline-label.future{color:var(--text3)}
+.timeline-connector{height:2px;flex:1;min-width:20px;background:var(--connector);margin:0 4px}
+.timeline-connector.done{background:var(--green)}
+.timeline-connector.active{background:var(--blue)}
+
+/* ── v6: NAV BADGE ── */
+.nav-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;background:var(--amber);color:#fff;margin-left:auto;min-width:18px;text-align:center}
+
+/* ── v6: DISABLED STATE ── */
+.disabled{opacity:.5;pointer-events:none;cursor:not-allowed}
+.locked-note{position:relative}
+.locked-note::after{content:'🔒';position:absolute;top:10px;right:12px;font-size:14px;opacity:.5}
+
+/* ── v6: DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.data-table td{padding:13px 16px;font-size:13px;border-bottom:1px solid var(--border2);color:var(--text)}
+.data-table tr:hover td{background:var(--bg)}
+.data-table .td-actions{text-align:right;width:40px}
+.sortable{cursor:pointer;user-select:none}
+.sortable:hover{color:var(--blue)}
+.sortable::after{content:' ↕';font-size:8px;opacity:.3}
+
+/* ── v6: SLIDE-OVER PANEL ── */
+.slide-over{position:fixed;top:0;right:0;bottom:0;width:480px;max-width:100vw;background:var(--surface);box-shadow:var(--shadow-lg);z-index:200;transform:translateX(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);overflow-y:auto}
+.slide-over.open{transform:translateX(0)}
+.slide-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199}
+.slide-backdrop.show{display:block}
+.slide-hdr{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:1}
+.slide-body{padding:24px}
+.slide-close{width:32px;height:32px;border:none;background:transparent;cursor:pointer;border-radius:8px;color:var(--text3);font-size:16px;display:grid;place-items:center}
+.slide-close:hover{background:var(--bg);color:var(--text)}
 
 /* ── SIDEBAR (Surgery Schedule inspired — dark, icon+text nav) ── */
 .sidebar{
@@ -151,7 +296,7 @@ body{display:flex;min-height:100dvh}
 .page-hdr .sub{font-size:13px;color:var(--text2);margin-top:3px}
 
 /* ── KPI STRIP (Dental Clinic + Dia Clinic inspired) ── */
-.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .kpi-card{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:20px 22px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
@@ -325,6 +470,10 @@ body{display:flex;min-height:100dvh}
 .soap-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);transition:border-color .15s}
 .soap-card:focus-within{border-color:var(--blue)}
 .soap-hdr{padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--border);font-weight:600;font-size:12px;display:flex;align-items:center;gap:8px}
+/* v6: History button (TherapyNotes pattern) */
+.soap-hist{padding:2px 10px;border-radius:10px;border:1px solid var(--blue);background:var(--blue2);color:var(--blue);font-size:9px;font-weight:600;cursor:pointer;font-family:var(--font);margin-left:auto;transition:all .15s;white-space:nowrap}.soap-hist:hover{background:var(--blue);color:#fff}
+/* v6: Maker-checker banner */
+.mc-banner{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--amber2);border:1px solid var(--amber);border-radius:var(--radius-lg);margin-bottom:12px;font-size:12px}.mc-banner .mc-icon{font-size:16px}.mc-banner .mc-text{flex:1;color:var(--amber);font-weight:500}.mc-banner .mc-btn{padding:6px 14px;border-radius:14px;font-weight:600;font-size:11px;cursor:pointer;font-family:var(--font);border:none;background:var(--amber);color:#fff;transition:all .15s}.mc-banner .mc-btn:hover{filter:brightness(1.1)}
 .soap-lt{width:20px;height:20px;border-radius:5px;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff}
 .soap-lt.s{background:var(--blue)}
 .soap-lt.o{background:var(--green)}
@@ -366,8 +515,20 @@ body{display:flex;min-height:100dvh}
 @media(prefers-reduced-motion:reduce){.anim-up{animation:none}}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1280px){.kpi-strip{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1024px){.grid-asym{grid-template-columns:1fr}.grid-2col{grid-template-columns:1fr}.editor-grid{grid-template-columns:1fr}.kpi-strip{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.sidebar{display:none}.sidebar.mobile-open{display:flex;width:260px;min-width:260px;box-shadow:var(--shadow-lg)}.main{margin-left:0}.content{padding:14px}.kpi-strip{grid-template-columns:1fr 1fr}.cal-row,.room-hdrs{grid-template-columns:40px 1fr 1fr}.hamburger{display:flex;width:34px;height:34px;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;color:var(--text2);font-size:18px;padding:0}.sidebar-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}.sidebar-backdrop.show{display:block}.topbar{padding:0 12px;gap:6px}.srch input{width:120px}.topbar .theme-btn,.topbar .notif{display:none}}
+@media(max-width:768px){.sidebar{display:none}.sidebar.mobile-open{display:flex;width:260px;min-width:260px;box-shadow:var(--shadow-lg)}.main{margin-left:0}.content{padding:14px}.kpi-strip{grid-template-columns:1fr 1fr}.cal-row,.room-hdrs{grid-template-columns:40px 1fr 1fr}.hamburger{display:flex;width:34px;height:34px;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;color:var(--text2);font-size:18px;padding:0}.sidebar-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}.sidebar-backdrop.show{display:block}.topbar{padding:0 12px;gap:6px}.srch input{width:120px}.topbar .theme-btn,.topbar .notif{display:none}
+/* v6: Bottom tab bar (Practice Better pattern) */
+.bottom-tabs{display:none;position:fixed;bottom:0;left:0;right:0;height:var(--tab-bar-height);background:var(--surface);border-top:1px solid var(--border);z-index:90}
+.bottom-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--text3);font-size:10px;font-weight:500;transition:all .15s;border:none;background:transparent;font-family:var(--font)}
+.bottom-tab .bt-icon{font-size:18px}
+.bottom-tab.active{color:var(--blue)}
+.bottom-tab:hover{color:var(--text2)}
+/* v6: FAB */
+.fab{display:none;position:fixed;bottom:72px;right:20px;width:48px;height:48px;border-radius:24px;background:var(--red);color:#fff;font-size:24px;font-weight:700;border:none;cursor:pointer;z-index:91;box-shadow:0 4px 16px rgba(255,59,48,.4);transition:all .15s;font-family:var(--font);align-items:center;justify-content:center}
+.fab:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,59,48,.5)}
+@media(max-width:768px){.fab{display:grid}.bottom-tabs{display:flex}.main{padding-bottom:var(--tab-bar-height)}}
+@media(max-width:480px){.kpi-strip{grid-template-columns:1fr}}
 
 /* TOUR */
 .tour-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500}
@@ -440,6 +601,7 @@ body{display:flex;min-height:100dvh}
       </div>
     </div>
 
+    <!-- v6: CR-03 — TCA moved here, directly below Clinical Notes -->
     <a class="nav-item" data-view="tca" href="#"><span class="nav-icon">↻</span> TCA Management</a>
 
     <div class="side-section">
@@ -491,6 +653,9 @@ body{display:flex;min-height:100dvh}
     <div class="side-section">
       <div class="side-label">Administration</div>
       <a class="nav-item" data-view="users" href="#"><span class="nav-icon">▥</span> Users & Roles</a>
+      <!-- v6: Approval Inbox + Maker-Checker Config -->
+      <a class="nav-item" data-view="approvals" href="#"><span class="nav-icon">✓</span> Approvals <span class="nav-badge">3</span></a>
+      <a class="nav-item" data-view="maker-checker-config" href="#"><span class="nav-icon">⊡</span> Maker-Checker Config</a>
       <a class="nav-item" data-view="settings" href="#"><span class="nav-icon">⚙</span> Settings</a>
       <a class="nav-item" data-view="audit" href="#"><span class="nav-icon">⊡</span> Audit Logs</a>
     </div>
@@ -526,6 +691,8 @@ body{display:flex;min-height:100dvh}
         <div class="kpi-card"><div class="kpi-icon green">◷</div><div class="kpi-val">12</div><div class="kpi-lbl">Today's Appointments</div><div class="kpi-sub up">8 confirmed</div></div>
         <div class="kpi-card"><div class="kpi-icon purple">◫</div><div class="kpi-val">34</div><div class="kpi-lbl">Notes This Week</div><div class="kpi-sub up">8 pending signature</div></div>
         <div class="kpi-card"><div class="kpi-icon amber">↻</div><div class="kpi-val">05</div><div class="kpi-lbl">Pending TCAs</div><div class="kpi-sub warn">2 overdue</div></div>
+        <!-- v6: Room Availability KPI (Healthcare Provider pattern) -->
+        <div class="kpi-card"><div class="kpi-icon blue">⊞</div><div class="kpi-val">1/2</div><div class="kpi-lbl">Rooms Available</div><div class="kpi-sub up">Room B free until 13:00</div></div>
       </div>
 
       <div class="grid-asym">
@@ -592,6 +759,18 @@ body{display:flex;min-height:100dvh}
   <div class="view" id="view-calendar">
     <div class="content">
       <div class="page-hdr"><div><h1>Appointments</h1><p class="sub">Room A & B · Monday, 21 July 2026</p></div><div class="view-tabs"><button class="view-tab active" data-cal-tab="day">Day</button><button class="view-tab" data-cal-tab="week">Week</button><button class="view-tab" data-cal-tab="month">Month</button></div></div>
+      <!-- v6: Conflict Banner (P0) -->
+      <div class="conflict-banner">
+        <span class="cb-icon">⚠</span>
+        <div class="cb-text">
+          <div class="cb-title">Room B conflict: Dr. Wanjiku double-booked 11:30–12:30</div>
+          <div class="cb-detail">Wanjiku, Faith & Peter (Couples) · Room B</div>
+        </div>
+        <div class="cb-actions">
+          <button class="cb-btn resolve" onclick="showToast('Opening conflict resolution...','info')">Resolve →</button>
+          <button class="cb-btn dismiss" onclick="this.closest('.conflict-banner').remove()">Dismiss</button>
+        </div>
+      </div>
       <div class="panel">
         <div class="cal-toolbar">
           <div class="cal-nav"><button>←</button><span class="cal-date">Monday, 21 July 2026</span><button>→</button></div>
@@ -625,11 +804,14 @@ body{display:flex;min-height:100dvh}
             <div class="note-meta-itm"><span class="note-meta-k">Date</span><span class="note-meta-v">21 Jul 2026 · 11:00</span></div>
             <div class="note-meta-itm"><span class="note-meta-k">Room</span><span class="note-meta-v">Room A</span></div>
           </div>
+          <!-- v6: CR-01 template order: Intake → SOAP → DAP → BIRP → CBT → Supportive -->
           <div class="tmpl-row"><button class="tmpl-chip active">Intake Note</button><button class="tmpl-chip">SOAP Note</button><button class="tmpl-chip">DAP Note</button><button class="tmpl-chip">BIRP Note</button><button class="tmpl-chip">CBT Progress</button><button class="tmpl-chip supportive-chip">Supportive Data</button></div>
-          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt s">①</span> Presenting Concern</div><textarea placeholder="Primary reason for visit, client's own words...">Client presents with anxiety and low mood affecting work performance. Reports "feeling stuck" in current role, difficulty concentrating during meetings, and reduced sleep quality over the past 3 months.</textarea></div>
-          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt o">②</span> History</div><textarea placeholder="Psychiatric history, medical history, family history, medications...">No prior psychiatric hospitalization. Previous counseling 2 years ago (6 sessions). Family history: mother treated for depression. Current medications: none. Medical: mild hypertension, controlled.</textarea></div>
-          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt a">③</span> Mental Status</div><textarea placeholder="Appearance, behavior, speech, mood, affect, thought process, cognition...">Well-groomed, cooperative. Speech: normal rate/rhythm. Mood: "anxious." Affect: constricted. Thought process: linear, goal-directed. No SI/HI/AVH. Insight: fair. Judgment: intact.</textarea></div>
-          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt p">④</span> Initial Formulation</div><textarea placeholder="Preliminary diagnostic impression, treatment recommendations, immediate plan...">Preliminary impression: Adjustment Disorder with mixed anxiety and depressed mood (F43.23).&#10;Recommend: Weekly individual therapy × 8 sessions.&#10;Administer PHQ-9 and GAD-7 for baseline.&#10;Consider psychiatric consult if no improvement after 4 sessions.</textarea></div>
+          <!-- v6: Maker-Checker status banner -->
+          <div class="mc-banner"><span class="mc-icon">⏳</span><span class="mc-text">Edit request pending approval — submitted to Dr. Wanjiku</span><button class="mc-btn" onclick="showToast('Opening edit review...','info')">Review →</button></div>
+          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt s">①</span> Presenting Concern<button class="soap-hist" onclick="showToast('Previous session text loaded for Presenting Concern','info')">← Previous</button></div><textarea placeholder="Primary reason for visit, client's own words...">Client presents with anxiety and low mood affecting work performance. Reports "feeling stuck" in current role, difficulty concentrating during meetings, and reduced sleep quality over the past 3 months.</textarea></div>
+          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt o">②</span> History<button class="soap-hist" onclick="showToast('Previous session text loaded for History','info')">← Previous</button></div><textarea placeholder="Psychiatric history, medical history, family history, medications...">No prior psychiatric hospitalization. Previous counseling 2 years ago (6 sessions). Family history: mother treated for depression. Current medications: none. Medical: mild hypertension, controlled.</textarea></div>
+          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt a">③</span> Mental Status<button class="soap-hist" onclick="showToast('Previous session text loaded for Mental Status','info')">← Previous</button></div><textarea placeholder="Appearance, behavior, speech, mood, affect, thought process, cognition...">Well-groomed, cooperative. Speech: normal rate/rhythm. Mood: "anxious." Affect: constricted. Thought process: linear, goal-directed. No SI/HI/AVH. Insight: fair. Judgment: intact.</textarea></div>
+          <div class="soap-card"><div class="soap-hdr"><span class="soap-lt p">④</span> Initial Formulation<button class="soap-hist" onclick="showToast('Previous session text loaded for Initial Formulation','info')">← Previous</button></div><textarea placeholder="Preliminary diagnostic impression, treatment recommendations, immediate plan...">Preliminary impression: Adjustment Disorder with mixed anxiety and depressed mood (F43.23).&#10;Recommend: Weekly individual therapy × 8 sessions.&#10;Administer PHQ-9 and GAD-7 for baseline.&#10;Consider psychiatric consult if no improvement after 4 sessions.</textarea></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px">
           <div class="side-box"><div class="sb-title">DSM-5 / ICD-10</div><input class="side-srch" placeholder="Search codes..."><div class="dx-row sel"><div class="dx-cd">F41.1</div><div class="dx-nm">Generalized Anxiety Disorder</div></div><div class="dx-row sel"><div class="dx-cd">F32.1</div><div class="dx-nm">Moderate Depressive Episode</div></div><div class="dx-row"><div class="dx-cd">F43.10</div><div class="dx-nm">Post-Traumatic Stress Disorder</div></div><div class="dx-row"><div class="dx-cd">Z60.0</div><div class="dx-nm">Phase of Life Problem</div></div></div>
@@ -2045,5 +2227,84 @@ function hideTrainingForm() {
 <!-- Login view (separate from staff views) -->
 <div class="view" id="view-login"><div class="content" style="align-items:center;justify-content:center;min-height:70dvh"><div class="panel" style="max-width:400px;width:100%"><div class="panel-hdr"><span class="panel-title">Sereniminds Wellness</span></div><div class="panel-body"><div style="text-align:center;font-size:13px;color:var(--text2);margin-bottom:16px">You have been logged out.</div><input style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:var(--font);margin-bottom:10px;outline:none" placeholder="admin@sereniminds.co.ke"><input type="password" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:var(--font);margin-bottom:14px;outline:none" placeholder="password"><button onclick="login()" style="width:100%;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font)">Sign In</button></div></div></div></div>
 
+<!-- ═══ v6: BOTTOM TAB BAR (mobile) ═══ -->
+<div class="bottom-tabs">
+  <button class="bottom-tab active" onclick="switchView('dashboard')"><span class="bt-icon">◫</span>Dashboard</button>
+  <button class="bottom-tab" onclick="switchView('calendar')"><span class="bt-icon">◷</span>Calendar</button>
+  <button class="bottom-tab" onclick="switchView('clients')"><span class="bt-icon">●</span>Clients</button>
+  <button class="bottom-tab" onclick="switchView('invoices')"><span class="bt-icon">◎</span>Billing</button>
+  <button class="bottom-tab" onclick="toggleBottomSheet()"><span class="bt-icon">⋯</span>More</button>
+</div>
+
+<!-- ═══ v6: FAB (mobile) ═══ -->
+<button class="fab" onclick="showFabMenu()">+</button>
+
+<!-- ═══ v6: CONFIRMATION MODAL ═══ -->
+<div class="v6-modal" id="confirm-modal">
+  <div class="modal-box">
+    <div class="modal-header"><h3 class="modal-title" id="modal-title">Confirm</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="modal-body">Are you sure?</div>
+    <div class="modal-footer" id="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" id="modal-confirm-btn" onclick="closeModal()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ v6: APPROVAL INBOX VIEW ═══ -->
+<div class="view" id="view-approvals"><div class="content">
+  <div class="page-hdr"><div><h1>Approvals</h1><p class="sub">Pending maker-checker requests</p></div></div>
+  <div class="chips" style="margin-bottom:12px"><span class="chip active">Pending My Approval</span><span class="chip">My Requests</span><span class="chip">All (Admin)</span></div>
+  <div class="panel"><div class="panel-body zero">
+    <table class="data-table">
+      <thead><tr><th>Type</th><th>Section</th><th>Requested By</th><th>Date</th><th>Status</th><th class="td-actions">Actions</th></tr></thead>
+      <tbody>
+        <tr><td>✎ Edit</td><td>Clinical Note Edit</td><td>Dr. Otieno</td><td>21 Jul 2026</td><td><span class="tag amber">Pending</span></td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showConfirm('Approve Edit','Allow changes to Mwangi, David note?',function(){showToast('Approved','success')})">✓ Approve</button><button class="kebab-item danger" onclick="showConfirm('Reject Edit','Reject the proposed changes?',function(){showToast('Rejected','error')})">✕ Reject</button></div></div></td></tr>
+        <tr><td>🗑 Delete</td><td>Clinical Note Delete</td><td>Dr. Otieno</td><td>20 Jul 2026</td><td><span class="tag amber">Pending L1</span></td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Approved','success')">✓ Approve</button><button class="kebab-item danger" onclick="showToast('Rejected','error')">✕ Reject</button></div></div></td></tr>
+        <tr><td>📥 Export</td><td>Clinical Note Download</td><td>Dr. Wanjiku</td><td>19 Jul 2026</td><td><span class="tag green">Approved</span></td><td class="td-actions"><span style="font-size:11px;color:var(--text3)">Resolved</span></td></tr>
+        <tr><td>💵 Payment</td><td>Petty Cash Payment</td><td>Stephanie</td><td>18 Jul 2026</td><td><span class="tag green">Approved</span></td><td class="td-actions"><span style="font-size:11px;color:var(--text3)">Resolved</span></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div></div>
+
+<!-- ═══ v6: MAKER-CHECKER CONFIG VIEW ═══ -->
+<div class="view" id="view-maker-checker-config"><div class="content">
+  <div class="page-hdr"><div><h1>Maker-Checker Configuration</h1><p class="sub">Configure which sections require approval and who approves at each level</p></div><button class="panel-act" style="padding:9px 20px;background:var(--blue);color:#fff;border-radius:20px;cursor:pointer" onclick="showToast('New section form coming soon','info')">+ Add Section</button></div>
+  <div class="panel"><div class="panel-body zero">
+    <table class="data-table">
+      <thead><tr><th>Section</th><th>Module</th><th>Max Levels</th><th>Status</th><th>Approvers</th><th class="td-actions"></th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600">Clinical Note Edit</td><td>clinical</td><td>1</td><td><span class="tag green">Active</span></td><td>L1: Clinical Director</td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Edit config','info')">Edit</button><button class="kebab-item danger" onclick="showConfirm('Deactivate','Disable maker-checker for Clinical Note Edit? Changes will apply directly without approval.',function(){showToast('Deactivated','error')})">Deactivate</button></div></div></td></tr>
+        <tr><td style="font-weight:600">Clinical Note Delete</td><td>clinical</td><td>2</td><td><span class="tag green">Active</span></td><td>L1: Clinical Dir · L2: Admin</td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Edit config','info')">Edit</button><button class="kebab-item danger" onclick="showToast('Deactivated','error')">Deactivate</button></div></div></td></tr>
+        <tr><td style="font-weight:600">Petty Cash Payment</td><td>finance</td><td>2</td><td><span class="tag green">Active</span></td><td>L1: Arthur · L2: Ruth</td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Edit config','info')">Edit</button><button class="kebab-item danger" onclick="showToast('Deactivated','error')">Deactivate</button></div></div></td></tr>
+        <tr><td style="font-weight:600">Invoice Void</td><td>billing</td><td>1</td><td><span class="tag green">Active</span></td><td>L1: Admin</td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Edit config','info')">Edit</button><button class="kebab-item danger" onclick="showToast('Deactivated','error')">Deactivate</button></div></div></td></tr>
+        <tr><td style="font-weight:600">User Role Change</td><td>admin</td><td>1</td><td><span class="tag">Inactive</span></td><td>L1: Super Admin</td><td class="td-actions"><div class="kebab-menu"><button class="kebab-trigger" onclick="toggleMenu(this)">⋮</button><div class="kebab-dropdown"><button class="kebab-item" onclick="showToast('Edit config','info')">Edit</button><button class="kebab-item" onclick="showToast('Activated','success')">Activate</button></div></div></td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div></div>
+
+<!-- ═══ v6: NEW JS FUNCTIONS ═══ -->
+<script>
+/* ── Kebab Menu ── */
+function toggleMenu(btn){var d=btn.nextElementSibling;d.classList.toggle('open');var all=document.querySelectorAll('.kebab-dropdown.open');all.forEach(function(m){if(m!==d)m.classList.remove('open')})}
+document.addEventListener('click',function(e){if(!e.target.closest('.kebab-menu')){document.querySelectorAll('.kebab-dropdown.open').forEach(function(m){m.classList.remove('open')})}})
+
+/* ── Modal ── */
+function showConfirm(title,msg,onConfirm){var m=document.getElementById('confirm-modal');document.getElementById('modal-title').textContent=title;document.getElementById('modal-body').textContent=msg;m.classList.add('open');document.getElementById('modal-confirm-btn').onclick=function(){m.classList.remove('open');if(onConfirm)onConfirm()}}
+function closeModal(){document.getElementById('confirm-modal').classList.remove('open')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()})
+
+/* ── Mobile Bottom Sheet ── */
+function toggleBottomSheet(){var s=document.querySelector('.sidebar');s.classList.toggle('mobile-open');document.querySelector('.sidebar-backdrop').classList.toggle('show')}
+function showFabMenu(){showToast('Quick actions: New Appointment · New Client · New Note · New Petty Cash','info')}
+
+/* ── Bulk Selection ── */
+function toggleBulkToolbar(){var checks=document.querySelectorAll('.row-checkbox:checked');var tb=document.querySelector('.bulk-toolbar');var cnt=document.querySelector('.bulk-count');if(tb){tb.classList.toggle('show',checks.length>0);if(cnt)cnt.textContent=checks.length+' selected'}}
+
+/* ── Empty State Toggle ── */
+function toggleEmptyState(viewId,hasData){var view=document.getElementById('view-'+viewId);if(!view)return;var empty=view.querySelector('.empty-state');var content=view.querySelector('.panel');if(hasData){if(empty)empty.style.display='none';if(content)content.style.display=''}else{if(empty)empty.style.display='';if(content)content.style.display='none'}}
+</script>
+
 </body>
-</html>
