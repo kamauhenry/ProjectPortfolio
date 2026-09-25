@@ -1,0 +1,106 @@
+<div class="snb-detail reveal active">
+    <div class="snb-detail-header">
+        <h2>WhatsApp Business Messaging</h2>
+        <p class="snb-detail-subtitle">PendoAdmin WhatsApp microservice + SnB core banking integration &mdash; <a href="https://pendo.co.ke/" target="_blank" rel="noopener">Pendo Media Ltd</a> (2026)</p>
+    </div>
+
+    <div class="snb-detail-overview">
+        <p>SACCOs wanted to reach their members on WhatsApp, not only by SMS. I led the development of the whole path: onboarding a business's WhatsApp account, managing Meta-approved message templates, billing each message to the tenant's wallet, and sending, scheduling and tracking every message from inside SnB, with SMS as the fallback.</p>
+    </div>
+
+    <!-- How it works -->
+    <div class="snb-section">
+        <h3>What I Built</h3>
+        <div class="snb-contributions">
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-plug"></i></div>
+                <div class="contribution-content">
+                    <h4>1 &middot; Onboarding</h4>
+                    <p>Meta Embedded Signup and OAuth flow backed by a state machine and nonces, automatic token-health checks and 50-day token rotation, and app settings stored securely in the database.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Meta OAuth</span>
+                        <span class="tech-badge">Schedulers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-file-lines"></i></div>
+                <div class="contribution-content">
+                    <h4>2 &middot; Templates</h4>
+                    <p>Unified template builder with named placeholders, multi-account template sync, edit-in-place resubmission of rejected templates, rejection-reason sync and an in-app Meta compliance guide, plus a default notification catalog for SnB.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Meta Cloud API</span>
+                        <span class="tech-badge">Vue 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-paper-plane"></i></div>
+                <div class="contribution-content">
+                    <h4>3 &middot; Send &amp; Bill</h4>
+                    <p>Queued outbox with atomic send-claims and a scheduled-send sweeper, CSV/Excel bulk compose, and per-category pricing debited from each tenant's wallet, with a shared-account fallback for new tenants.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">RabbitMQ</span>
+                        <span class="tech-badge">Laravel Queues</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-circle-check"></i></div>
+                <div class="contribution-content">
+                    <h4>4 &middot; Track &amp; Fall Back</h4>
+                    <p>Delivery-status webhooks plus polling reconciliation with a status mapper, and WhatsApp OTP for member logins that falls back to SMS automatically when WhatsApp isn't available.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Webhooks</span>
+                        <span class="tech-badge">SMS Fallback</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="snb-section">
+        <h3>Tech Stack</h3>
+        <div class="snb-tech-grid">
+            <div class="snb-tech-col">
+                <h4>WhatsApp Service</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Node.js / Express</span>
+                    <span class="tech-badge">Knex</span>
+                    <span class="tech-badge">RabbitMQ</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">Zod</span>
+                    <span class="tech-badge">Jest</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>SnB Integration</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Laravel</span>
+                    <span class="tech-badge">Queues &amp; Jobs</span>
+                    <span class="tech-badge">PHPUnit</span>
+                    <span class="tech-badge">Vue 3</span>
+                </div>
+            </div>
+            <div class="snb-tech-col">
+                <h4>Platform</h4>
+                <div class="project-tech">
+                    <span class="tech-badge">Meta Cloud API</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Bitbucket Pipelines</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="snb-detail-footer">
+        <a href="https://snb.or.ke/" target="_blank" rel="noopener" class="btn-project btn-project-primary">Visit SnB &rarr;</a>
+        <button class="btn-project btn-project-outline" onclick="closeSnbModal()">Close</button>
+    </div>
+</div>
