@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setupNavigation();
     setupScrollDirection();
+    loadSectionFromHash();
     initAnimations();
     initMagneticButtons();
     initCounterAnimation();
@@ -90,6 +91,17 @@ function setupNavigation() {
         // Scroll to top smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+// ── Deep links ──────────────────────────────────────────
+// Links like /#services (from other pages, the footer or a shared URL) load that section
+
+function loadSectionFromHash() {
+    var sections = { projects: '/projects.html', services: '/services.html', about: '/about.html', contact: '/contact.html', privacy: '/privacy-policy.html' };
+    var path = sections[location.hash.slice(1)];
+    if (location.pathname !== '/' || !path || typeof htmx === 'undefined') return;
+    htmx.ajax('GET', path, '#content');
+    document.body.setAttribute('data-current-page', path);
 }
 
 // ── Scroll-Direction Navbar ─────────────────────────────
