@@ -22,7 +22,7 @@
 </head>
 <body>
     <nav class="MainHeader" id="main-nav">
-        <a href="/" class="nav-logo" hx-get="/about.html" hx-target="#content" hx-swap="innerHTML">
+        <a href="/" class="nav-logo">
             Fundi Wa Website
         </a>
 
@@ -32,6 +32,9 @@
         </div>
 
         <div class="nav-links">
+            <div class="link">
+                <a href="/">Home</a>
+            </div>
             <div class="link" hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML">
                 <a href="/#projects">Work</a>
             </div>
@@ -96,6 +99,7 @@
                 <div class="footer-col">
                     <h4>Navigate</h4>
                     <ul>
+                        <li><a href="/">Home</a></li>
                         <li><a hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML" href="/#projects">Work</a></li>
                         <li><a hx-get="/services.html" hx-target="#content" hx-swap="innerHTML" href="/#services">Services</a></li>
                         <li><a href="/preorder">For Importers</a></li>
