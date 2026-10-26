@@ -660,7 +660,7 @@ textarea.fi{resize:vertical;min-height:5rem}
 <!-- SA3: Library -->
 <div id="scr-sa-lib" class="screen">
   <h2 style="font-size:1.25rem;font-weight:900">Content Library</h2><p style="font-size:.8125rem;color:var(--ink2);margin-bottom:var(--sp5)">Only Sereni Minds admins create/publish. HR activates.</p>
-  <div class="tabs" id="lt"><div class="tab on" onclick="libT('mod')">Modules (4)</div><div class="tab" onclick="libT('ch')">Challenges (6)</div><div class="tab" onclick="libT('q')">Questions (47)</div><div class="tab" onclick="libT('nu')">Nudges</div><div class="tab" onclick="libT('re')">Resources</div></div>
+  <div class="tabs" id="lt"><div class="tab on" onclick="libT('mod')">Modules (4)</div><div class="tab" onclick="libT('ch')">Challenges (6)</div><div class="tab" onclick="libT('q')">Questions (15)</div><div class="tab" onclick="libT('nu')">Nudges</div><div class="tab" onclick="libT('re')">Resources</div></div>
   <div id="lt-mod">
     <div id="lt-mod-x"></div>
     <div class="card"><div class="row-b wrap gap2"><div><div style="font-weight:800">EQ at Work</div><p style="font-size:.8125rem;color:var(--ink2)"><svg width="14" height="14" style="color:var(--purple);display:inline-block;vertical-align:middle"><use href="#ic-psych"/></svg> · 25min</p></div><span class="z zg">Published ●</span></div><p style="font-size:.75rem;color:var(--ink3);margin:.5rem 0">19/23 (83%) · 78% completion</p><div class="row gap2 wrap"><button class="btn btn-sm btn-o">Preview</button><button class="btn btn-sm btn-o">Edit</button><button class="btn btn-sm btn-o" onclick="viewAnalytics('eq')">Analytics</button></div></div>
@@ -679,7 +679,7 @@ textarea.fi{resize:vertical;min-height:5rem}
     <div class="card card-surface" style="border:2px dashed var(--s3)"><div style="font-weight:800;color:var(--ink3)">Digital Detox Week</div><button class="btn btn-sm btn-p" style="margin-top:var(--sp3)" onclick="goSA('sa-cb')">Create</button></div>
     <button class="btn btn-p" style="margin-top:var(--sp4)" onclick="goSA('sa-cb')">+ New Challenge</button>
   </div>
-  <div id="lt-q" class="hidden"><p style="color:var(--ink2)">47 questions. <button class="btn btn-sm btn-p" onclick="goSA('sa-qb')">Manage →</button></p></div>
+  <div id="lt-q" class="hidden"><p style="color:var(--ink2)">15 questions. <button class="btn btn-sm btn-p" onclick="goSA('sa-qb')">Manage →</button></p></div>
   <div id="lt-nu" class="hidden"><p style="color:var(--ink3)">23 nudge templates.</p></div>
   <div id="lt-re" class="hidden"><p style="color:var(--ink3)">18 resources.</p></div>
 </div>
@@ -791,7 +791,7 @@ textarea.fi{resize:vertical;min-height:5rem}
 <!-- SA6: Question Bank -->
 <div id="scr-sa-qb" class="screen">
   <h2 style="font-size:1.25rem;font-weight:900">Question Bank</h2><p style="font-size:.8125rem;color:var(--ink-2);margin-bottom:var(--sp-5)">Rotating weekly check-in questions. HR can deactivate, not edit.</p>
-  <div class="g-stat" style="margin-bottom:var(--sp-5)"><div class="stat"><div class="stat-lbl">Total</div><div class="stat-num">47</div></div><div class="stat st-g"><div class="stat-lbl">Active</div><div class="stat-num" style="color:var(--teal)">38</div></div><div class="stat"><div class="stat-lbl">Archived</div><div class="stat-num" style="color:var(--ink-3)">9</div></div><div class="stat st-p"><div class="stat-lbl">This Week</div><div class="stat-num" style="color:var(--purple)">3</div></div></div>
+  <div class="g-stat" style="margin-bottom:var(--sp-5)"><div class="stat"><div class="stat-lbl">Total</div><div class="stat-num">15</div></div><div class="stat st-g"><div class="stat-lbl">Active</div><div class="stat-num" style="color:var(--teal)">15</div></div><div class="stat"><div class="stat-lbl">Archived</div><div class="stat-num" style="color:var(--ink-3)">0</div></div><div class="stat st-p"><div class="stat-lbl">This Week</div><div class="stat-num" style="color:var(--purple)">3</div></div></div>
   <div class="frow" id="qf"><span class="fp onp" onclick="fQB(this,'all')">All</span><span class="fp" onclick="fQB(this,'culture')"><svg width="13" height="13" style="color:var(--teal);display:inline-block;vertical-align:middle"><use href="#ic-culture"/></svg> Culture</span><span class="fp" onclick="fQB(this,'psych')"><svg width="13" height="13" style="color:var(--purple);display:inline-block;vertical-align:middle"><use href="#ic-psych"/></svg> Psych</span><span class="fp" onclick="fQB(this,'phys')"><svg width="13" height="13" style="color:var(--amber);display:inline-block;vertical-align:middle"><use href="#ic-physical"/></svg> Physical</span><span class="fp" onclick="fQB(this,'prod')"><svg width="13" height="13" style="color:var(--blue);display:inline-block;vertical-align:middle"><use href="#ic-productivity"/></svg> Productivity</span><span class="fp" onclick="fQB(this,'lead')"><svg width="13" height="13" style="color:var(--coral);display:inline-block;vertical-align:middle"><use href="#ic-leadership"/></svg> Leadership</span></div>
   <button class="btn btn-p" style="margin:var(--sp-4) 0" onclick="$('nqf').classList.toggle('hidden')">+ Create Question</button>
   <div id="nqf" class="iform hidden"><h3 style="font-size:1.125rem;font-weight:800;color:var(--purple-800);margin-bottom:var(--sp-4)">New Question</h3><div class="fg"><label class="fl">Text</label><textarea class="fi" placeholder="Enter pulse question..."></textarea></div><div class="g-form" style="gap:var(--sp-3)"><div class="fg"><label class="fl">Domain</label><select class="fi"><option>🤝 Culture</option><option>🧠 Psychological</option><option>⚡ Physical</option><option>🎯 Productivity</option><option>🌟 Leadership</option></select></div><div class="fg"><label class="fl">Format</label><select class="fi"><option>Emoji 1-5</option><option>Labeled</option><option>Yes/No</option></select></div><div class="fg"><label class="fl">Sentiment</label><select class="fi"><option>Higher=better</option><option>Lower=better</option><option>Middle=optimal</option></select></div><div class="fg"><label class="fl">Rotation</label><select class="fi"><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option></select></div></div><div class="row gap-2" style="margin-top:var(--sp-3)"><button class="btn btn-p" onclick="saveQuestion()">Save</button><button class="btn btn-o" onclick="$('nqf').classList.add('hidden')">Cancel</button></div></div>
@@ -843,7 +843,28 @@ textarea.fi{resize:vertical;min-height:5rem}
   </tbody></table></div>
   <div class="card"><h3 style="font-size:.9375rem;font-weight:800;margin-bottom:var(--sp-3)">Access Levels</h3><div style="font-size:.8125rem;color:var(--ink-2);line-height:2"><p><strong style="color:var(--purple)">Super Admin</strong> — Full access incl. billing & API</p><p><strong style="color:var(--purple)">Client Manager</strong> — Client dashboards, onboarding</p><p><strong style="color:var(--purple)">Content Editor</strong> — Create/edit/publish</p><p><strong style="color:var(--purple)">Analytics Viewer</strong> — View only</p><p><strong style="color:var(--purple)">Developer</strong> — API config only</p></div></div>
 </div>
-<div id="scr-sa-st" class="screen"><h2 style="font-size:1.25rem;font-weight:900">Settings</h2><div class="card"><p style="color:var(--ink-2)">Config, billing, system. Coming v2.0.</p></div></div>
+<div id="scr-sa-st" class="screen"><h2 style="font-size:1.25rem;font-weight:900">Settings</h2><p style="font-size:.8125rem;color:var(--ink-2);margin-bottom:var(--sp-5)">Platform configuration for Sereni Minds.</p>
+  <div class="card"><h3 style="font-size:.9375rem;font-weight:800;margin-bottom:var(--sp-4)">Organization</h3>
+    <div class="g-form" style="gap:var(--sp-3)"><div class="fg"><label class="fl">Organization Name</label><input class="fi" value="Sereni Minds"></div><div class="fg"><label class="fl">Primary Contact</label><input class="fi" type="email" value="admin@serenminds.co.ke"></div><div class="fg"><label class="fl">Timezone</label><select class="fi"><option selected>EAT (UTC+3) · Nairobi</option><option>UTC</option><option>CAT (UTC+2)</option></select></div><div class="fg"><label class="fl">Default Language</label><select class="fi"><option selected>English</option><option>Kiswahili</option></select></div></div>
+  </div>
+  <div class="card"><h3 style="font-size:.9375rem;font-weight:800;margin-bottom:var(--sp-4)">Billing &amp; Plan</h3>
+    <div class="row-b wrap gap2" style="margin-bottom:var(--sp-3)"><div><div style="font-weight:800">Enterprise Platform</div><p style="font-size:.8125rem;color:var(--ink-3)">23 client orgs · 14,847 licensed seats</p></div><span class="z zg">Active ●</span></div>
+    <div class="row-b" style="padding:.5rem 0;border-bottom:1px solid var(--border)"><span style="font-size:.875rem">Billing cycle</span><strong style="font-weight:700">Annual · renews 1 Jan 2027</strong></div>
+    <div class="row-b" style="padding:.5rem 0"><span style="font-size:.875rem">Payment method</span><strong style="font-weight:700">M-PESA Paybill · 4071xxx</strong></div>
+    <button class="btn btn-sm btn-o" style="margin-top:var(--sp-3)" onclick="toast('🧾','Invoices','Opening billing history','b')">View invoices</button>
+  </div>
+  <div class="card"><h3 style="font-size:.9375rem;font-weight:800;margin-bottom:var(--sp-4)">Platform Defaults</h3>
+    <div class="fg"><label class="fl">Default check-in day</label><div class="pills"><span class="pill" onclick="sp(this)">Fri</span><span class="pill on" onclick="sp(this)">Mon</span><span class="pill" onclick="sp(this)">Wed</span></div></div>
+    <div class="fg"><label class="fl">Reminder time</label><input class="fi" type="time" value="09:00" style="max-width:9rem"></div>
+    <div class="row gap-3" style="margin-top:var(--sp-3)"><div class="tog on" onclick="this.classList.toggle('on')"><div class="tog-t"></div></div><span style="font-size:.875rem;font-weight:600">Weekly summary email to HR admins</span></div>
+  </div>
+  <div class="card"><h3 style="font-size:.9375rem;font-weight:800;margin-bottom:var(--sp-4)">Data &amp; Compliance</h3>
+    <div class="row-b" style="padding:.5rem 0;border-bottom:1px solid var(--border)"><span style="font-size:.875rem">Data residency</span><strong style="font-weight:700">Kenya 🇰🇪</strong></div>
+    <div class="row-b" style="padding:.5rem 0"><span style="font-size:.875rem">Compliance</span><strong style="font-weight:700">Kenya DPA 2019</strong></div>
+    <div class="row gap-3" style="margin-top:var(--sp-3)"><div class="tog on" onclick="this.classList.toggle('on')"><div class="tog-t"></div></div><span style="font-size:.875rem;font-weight:600">Anonymize analytics below 5 responses</span></div>
+  </div>
+  <div class="row gap-3 wrap" style="padding:var(--sp-5) 0;border-top:1px solid var(--border)"><button class="btn btn-p" onclick="toast('✅','Settings saved','Platform configuration updated','g')">Save Changes</button><button class="btn btn-o" onclick="logout()">Sign Out</button></div>
+</div>
 
 </div></div></div>
 
@@ -878,7 +899,7 @@ textarea.fi{resize:vertical;min-height:5rem}
 
   <!-- E1: Home -->
   <div id="scr-eh" class="screen active">
-    <div class="app-h hg"><div class="row-b"><div><h1>Good morning, Amara 👋</h1><p>Safaricom PLC · Marketing Executive</p></div><div class="row gap3"><span class="streak"><span class="fire"><svg width="14" height="14" style="color:var(--amber);display:inline-block;vertical-align:middle"><use href="#ic-fire"/></svg></span> 6</span><div class="bell" onclick="openNotif()"><svg width="20" height="20" style="color:#fff"><use href="#ic-bell"/></svg><span class="bell-dot" id="bell-ct">3</span></div></div></div></div>
+    <div class="app-h hg"><div class="row-b"><div><h1 id="eh-greet">Good morning, Amara 👋</h1><p>Safaricom PLC · Marketing Executive</p></div><div class="row gap3"><span class="streak"><span class="fire"><svg width="14" height="14" style="color:var(--amber);display:inline-block;vertical-align:middle"><use href="#ic-fire"/></svg></span> 6</span><div class="bell" onclick="openNotif()"><svg width="20" height="20" style="color:#fff"><use href="#ic-bell"/></svg><span class="bell-dot" id="bell-ct">3</span></div></div></div></div>
     <div class="app-bd">
       <div class="ambient"><div class="blob blob-teal" style="width:18rem;height:18rem;top:-6rem;right:-6rem"></div><div class="blob blob-purple" style="width:14rem;height:14rem;bottom:10rem;left:-5rem"></div></div>
       <!-- RED ZONE CARD (Phase 3) — hidden by default, toggle with demo btn -->
@@ -2023,6 +2044,7 @@ function submitRequest(){const f=$('crf');const txt=f.querySelector('textarea')?
 /* ═══ INIT ═══ */
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.sa,.app').forEach(e=>e.classList.remove('active'));
+  const hr=new Date().getHours(),gr=$('eh-greet');if(gr)gr.textContent=(hr<12?'Good morning':hr<17?'Good afternoon':'Good evening')+', Amara 👋';
   lsGet('ws_questions').forEach(q=>addQCard(q,false));
   lsGet('ws_team').forEach(addTeamRow);
   renderLibExtras();
