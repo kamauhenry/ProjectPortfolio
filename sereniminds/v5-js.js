@@ -24,6 +24,10 @@ const Store = {
   clinicalNotes: [
     { id:'NOTE-001', clientId:'SRN-0038', clientName:'Akinyi, Susan', clinician:'Dr. Otieno', date:'2026-07-21', type:'psychologist', template:'SOAP', content:{S:'Client reports feeling "less overwhelmed this week."',O:'PHQ-9: 8 (down from 12). GAD-7: 10 (down from 14).',A:'Moderate improvement. CBT effective.',P:'Continue weekly sessions.'}, signed:true, diagnoses:['F41.1','F32.1'] },
     { id:'NOTE-002', clientId:'SRN-0045', clientName:'Omondi, James', clinician:'Dr. Wanjiku', date:'2026-07-20', type:'psychiatrist', template:'SOAP', content:{S:'Reports persistent anxiety.',O:'GAD-7: 15.',A:'Generalized anxiety.',P:'Start Sertraline 50mg.'}, signed:true, diagnoses:['F41.1'] },
+    { id:'NOTE-003', clientId:'SRN-0042', clientName:'Mwangi, David', clinician:'Dr. Otieno', date:'2026-07-21', type:'psychologist', template:'SOAP', content:{S:'Discussed work-related stress and sleep difficulties.',O:'PHQ-9: 11 (up from 9). Appears fatigued.',A:'Mild depressive symptoms, situational stressors.',P:'Introduce sleep hygiene plan; review in 1 week.'}, signed:false, diagnoses:['F43.23'] },
+    { id:'NOTE-004', clientId:'SRN-0055', clientName:'Wanjiku, Faith', clinician:'Dr. Wanjiku', date:'2026-07-18', type:'psychologist', template:'SOAP', content:{S:'Couple reports improved communication.',O:'Engaged, cooperative throughout session.',A:'Progress on conflict-resolution goals.',P:'Continue couples therapy; assign weekly check-in exercise.'}, signed:true, diagnoses:['Z63.0'] },
+    { id:'NOTE-005', clientId:'SRN-0051', clientName:'Nasir, Amina', clinician:'Dr. Otieno', date:'2026-07-17', type:'progress', template:'SOAP', content:{S:'Feels "much more in control" of panic episodes.',O:'GAD-7: 7 (down from 13). No panic attacks reported this week.',A:'Strong response to CBT and breathing techniques.',P:'Space sessions to biweekly; continue mood logging.'}, signed:true, diagnoses:['F41.0'] },
+    { id:'NOTE-006', clientId:'SRN-0060', clientName:'Kimani, Grace', clinician:'Dr. Wanjiku', date:'2026-07-16', type:'psychiatrist', template:'SOAP', content:{S:'Reviewing medication tolerance.',O:'Reports mild nausea, otherwise stable. Mood improved.',A:'Good response to Sertraline; side effects manageable.',P:'Maintain 50mg; reassess in 4 weeks.'}, signed:false, diagnoses:['F32.1'] },
   ],
   pettyCash: JSON.parse(localStorage.getItem('sr_pettycash')||'[{"id":"PCR-001","amount":2500,"category":"Water & Utilities","purpose":"Office water supply","requester":"Stephanie","date":"2026-07-21","step1":"pending","step2":null},{"id":"PCR-002","amount":1200,"category":"Transport","purpose":"Uber — client emergency","requester":"Dr. Otieno","date":"2026-07-20","step1":"approved","step2":"pending"},{"id":"PCR-003","amount":850,"category":"Office Supplies","purpose":"Stationery","requester":"Stephanie","date":"2026-07-21","step1":"pending","step2":null},{"id":"PCR-004","amount":3000,"category":"Staff Welfare","purpose":"Staff lunch","requester":"Stephanie","date":"2026-07-19","step1":"approved","step2":"pending"},{"id":"PCR-005","amount":1800,"category":"Office Supplies","purpose":"Cleaning supplies","requester":"Stephanie","date":"2026-07-19","step1":"approved","step2":"approved"}]'),
   invoices: [
@@ -679,6 +683,38 @@ function renderCreditors(){
   var c=document.getElementById('creditors-list');if(!c)return;
   c.innerHTML=Store.consultants.map(function(co){return '<div class="apt-row"><div class="apt-status wait"></div><div class="apt-info"><div class="apt-name">'+co.name+'</div><div class="apt-detail">'+co.service+' · '+co.date+'</div></div><div style="font-weight:600;font-size:13px">KES '+co.amount.toLocaleString()+'</div></div>';}).join('');
 }
+function noteCard(n){
+  var c=n.content||{};
+  var typeColor=n.type==='psychiatrist'?'purple':(n.type==='progress'?'green':'blue');
+  var badge=n.signed?'<span style="font-size:10px;font-weight:600;color:var(--green);background:rgba(52,199,89,.12);padding:2px 8px;border-radius:10px">🔒 Signed</span>':'<span style="font-size:10px;font-weight:600;color:var(--amber);background:rgba(255,149,0,.12);padding:2px 8px;border-radius:10px">Draft</span>';
+  var dx=(n.diagnoses||[]).map(function(d){return '<span style="font-size:10px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:2px 7px;border-radius:6px;margin-right:4px">'+d+'</span>';}).join('');
+  return '<div class="apt-row" style="cursor:pointer;align-items:flex-start" onclick="openNoteDetail(\''+n.id+'\')">'+
+    '<div class="apt-status '+(n.signed?'ok':'wait')+'" style="margin-top:5px"></div>'+
+    '<div class="apt-info" style="flex:1;min-width:0">'+
+      '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="apt-name">'+n.clientName+'</span><span style="font-size:10px;font-weight:600;color:var(--'+typeColor+');background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:10px;text-transform:capitalize">'+n.type+'</span>'+badge+'</div>'+
+      '<div class="apt-detail" style="margin-top:3px">'+n.date+' · '+n.clinician+' · '+(n.template||'SOAP')+'</div>'+
+      (c.O?'<div class="apt-detail" style="margin-top:3px;color:var(--text2)">'+c.O+'</div>':'')+
+      (dx?'<div style="margin-top:6px">'+dx+'</div>':'')+
+    '</div>'+
+    '<div style="color:var(--text3);font-size:18px;align-self:center">›</div>'+
+  '</div>';
+}
+function openNoteDetail(id){
+  var n=Store.clinicalNotes.find(function(x){return x.id===id;});if(!n)return;
+  var c=n.content||{};
+  var soap=[['S','Subjective',c.S],['O','Objective',c.O],['A','Assessment',c.A],['P','Plan',c.P]];
+  var body=soap.filter(function(s){return s[2];}).map(function(s){
+    return '<div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px">'+s[0]+' · '+s[1]+'</div><div style="font-size:13px;line-height:1.55">'+s[2]+'</div></div>';
+  }).join('');
+  var dx=(n.diagnoses||[]).map(function(d){return '<span style="font-size:11px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:7px;margin-right:5px">'+d+'</span>';}).join('');
+  var banner=n.signed
+    ?'<div style="padding:10px 14px;border-radius:10px;background:rgba(52,199,89,.1);border:1px solid rgba(52,199,89,.3);font-size:12px;color:var(--text2);margin-bottom:16px">🔒 <strong style="color:var(--text)">Signed & locked</strong> by '+n.clinician+'. Any edit requires maker-checker approval (CR-02).</div>'
+    :'<div style="padding:10px 14px;border-radius:10px;background:rgba(255,149,0,.1);border:1px solid rgba(255,149,0,.3);font-size:12px;color:var(--text2);margin-bottom:16px">✏️ <strong style="color:var(--text)">Draft</strong> — not yet signed. Sign to lock this note.</div>';
+  var actions=n.signed
+    ?'<button onclick="showToast(\'Download requires approval (CR-08)\',\'info\')" style="flex:1;padding:11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font)">⇩ Request download</button><button onclick="showToast(\'Edit routed to maker-checker\',\'info\')" style="flex:1;padding:11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font)">✎ Request edit</button>'
+    :'<button onclick="hideModal();showToast(\'Note signed & locked\',\'success\')" style="flex:1;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font)">🔒 Sign & lock</button>';
+  showModal('<div style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div><div style="font-size:18px;font-weight:700">'+n.clientName+'</div><div style="font-size:12px;color:var(--text2);margin-top:2px">'+n.clientId+' · '+n.clinician+' · '+n.date+'</div></div><div style="font-size:11px;color:var(--text3);text-transform:capitalize;text-align:right">'+n.type+'<br>'+(n.template||'SOAP')+'</div></div>'+(dx?'<div style="margin:10px 0 16px">'+dx+'</div>':'<div style="height:10px"></div>')+banner+body+'<div style="display:flex;gap:10px;margin-top:8px">'+actions+'</div></div>');
+}
 function renderPsychNotes(){
   var filter=Store._filter||'psychologist';
   var listId=filter==='psychiatrist'?'psychiatrist-notes-list':'psych-notes-list';
@@ -687,11 +723,11 @@ function renderPsychNotes(){
   var notes=Store.clinicalNotes.filter(function(n){return n.type===filter;});
   var signed=notes.filter(function(n){return n.signed;}).length;
   var bar=document.getElementById(barId);if(bar)bar.innerHTML='<span style="font-weight:600">'+notes.length+' notes</span><span style="color:var(--green);margin-left:12px">'+signed+' signed</span>'+(notes.length-signed>0?'<span style="color:var(--amber);margin-left:12px">'+(notes.length-signed)+' pending</span>':'');
-  c.innerHTML=notes.length?notes.map(function(n){return '<div class="apt-row"><div class="apt-status '+(n.signed?'ok':'wait')+'"></div><div class="apt-info"><div class="apt-name">'+n.clientName+(n.signed?'':' <span style="color:var(--amber);font-size:10px">Draft</span>')+'</div><div class="apt-detail">'+n.date+' · '+(n.content.S||'').substring(0,50)+'...</div></div></div>';}).join(''):'<div style="text-align:center;padding:60px 40px"><div style="font-size:48px;margin-bottom:12px">📝</div><div style="font-weight:700;font-size:16px;margin-bottom:6px">No '+filter+' notes</div><div style="font-size:13px;color:var(--text2)">Clinical notes will appear here once documented.</div></div>';
+  c.innerHTML=notes.length?notes.map(noteCard).join(''):'<div style="text-align:center;padding:60px 40px"><div style="font-size:48px;margin-bottom:12px">📝</div><div style="font-weight:700;font-size:16px;margin-bottom:6px">No '+filter+' notes</div><div style="font-size:13px;color:var(--text2)">Clinical notes will appear here once documented.</div></div>';
 }
 function renderProgressNotes(){
   var c=document.getElementById('progress-notes-list');if(!c)return;
-  c.innerHTML=Store.clinicalNotes.map(function(n){return '<div class="apt-row"><div class="apt-status ok"></div><div class="apt-info"><div class="apt-name">'+n.clientName+'</div><div class="apt-detail">'+n.date+' · '+(n.content.S||'').substring(0,60)+'...</div></div></div>';}).join('');
+  c.innerHTML=Store.clinicalNotes.map(noteCard).join('');
 }
 function renderRegisterClient(){
   var c=document.getElementById('register-form-content');if(!c)return;
