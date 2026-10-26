@@ -194,6 +194,7 @@ function confirmBooking() {
 
 function renderClientDashboard() {
   var cl = ClientStore.currentClient; if (!cl) return;
+  renderClientWellness();
   var welcomeEl = document.getElementById('client-welcome-name');
   if (welcomeEl) welcomeEl.textContent = cl.name || 'Your care journey';
   var kpis = document.getElementById('client-kpis'); if (!kpis) return;
@@ -209,6 +210,105 @@ function renderClientDashboard() {
   } else {
     upc.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text2)">No upcoming appointments.</div>';
   }
+}
+
+// ── v6: Client wellness (challenges · mood · assessments · care plan · resources) ──
+var CLIENT_MOOD = [2, 3, 3, 2, 4, 3, 4];
+var MOOD_EMOJI = ['😣', '😞', '😐', '🙂', '😄'];
+var MOOD_LABEL = ['Awful', 'Low', 'Okay', 'Good', 'Great'];
+
+function wbar(p, c) {
+  return '<div style="height:7px;border-radius:4px;background:var(--border)"><div style="height:100%;width:' + p + '%;border-radius:4px;background:var(--' + c + ')"></div></div>';
+}
+
+function assessCard(code, label, score, prev, sev) {
+  var down = score < prev, diff = Math.abs(prev - score);
+  return '<div style="padding:14px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px">' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div>' +
+    '<div style="font-size:13px;font-weight:600">' + code + ' · ' + label + '</div>' +
+    '<div style="font-size:11px;color:var(--text3);margin-top:2px">Last taken 21 Jul 2026</div></div>' +
+    '<div style="text-align:right"><div style="font-size:24px;font-weight:700">' + score + '</div>' +
+    '<div style="font-size:11px;color:' + (down ? 'var(--green)' : 'var(--amber)') + '">' + (down ? '↓ ' + diff + ' improved' : '↑ ' + diff) + ' · ' + sev + '</div></div></div>' +
+    '<button onclick="openAssessment(\'' + code + '\')" style="margin-top:12px;width:100%;padding:9px;background:var(--surface);border:1px solid var(--blue);color:var(--blue);border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;font-family:var(--font)">Take ' + code + ' again</button></div>';
+}
+
+function renderClientWellness() {
+  var ch = document.getElementById('client-challenges');
+  if (ch) {
+    var challenges = [{ l: 'Anxiety', p: 60, c: 'blue' }, { l: 'Low mood', p: 45, c: 'purple' }, { l: 'Work stress', p: 70, c: 'amber' }, { l: 'Sleep quality', p: 35, c: 'green' }];
+    ch.innerHTML = '<div style="font-size:12px;color:var(--text2);margin-bottom:12px">Focus areas you and your clinician are working on.</div>' +
+      challenges.map(function (x) {
+        return '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin-bottom:5px"><span>' + x.l + '</span><span style="color:var(--text3)">' + x.p + '%</span></div>' + wbar(x.p, x.c) + '</div>';
+      }).join('');
+  }
+  var md = document.getElementById('client-mood');
+  if (md) {
+    var picker = MOOD_EMOJI.map(function (e, i) {
+      return '<button onclick="logClientMood(' + i + ')" title="' + MOOD_LABEL[i] + '" style="flex:1;font-size:26px;background:transparent;border:1px solid var(--border);border-radius:12px;padding:8px 0;cursor:pointer">' + e + '</button>';
+    }).join('');
+    var bars = CLIENT_MOOD.map(function (v) {
+      var h = 12 + v / 4 * 56;
+      return '<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><div style="width:70%;height:' + h + 'px;border-radius:5px;background:var(--blue)"></div></div>';
+    }).join('');
+    md.innerHTML = '<div style="font-size:12px;color:var(--text2);margin-bottom:10px">How are you feeling today?</div>' +
+      '<div style="display:flex;gap:8px;margin-bottom:16px">' + picker + '</div>' +
+      '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em">Last 7 days</div>' +
+      '<div style="display:flex;gap:6px;height:72px;align-items:flex-end">' + bars + '</div>';
+  }
+  var as = document.getElementById('client-assessments');
+  if (as) as.innerHTML = assessCard('PHQ-9', 'Depression', 8, 14, 'Mild') + assessCard('GAD-7', 'Anxiety', 9, 13, 'Mild');
+  var cp = document.getElementById('client-careplan');
+  if (cp) {
+    var goals = [{ g: 'Practice daily breathing exercises', p: 80 }, { g: 'Maintain 7+ hours of sleep', p: 55 }, { g: 'Weekly reflective journaling', p: 40 }];
+    cp.innerHTML = goals.map(function (x) {
+      return '<div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin-bottom:5px"><span>' + x.g + '</span><span style="color:var(--text3)">' + x.p + '%</span></div>' + wbar(x.p, 'green') + '</div>';
+    }).join('') +
+      '<div style="margin-top:4px;padding:12px;background:var(--bg);border-radius:10px;font-size:12px;color:var(--text2)"><strong style="color:var(--text)">Next step:</strong> Continue CBT techniques; bring your mood log to Session 5 on Fri.</div>';
+  }
+  var rs = document.getElementById('client-resources');
+  if (rs) {
+    var res = [{ i: '🫁', t: '5-minute box breathing', d: 'Guided coping exercise', tag: 'Exercise' }, { i: '📖', t: 'Understanding anxiety', d: 'What it is and how therapy helps', tag: 'Article' }, { i: '🌙', t: 'Sleep hygiene basics', d: 'Build a better wind-down routine', tag: 'Article' }, { i: '✍️', t: 'Thought record worksheet', d: 'Challenge unhelpful thoughts', tag: 'Worksheet' }];
+    rs.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">' +
+      res.map(function (x) {
+        return '<div style="display:flex;gap:10px;padding:12px;border:1px solid var(--border);border-radius:10px;cursor:pointer" onclick="showToast(\'' + x.t + ' — opening resource\',\'info\')"><div style="font-size:22px">' + x.i + '</div><div><div style="font-size:13px;font-weight:600">' + x.t + '</div><div style="font-size:11px;color:var(--text2);margin-top:2px">' + x.d + '</div></div></div>';
+      }).join('') + '</div>' +
+      '<div style="margin-top:12px;padding:14px;border-radius:10px;background:rgba(255,59,48,.08);border:1px solid rgba(255,59,48,.25);display:flex;align-items:center;gap:12px"><div style="font-size:22px">🆘</div><div><div style="font-size:13px;font-weight:600;color:var(--red)">In crisis or need urgent help?</div><div style="font-size:12px;color:var(--text2)">Kenya: call <strong>1199</strong> (Childline) or <strong>0800 720 606</strong> (Befrienders Kenya) — 24/7.</div></div></div>';
+  }
+}
+
+function logClientMood(i) {
+  CLIENT_MOOD.push(i); CLIENT_MOOD.shift();
+  renderClientWellness();
+  showToast('Mood logged: ' + MOOD_LABEL[i], 'success');
+}
+
+function openAssessment(code) {
+  var qs = code === 'PHQ-9'
+    ? ['Little interest or pleasure in doing things', 'Feeling down, depressed, or hopeless', 'Trouble falling/staying asleep, or sleeping too much', 'Feeling tired or having little energy', 'Poor appetite or overeating']
+    : ['Feeling nervous, anxious, or on edge', 'Not being able to stop or control worrying', 'Worrying too much about different things', 'Trouble relaxing', 'Becoming easily annoyed or irritable'];
+  var opts = ['Not at all', 'Several days', 'More than half', 'Nearly every day'];
+  var rows = qs.map(function (q, qi) {
+    return '<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:500;margin-bottom:8px">' + (qi + 1) + '. ' + q + '</div><div style="display:flex;gap:6px">' +
+      opts.map(function (o, oi) {
+        return '<button data-q="' + qi + '" data-v="' + oi + '" onclick="pickAnswer(this)" style="flex:1;padding:8px 4px;font-size:11px;border:1px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-family:var(--font)">' + o + '</button>';
+      }).join('') + '</div></div>';
+  }).join('');
+  showModal('<div style="padding:24px"><div style="font-size:17px;font-weight:700;margin-bottom:4px">' + code + ' Self-Assessment</div><div style="font-size:12px;color:var(--text2);margin-bottom:20px">Over the last 2 weeks, how often have you been bothered by the following?</div><div id="assess-body">' + rows + '</div><button onclick="submitAssessment(\'' + code + '\',' + qs.length + ')" style="width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;font-family:var(--font);margin-top:8px">Submit</button></div>');
+}
+
+function pickAnswer(btn) {
+  var sib = btn.parentElement.querySelectorAll('button');
+  for (var i = 0; i < sib.length; i++) { sib[i].style.background = 'var(--surface)'; sib[i].style.color = 'var(--text)'; sib[i].style.borderColor = 'var(--border)'; sib[i].removeAttribute('data-sel'); }
+  btn.style.background = 'var(--blue)'; btn.style.color = '#fff'; btn.style.borderColor = 'var(--blue)'; btn.setAttribute('data-sel', '1');
+}
+
+function submitAssessment(code, n) {
+  var sel = document.querySelectorAll('#assess-body button[data-sel="1"]');
+  if (sel.length < n) { showToast('Please answer all ' + n + ' questions', 'error'); return; }
+  var score = 0;
+  for (var i = 0; i < sel.length; i++) score += parseInt(sel[i].getAttribute('data-v'), 10);
+  hideModal();
+  showToast(code + ' submitted — score ' + score + '. Saved to your record.', 'success');
 }
 
 function renderClientAppointments() {
