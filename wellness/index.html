@@ -879,7 +879,7 @@ textarea.fi{resize:vertical;min-height:5rem}
       <div class="notif-item unread" onclick="closeNotif();goE('ec')"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--teal-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">📋</div><div><div style="font-size:.875rem">Weekly check-in is due</div><div style="font-size:.75rem;color:var(--ink3)">2 hours ago</div></div></div>
       <div class="notif-item unread" onclick="closeNotif();goE('ecd')"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--amber-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">🏆</div><div><div style="font-size:.875rem">Sleep Reset: Don't forget today's task!</div><div style="font-size:.75rem;color:var(--ink3)">5 hours ago</div></div></div>
       <div class="notif-item unread"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--teal-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">⭐</div><div><div style="font-size:.875rem">150 WellPoints added to your balance!</div><div style="font-size:.75rem;color:var(--ink3)">Yesterday</div></div></div>
-      <div class="notif-item" onclick="closeNotif();goE('emd')"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--purple-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">📚</div><div><div style="font-size:.875rem;color:var(--ink2)">New module: Psych Safety</div><div style="font-size:.75rem;color:var(--ink3)">3 days ago</div></div></div>
+      <div class="notif-item" onclick="closeNotif();openModule('psych')"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--purple-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">📚</div><div><div style="font-size:.875rem;color:var(--ink2)">New module: Psych Safety</div><div style="font-size:.75rem;color:var(--ink3)">3 days ago</div></div></div>
       <div class="notif-item"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--amber-100);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0"><svg width="20" height="20" style="color:var(--amber)"><use href="#ic-fire"/></svg></div><div><div style="font-size:.875rem;color:var(--ink2)">5-week streak! Keep it up</div><div style="font-size:.75rem;color:var(--ink3)">Last week</div></div></div>
     </div>
   </div>
@@ -922,7 +922,7 @@ textarea.fi{resize:vertical;min-height:5rem}
       <div class="hscroll">
         <div class="hcard" onclick="goE('ec')" style="border-left:3.5px solid var(--teal)"><p style="font-size:.6875rem;font-weight:800;color:var(--teal)">📋 DUE TODAY</p><p style="font-weight:800;margin-top:.375rem">Weekly Check-in</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">4 questions · ~2 min</p></div>
         <div class="hcard" onclick="goE('ecd')" style="border-left:3.5px solid var(--amber)"><p style="font-size:.6875rem;font-weight:800;color:var(--amber-600)">🏆 IN PROGRESS</p><p style="font-weight:800;margin-top:.375rem">Sleep Reset Day 14</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">47% · 14 streak</p></div>
-        <div class="hcard" onclick="goE('emd')" style="border-left:3.5px solid var(--purple)"><p style="font-size:.6875rem;font-weight:800;color:var(--purple)">📚 MODULE</p><p style="font-weight:800;margin-top:.375rem">Psych Safety</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">60%</p></div>
+        <div class="hcard" onclick="openModule('psych')" style="border-left:3.5px solid var(--purple)"><p style="font-size:.6875rem;font-weight:800;color:var(--purple)">📚 MODULE</p><p style="font-weight:800;margin-top:.375rem">Psych Safety</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">60%</p></div>
         <div class="hcard" onclick="openKudos()" style="border-left:3.5px solid var(--coral)"><p style="font-size:.6875rem;font-weight:800;color:var(--coral)">🙌 RECOGNIZE</p><p style="font-weight:800;margin-top:.375rem">Give Kudos</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">3/10 this month</p></div>
         <div class="hcard" onclick="openJournal()" style="border-left:3.5px solid var(--purple)"><p style="font-size:.6875rem;font-weight:800;color:var(--purple)"><svg width="12" height="12" style="display:inline-block;vertical-align:middle;margin-right:.125rem;color:var(--purple)"><use href="#ic-journal"/></svg> JOURNAL</p><p style="font-weight:800;margin-top:.375rem">Write a Reflection</p><p style="font-size:.75rem;color:var(--ink3);margin-top:.125rem">Private & local</p></div>
       </div>
@@ -1077,7 +1077,7 @@ textarea.fi{resize:vertical;min-height:5rem}
       </div>
 
       <!-- Q1: Completed Module -->
-      <div class="glass" style="border-left:3.5px solid var(--teal);cursor:pointer" onclick="this.querySelector('.el-cert').classList.toggle('hidden')">
+      <div class="glass" style="border-left:3.5px solid var(--teal);cursor:pointer" onclick="openModule('eq')">
         <div class="row-b">
           <div>
             <div class="row gap2"><span style="font-size:.6875rem;font-weight:800;color:var(--teal)">Q1 &middot; Completed</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -1102,7 +1102,7 @@ textarea.fi{resize:vertical;min-height:5rem}
       </div>
 
       <!-- Q2: Active Module -->
-      <div class="glass glass-glow" onclick="goE('emd')" style="cursor:pointer;border-left:3.5px solid var(--purple);animation:glowPulse 4s ease-in-out infinite">
+      <div class="glass glass-glow" onclick="openModule('psych')" style="cursor:pointer;border-left:3.5px solid var(--purple);animation:glowPulse 4s ease-in-out infinite">
         <div class="row-b">
           <div>
             <span style="font-size:.6875rem;font-weight:800;color:var(--purple)">Q2 &middot; Active</span>
@@ -1132,28 +1132,30 @@ textarea.fi{resize:vertical;min-height:5rem}
         </div>
       </div>
 
-      <!-- Q3: Locked -->
-      <div class="glass" style="opacity:.35;pointer-events:none">
+      <!-- Q3: Managing Burnout -->
+      <div class="glass" style="cursor:pointer;border-left:3.5px solid var(--purple)" onclick="openModule('burnout')">
         <div class="row-b">
           <div>
-            <span style="font-size:.6875rem;color:var(--ink4);font-weight:700">Q3 <svg width="14" height="14" style="color:var(--ink4);display:inline-block;vertical-align:middle"><use href="#ic-lock"/></svg></span>
-            <h4 style="font-weight:800;margin-top:.25rem;color:var(--ink3)">Managing Burnout</h4>
-            <p style="font-size:.75rem;color:var(--ink4)"><svg width="14" height="14" style="color:var(--ink4);display:inline-block;vertical-align:middle"><use href="#ic-psych"/></svg> Psychological &middot; 30min &middot; Unlocks July 2026</p>
+            <span style="font-size:.6875rem;color:var(--purple);font-weight:800">Q3 &middot; Available</span>
+            <h4 style="font-weight:800;margin-top:.25rem">Managing Burnout</h4>
+            <p style="font-size:.75rem;color:var(--ink3)"><svg width="14" height="14" style="color:var(--purple);display:inline-block;vertical-align:middle"><use href="#ic-psych"/></svg> Psychological &middot; 30min &middot; Q3 2026</p>
           </div>
-          <svg width="24" height="24" style="color:var(--ink4);flex-shrink:0"><use href="#ic-lock"/></svg>
+          <span style="font-size:1.25rem;color:var(--ink3);flex-shrink:0">→</span>
         </div>
+        <div class="row gap2 wrap" style="margin-top:var(--sp3)"><span class="z za" style="font-size:.6875rem">📖 3 cards</span><span class="z za" style="font-size:.6875rem">🎬 Video</span><span class="z za" style="font-size:.6875rem">📝 5 Assess</span></div>
       </div>
 
-      <!-- Q4: Locked -->
-      <div class="glass" style="opacity:.35;pointer-events:none">
+      <!-- Q4: High Performance Habits -->
+      <div class="glass" style="cursor:pointer;border-left:3.5px solid var(--blue)" onclick="openModule('highperf')">
         <div class="row-b">
           <div>
-            <span style="font-size:.6875rem;color:var(--ink4);font-weight:700">Q4 <svg width="14" height="14" style="color:var(--ink4);display:inline-block;vertical-align:middle"><use href="#ic-lock"/></svg></span>
-            <h4 style="font-weight:800;margin-top:.25rem;color:var(--ink3)">High Performance Habits</h4>
-            <p style="font-size:.75rem;color:var(--ink4)"><svg width="14" height="14" style="color:var(--ink4);display:inline-block;vertical-align:middle"><use href="#ic-productivity"/></svg> Productivity &middot; 28min &middot; Unlocks Oct 2026</p>
+            <span style="font-size:.6875rem;color:var(--blue);font-weight:800">Q4 &middot; Available</span>
+            <h4 style="font-weight:800;margin-top:.25rem">High Performance Habits</h4>
+            <p style="font-size:.75rem;color:var(--ink3)"><svg width="14" height="14" style="color:var(--blue);display:inline-block;vertical-align:middle"><use href="#ic-productivity"/></svg> Productivity &middot; 28min &middot; Q4 2026</p>
           </div>
-          <svg width="24" height="24" style="color:var(--ink4);flex-shrink:0"><use href="#ic-lock"/></svg>
+          <span style="font-size:1.25rem;color:var(--ink3);flex-shrink:0">→</span>
         </div>
+        <div class="row gap2 wrap" style="margin-top:var(--sp3)"><span class="z za" style="font-size:.6875rem">📖 3 cards</span><span class="z za" style="font-size:.6875rem">🎬 Video</span><span class="z za" style="font-size:.6875rem">📝 5 Assess</span></div>
       </div>
 
       <!-- Your Learning Stats -->
@@ -1173,8 +1175,8 @@ textarea.fi{resize:vertical;min-height:5rem}
   <div id="scr-emd" class="screen">
     <div style="padding:var(--sp5)">
       <button class="btn btn-gh" onclick="goE('el')" style="padding:.5rem;margin-bottom:var(--sp4)">← Back</button>
-      <h2 style="font-size:1.375rem;font-weight:900">Building Psychological Safety</h2>
-      <p style="font-size:.8125rem;color:var(--ink2);margin-bottom:var(--sp5);font-weight:600"><svg width="16" height="16" style="color:var(--teal);display:inline-block;vertical-align:middle"><use href="#ic-culture"/></svg> Culture · 22 min · Q2 2026</p>
+      <h2 id="md-title" style="font-size:1.375rem;font-weight:900">Building Psychological Safety</h2>
+      <p id="md-meta" style="font-size:.8125rem;color:var(--ink2);margin-bottom:var(--sp5);font-weight:600"><svg width="16" height="16" style="color:var(--teal);display:inline-block;vertical-align:middle"><use href="#ic-culture"/></svg> Culture · 22 min · Q2 2026</p>
       <div class="tabs" id="mt"><div class="tab on" onclick="mT('ml')">📖 Learn</div><div class="tab" onclick="mT('mv')">🎬 Video</div><div class="tab" onclick="mT('ma')">📝 Assess</div></div>
       <div id="mt-ml">
         <div class="glass glass-accent" id="cc-0"><p style="font-size:.6875rem;font-weight:800;color:var(--teal);margin-bottom:var(--sp3)">CARD 1 OF 3</p><h4 style="font-weight:800;margin-bottom:.5rem">1. What is psychological safety?</h4><p style="font-size:.875rem;color:var(--ink2);line-height:1.8;font-weight:500">Psychological safety, a term popularized by Harvard professor Amy Edmondson, is the shared belief among team members that the group is safe for interpersonal risk-taking. It means you can speak up, ask questions, make mistakes, and offer ideas without fear of humiliation, punishment, or rejection. Research across 180 teams at Google found that psychological safety was the single most important factor distinguishing high-performing teams from average ones.</p><div style="background:linear-gradient(135deg,var(--teal-50),var(--teal-100));padding:var(--sp4);border-radius:var(--r-lg);margin-top:var(--sp4)"><p style="font-size:.8125rem;font-weight:800;color:var(--teal-700)">💡 Safety to speak up is the #1 driver of team performance.</p></div><button class="btn btn-sm btn-g" style="margin-top:var(--sp4)" onclick="markRead(0)">Mark as Read ✓</button></div>
@@ -1482,6 +1484,69 @@ const AQ=[
   {q:'Inclusion Safety means...',o:['Disagree with boss','You belong','Take risks','Challenge decisions'],c:1,e:'Inclusion Safety is the first of Clark\'s four stages — the fundamental feeling that you are accepted and belong.'},
   {q:'Challenger Safety allows...',o:['Skip meetings','WFH','Question status quo','Report anon.'],c:2,e:'Challenger Safety is the highest stage — where team members feel safe enough to question existing practices and push for change.'}
 ];
+let curAQ=AQ;
+
+/* ═══ LEARN MODULES (read-more detail per card) ═══ */
+const MODULES={
+  eq:{title:'Emotional Intelligence at Work',dom:'Psychological',icon:'#ic-psych',col:'var(--purple)',dur:25,quarter:'Q1 · Completed',video:18,badge:'EQ Champion',
+    cards:[
+      {t:'What is emotional intelligence?',b:'Emotional intelligence (EQ) is the ability to recognize, understand and manage your own emotions while reading and responding to others\'. Daniel Goleman\'s model has five pillars: self-awareness, self-regulation, motivation, empathy and social skill. In most roles EQ predicts success and leadership potential better than raw IQ.',tip:'EQ is a skill you can grow, not a fixed trait.'},
+      {t:'Self-awareness and self-regulation',b:'Self-awareness is noticing what you feel as it happens; self-regulation is choosing your response instead of reacting on impulse. Simply naming an emotion ("name it to tame it") lowers its intensity, and a short pause turns a reaction into a considered response.',tip:'A six-second pause rewires a reaction into a choice.'},
+      {t:'Empathy and social skill',b:'Empathy is understanding how a colleague feels — it is not the same as agreeing. Reflecting back what someone is experiencing builds trust and defuses conflict, which is the foundation of strong working relationships.',tip:'Listen to understand, not just to reply.'}
+    ],
+    aq:[
+      {q:'Who popularized the five-pillar EQ model?',o:['Amy Edmondson','Daniel Goleman','Timothy Clark','Carol Dweck'],c:1,e:'Daniel Goleman brought emotional intelligence to a wide audience with his 1995 book and five-pillar framework.'},
+      {q:'"Name it to tame it" means...',o:['Ignore the emotion','Label the emotion','Vent loudly','Suppress it'],c:1,e:'Labeling an emotion engages the thinking brain and measurably lowers its intensity.'},
+      {q:'Empathy means...',o:['Always agreeing','Understanding how others feel','Fixing their problem','Staying detached'],c:1,e:'Empathy is understanding another\'s experience — agreement is optional.'},
+      {q:'Self-regulation looks like...',o:['Reacting instantly','Pausing before responding','Hiding all feelings','Avoiding people'],c:1,e:'Self-regulation is the gap between stimulus and response where choice lives.'},
+      {q:'Emotional intelligence is...',o:['Fixed at birth','A learnable skill','Only for managers','Unrelated to work'],c:1,e:'EQ can be developed at any age with practice and feedback.'}
+    ]},
+  psych:{title:'Building Psychological Safety',dom:'Culture',icon:'#ic-culture',col:'var(--teal)',dur:22,quarter:'Q2 · Active',video:15,badge:'Psych Safety Champion',
+    cards:[
+      {t:'What is psychological safety?',b:'Psychological safety, popularized by Harvard professor Amy Edmondson, is the shared belief that a team is safe for interpersonal risk-taking. It means you can speak up, ask questions, admit mistakes and offer ideas without fear of humiliation or punishment. Google\'s study of 180+ teams found it was the single biggest factor separating high-performing teams from the rest.',tip:'Safety to speak up is the #1 driver of team performance.'},
+      {t:'Why it matters in the Kenyan workplace',b:'Many Kenyan workplaces carry a deep respect for hierarchy and seniority. That respect is a strength, but it can quietly silence junior employees who hold critical on-the-ground insight. Organizations that build safe channels for upward feedback cut error rates by up to 26% and show markedly higher innovation.',tip:'Speaking up is not disrespectful — it is your contribution.'},
+      {t:'Four practical behaviors that build safety',b:'Dr. Timothy Clark describes four stages: Inclusion Safety (you belong), Learner Safety (you can ask and err), Contributor Safety (you can make a difference) and Challenger Safety (you can question the status quo). You build them by listening without judgment, separating people from ideas, rewarding questions, and never weaponizing vulnerability.',tip:'Safety is built in small moments, not grand gestures.'}
+    ],
+    aq:AQ},
+  burnout:{title:'Managing Burnout',dom:'Psychological',icon:'#ic-psych',col:'var(--purple)',dur:30,quarter:'Q3 · 2026',video:16,badge:'Resilience Champion',
+    cards:[
+      {t:'What is burnout?',b:'Burnout is chronic workplace stress that has not been managed, leading to exhaustion, cynicism and a sense of ineffectiveness. Unlike ordinary stress — which eases when the pressure lifts — burnout erodes your energy, identity and sense of purpose over time.',tip:'Burnout is a system under sustained load, not personal weakness.'},
+      {t:"Maslach's three dimensions",b:'The Maslach Burnout Inventory identifies three dimensions: emotional exhaustion (depleted energy), depersonalization or cynicism (mental distance from work), and reduced personal accomplishment (feeling ineffective). They tend to compound on each other.',tip:'Know which of the three faces burnout is wearing.'},
+      {t:'Recovery and prevention',b:'Protect clear boundaries between work and rest, manage energy by scheduling demanding tasks in your peak hours, and build micro-recovery habits — short walks, breathing, screen breaks. A personal early-warning checklist helps you act before you crash.',tip:'Recovery is a skill — build it into your daily rhythm.'}
+    ],
+    aq:[
+      {q:'The three dimensions of burnout are...',o:['Stress, Anxiety, Depression','Exhaustion, Cynicism, Inefficacy','Fatigue, Anger, Withdrawal','Overwork, Isolation, Apathy'],c:1,e:'Maslach\'s model: emotional exhaustion, depersonalization (cynicism) and reduced accomplishment (inefficacy).'},
+      {q:'Which is NOT a sign of burnout?',o:['Chronic fatigue','Emotional detachment','Increased creativity','Reduced performance'],c:2,e:'Burnout usually lowers creativity; rising creativity signals engagement, not burnout.'},
+      {q:'Most effective prevention strategy?',o:['Setting clear boundaries','Working harder to finish','Ignoring early signs','Long vacations only'],c:0,e:'Consistent daily boundaries outperform reactive fixes and rare long breaks.'},
+      {q:'Burnout differs from stress because it...',o:['Only happens at work','Is always temporary','Resolves with rest alone','Affects identity over time'],c:3,e:'Burnout erodes your sense of self-efficacy and meaning, not just your energy.'},
+      {q:'The strongest workplace driver of burnout is...',o:['Long commutes','Lack of autonomy and control','Open-plan offices','Salary level'],c:1,e:'Low autonomy and control is the most consistent predictor of burnout.'}
+    ]},
+  highperf:{title:'High Performance Habits',dom:'Productivity',icon:'#ic-productivity',col:'var(--blue)',dur:28,quarter:'Q4 · 2026',video:20,badge:'Peak Performer',
+    cards:[
+      {t:'Manage energy, not just time',b:'Sustainable high performance comes from managing energy rather than squeezing in more hours. Your focus, willpower and creativity follow daily rhythms — matching your hardest work to your peak-energy window produces far more than grinding through a long, flat day.',tip:'Protect your peak two hours for your most important task.'},
+      {t:'Deep work and focus',b:'Meaningful output comes from uninterrupted, single-tasked focus. Every context switch carries a cost — studies suggest task-switching can drain up to 40% of productive time. Batching messages and silencing notifications protects your attention.',tip:'Attention is your scarcest and most valuable resource.'},
+      {t:'Rest, recovery and rhythm',b:'Rest is not the opposite of performance — it is what makes performance repeatable. Deliberate breaks, good sleep and genuine downtime restore the capacity that intense work depletes. A sustainable pace beats sprints that end in burnout.',tip:'A sustainable rhythm outlasts the grind.'}
+    ],
+    aq:[
+      {q:'Sustainable high performance comes from managing...',o:['Hours worked','Your energy','Your inbox','Meeting count'],c:1,e:'Energy — focus and willpower — matters more than raw hours.'},
+      {q:'Task-switching can cost up to...',o:['About 5%','About 40%','Nothing','About 1%'],c:1,e:'Context-switching can waste up to ~40% of productive time.'},
+      {q:'When should you do your hardest task?',o:['End of the day','Your peak-energy window','During meetings','Late at night'],c:1,e:'Align demanding work with the hours your focus is naturally highest.'},
+      {q:'Deep work requires...',o:['Constant multitasking','Single-tasked focus','An open chat window','Frequent email checks'],c:1,e:'Uninterrupted single-tasking is the core of deep work.'},
+      {q:'Sustainable performance depends on...',o:['Grinding nonstop','Deliberate rest','Skipping sleep','Adding more hours'],c:1,e:'Recovery restores the capacity intense work uses up.'}
+    ]}
+};
+function openModule(key){
+  const m=MODULES[key];if(!m)return;
+  S.curMod=m;curAQ=m.aq;S.cardRead=new Array(m.cards.length).fill(false);
+  $('md-title').textContent=m.title;
+  $('md-meta').innerHTML=`<svg width="16" height="16" style="color:${m.col};display:inline-block;vertical-align:middle"><use href="${m.icon}"/></svg> ${m.dom} · ${m.dur} min · ${m.quarter}`;
+  $('mt-ml').innerHTML=m.cards.map((c,i)=>`<div class="glass glass-accent" id="cc-${i}"><p style="font-size:.6875rem;font-weight:800;color:${m.col};margin-bottom:var(--sp3)">CARD ${i+1} OF ${m.cards.length}</p><h4 style="font-weight:800;margin-bottom:.5rem">${i+1}. ${esc(c.t)}</h4><p style="font-size:.875rem;color:var(--ink2);line-height:1.8;font-weight:500">${esc(c.b)}</p><div style="background:var(--s2);padding:var(--sp4);border-radius:var(--r-lg);margin-top:var(--sp4)"><p style="font-size:.8125rem;font-weight:800;color:${m.col}">💡 ${esc(c.tip)}</p></div><button class="btn btn-sm btn-g" style="margin-top:var(--sp4)" onclick="markRead(${i})">Mark as Read ✓</button></div>`).join('')
+    +`<div id="cc-done" class="glass-light center hidden" style="padding:var(--sp5);margin-top:var(--sp4)"><p style="font-weight:800;color:var(--teal)">All concept cards read! ✓</p><button class="btn btn-g" style="margin-top:var(--sp3)" onclick="mT('mv')">Proceed to Video →</button></div>`;
+  $('mt-mv').innerHTML=`<div class="glass center" style="padding:var(--sp10)"><div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--purple-100),var(--teal-100));border-radius:var(--r-xl);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp4)"><div style="width:4.5rem;height:4.5rem;border-radius:50%;background:var(--s0);display:flex;align-items:center;justify-content:center;box-shadow:var(--sh3);cursor:pointer" onclick="toast('🎬','Video','Playback is a prototype placeholder','b')"><span style="font-size:2rem;margin-left:.25rem">▶</span></div></div><h4 style="font-weight:800">${esc(m.title)}</h4><p style="font-size:.8125rem;color:var(--ink3);font-weight:600">${m.video} min</p></div>`;
+  document.querySelectorAll('#mt .tab').forEach((x,i)=>x.classList.toggle('on',i===0));
+  ['ml','mv','ma'].forEach((x,i)=>{const el=$('mt-'+x);if(el)el.classList.toggle('hidden',i!==0)});
+  goE('emd');window.scrollTo(0,0);
+}
 
 /* ═══ TOAST SYSTEM (Phase 2) ═══ */
 function toast(icon,title,msg,type='g'){
@@ -1632,21 +1697,21 @@ function jCh(btn){btn.textContent='Enrolled ✓';btn.style.background='var(--ink
 function mT(t){document.querySelectorAll('#mt .tab').forEach(x=>x.classList.remove('on'));event.target.classList.add('on');['ml','mv','ma'].forEach(x=>{const el=$('mt-'+x);if(el)el.classList.toggle('hidden',x!==t)});if(t==='ma')asRst()}
 
 /* ═══ ASSESSMENT ═══ */
-function asRst(){S.aS=0;S.aSc=0;S.aSl=-1;S.aAnswers=[];S.cardRead=[false,false,false];
-for(let j=0;j<3;j++){const cc=$('cc-'+j);if(cc){cc.style.opacity='';const btn=cc.querySelector('.btn-g');if(btn){btn.textContent='Mark as Read ✓';btn.disabled=false;btn.style.background='';btn.style.boxShadow=''}}}
+function asRst(){const nc=S.curMod?S.curMod.cards.length:3;S.aS=0;S.aSc=0;S.aSl=-1;S.aAnswers=[];S.cardRead=new Array(nc).fill(false);
+for(let j=0;j<nc;j++){const cc=$('cc-'+j);if(cc){cc.style.opacity='';const btn=cc.querySelector('.btn-g');if(btn){btn.textContent='Mark as Read ✓';btn.disabled=false;btn.style.background='';btn.style.boxShadow=''}}}
 if($('cc-done'))$('cc-done').classList.add('hidden');
 $('asQ').classList.remove('hidden');$('asR').classList.add('hidden');rAQ()}
-function rAQ(){const q=AQ[S.aS];$('asN').textContent=S.aS+1;$('asT').textContent=q.q;$('asB').style.width=((S.aS+1)/5*100)+'%';const L='ABCD'.split('');$('asO').innerHTML=q.o.map((o,i)=>`<div class="mcq" onclick="asS(this,${i})"><span class="mcq-l">${L[i]}</span><span>${o}</span></div>`).join('');$('asNx').classList.add('hidden');S.aSl=-1}
-function asS(el,i){if(S.aSl>=0)return;S.aSl=i;S.aAnswers[S.aS]=i;const q=AQ[S.aS];el.closest('#asO').querySelectorAll('.mcq').forEach((o,j)=>{if(j===q.c)o.classList.add('ok');else if(j===i&&i!==q.c)o.classList.add('no')});if(i===q.c)S.aSc++;$('asNx').classList.remove('hidden');$('asNx').textContent=S.aS<4?'Next →':'See Results'}
+function rAQ(){const q=curAQ[S.aS];$('asN').textContent=S.aS+1;$('asT').textContent=q.q;$('asB').style.width=((S.aS+1)/5*100)+'%';const L='ABCD'.split('');$('asO').innerHTML=q.o.map((o,i)=>`<div class="mcq" onclick="asS(this,${i})"><span class="mcq-l">${L[i]}</span><span>${o}</span></div>`).join('');$('asNx').classList.add('hidden');S.aSl=-1}
+function asS(el,i){if(S.aSl>=0)return;S.aSl=i;S.aAnswers[S.aS]=i;const q=curAQ[S.aS];el.closest('#asO').querySelectorAll('.mcq').forEach((o,j)=>{if(j===q.c)o.classList.add('ok');else if(j===i&&i!==q.c)o.classList.add('no')});if(i===q.c)S.aSc++;$('asNx').classList.remove('hidden');$('asNx').textContent=S.aS<4?'Next →':'See Results'}
 function asNxt(){S.aS++;if(S.aS<5){S.aSl=-1;rAQ()}else{
 $('asQ').classList.add('hidden');$('asR').classList.remove('hidden');
 const p=Math.round(S.aSc/5*100),ok=p>=80;
 let rh=ok?'<div class="medal earned mx-auto" style="margin-bottom:var(--sp5)"><span>🏆</span></div>':'';
 rh+='<h3 style="font-size:1.25rem;font-weight:900;margin-bottom:var(--sp2)">'+(ok?'Hongera! 🎉':'Not quite')+'</h3>';
-rh+='<p style="color:var(--ink2);margin-bottom:var(--sp5);font-weight:500">'+S.aSc+'/5 ('+p+'%). '+(ok?'Badge: Psych Safety Champion':'Need 80%.')+'</p>';
+rh+='<p style="color:var(--ink2);margin-bottom:var(--sp5);font-weight:500">'+S.aSc+'/5 ('+p+'%). '+(ok?'Badge: '+(S.curMod?S.curMod.badge:'Champion'):'Need 80%.')+'</p>';
 // Per-question breakdown
 rh+='<div style="text-align:left;margin-bottom:var(--sp6)">';
-AQ.forEach((q,idx)=>{
+curAQ.forEach((q,idx)=>{
   const userAns=S.aAnswers[idx]!==undefined?S.aAnswers[idx]:-1;
   const correct=userAns===q.c;
   rh+='<div class="glass-light" style="margin-bottom:var(--sp2);padding:var(--sp3)">';
@@ -1659,12 +1724,12 @@ rh+='</div>';
 // Completion summary if passed
 if(ok){
   rh+='<div class="glass" style="text-align:left;margin-bottom:var(--sp5);border-left:3.5px solid var(--teal)"><p style="font-size:.6875rem;font-weight:800;color:var(--teal);margin-bottom:var(--sp3)">MODULE COMPLETE</p>';
-  rh+='<div style="font-size:.8125rem;color:var(--ink2);line-height:2"><span style="margin-right:var(--sp4)">⏱ ~22 min</span><span style="margin-right:var(--sp4)">📖 3 cards read</span><span>📝 '+p+'%</span></div>';
-  rh+='<p style="font-size:.875rem;font-weight:800;color:var(--teal);margin-top:var(--sp3)">🏆 Psych Safety Champion · +500 WellPoints ⭐</p>';
-  rh+='<p style="font-size:.8125rem;color:var(--ink3);margin-top:var(--sp2)">Next: Managing Burnout (Q3 · July 2026)</p></div>';
+  rh+='<div style="font-size:.8125rem;color:var(--ink2);line-height:2"><span style="margin-right:var(--sp4)">⏱ ~'+(S.curMod?S.curMod.dur:22)+' min</span><span style="margin-right:var(--sp4)">📖 '+(S.curMod?S.curMod.cards.length:3)+' cards read</span><span>📝 '+p+'%</span></div>';
+  rh+='<p style="font-size:.875rem;font-weight:800;color:var(--teal);margin-top:var(--sp3)">🏆 '+(S.curMod?S.curMod.badge:'Champion')+' · +500 WellPoints ⭐</p>';
+  rh+='<p style="font-size:.8125rem;color:var(--ink3);margin-top:var(--sp2)">Great work — keep your learning streak going.</p></div>';
 }
 $('asBd').innerHTML=rh;
-if(ok){toast('🏆','Badge Earned!','Psych Safety Champion','p');if(navigator.vibrate)navigator.vibrate([25,50,25,50,25])}else toast('📝','Almost there','Review and try again','b')
+if(ok){toast('🏆','Badge Earned!',(S.curMod?S.curMod.badge:'Champion'),'p');if(navigator.vibrate)navigator.vibrate([25,50,25,50,25])}else toast('📝','Almost there','Review and try again','b')
 }}
 
 /* ═══ LIB / QB / CLIENT HELPERS ═══ */
