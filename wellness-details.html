@@ -1,34 +1,34 @@
 <div class="snb-detail reveal active">
     <div class="snb-detail-header">
-        <h2>WellSpace by Sereni Minds</h2>
+        <h2>WellSpace by Sereniminds</h2>
         <p class="snb-detail-subtitle">Corporate Wellness Platform &mdash; UI/UX Prototype</p>
     </div>
 
     <div class="snb-detail-overview">
-        <p>A multi-tenant corporate wellness platform prototype for the Kenyan market. One codebase serves four distinct roles &mdash; Sereni Minds super-admin, client HR admin, team manager, and employee &mdash; each with its own navigation, dashboards, and workflows. Covers weekly pulse check-ins, learning modules with assessments, habit challenges, journaling, a WellPoints rewards economy, anonymized analytics, and a full content-management back office. Kenya Data Protection Act 2019 aware, with anonymized exports.</p>
+        <p>A corporate wellness platform prototype for the Kenyan market, rebuilt after a round of client feedback. Three audiences each have their own sign-in and screens: employees, the client company's Contact Person, and the Sereniminds team. Employees check in daily, work through a quarterly learning challenge, keep a private journal and use their medical cover. Companies see anonymous group totals only. All integrations (AI guidance, Google Fit, Smart insurance linking, USSD) are simulated in the browser.</p>
     </div>
 
     <!-- Metrics -->
     <div class="snb-metrics-grid">
         <div class="metric-card">
-            <div class="metric-number" data-count="30" data-display="30+">0</div>
+            <div class="metric-number" data-count="25" data-display="25+">0</div>
             <div class="metric-label">Interactive Screens</div>
-            <div class="metric-sub">Across four role layouts</div>
+            <div class="metric-sub">Across three sign-ins</div>
         </div>
         <div class="metric-card">
-            <div class="metric-number" data-count="4" data-display="4">0</div>
-            <div class="metric-label">Roles</div>
-            <div class="metric-sub">Super Admin, HR, Manager, Employee</div>
+            <div class="metric-number" data-count="3" data-display="3">0</div>
+            <div class="metric-label">Audiences</div>
+            <div class="metric-sub">Employee, Contact Person, Sereniminds</div>
         </div>
         <div class="metric-card">
-            <div class="metric-number" data-count="5" data-display="5">0</div>
-            <div class="metric-label">Wellness Domains</div>
-            <div class="metric-sub">Culture, Psych, Physical, Productivity, Leadership</div>
+            <div class="metric-number" data-count="8" data-display="8">0</div>
+            <div class="metric-label">Wellbeing Areas</div>
+            <div class="metric-sub">Psychological to Physical, on a wellness wheel</div>
         </div>
         <div class="metric-card">
-            <div class="metric-number" data-count="47" data-display="47">0</div>
-            <div class="metric-label">Pulse Questions</div>
-            <div class="metric-sub">Rotating question bank</div>
+            <div class="metric-number" data-count="14" data-display="14">0</div>
+            <div class="metric-label">Check-in Questions</div>
+            <div class="metric-sub">Rotating daily from the Question Bank</div>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
                 <div class="project-tech">
                     <span class="tech-badge">HTML / CSS</span>
                     <span class="tech-badge">Vanilla JS</span>
-                    <span class="tech-badge">Chart.js</span>
+                    <span class="tech-badge">Inline SVG charts</span>
                     <span class="tech-badge">Nunito</span>
                 </div>
             </div>
@@ -72,11 +72,11 @@
             <div class="contribution-card">
                 <div class="contribution-icon"><i class="fas fa-heart-pulse"></i></div>
                 <div class="contribution-content">
-                    <h4>Weekly Pulse Check-in</h4>
-                    <p>Four-question slide flow with emoji scales, instant personalized insights showing week-over-week deltas, and a six-week trend chart. Responses roll up into anonymized domain scores.</p>
+                    <h4>Daily Check-in &amp; Wellness Wheel</h4>
+                    <p>A short daily check-in with 1 to 5 ratings and an optional typed answer, drawn from a rotating Question Bank. Results feed a private wellness wheel across eight areas. A simulated AI reads the typed answer for tone and themes and shows a support line when an entry is worrying.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Emoji Scales</span>
-                        <span class="tech-badge">Trend Insights</span>
+                        <span class="tech-badge">1 to 5 Ratings</span>
+                        <span class="tech-badge">Wellness Wheel</span>
                     </div>
                 </div>
             </div>
@@ -84,11 +84,11 @@
             <div class="contribution-card">
                 <div class="contribution-icon"><i class="fas fa-graduation-cap"></i></div>
                 <div class="contribution-content">
-                    <h4>Learning &amp; Assessments</h4>
-                    <p>Concept-card learning flow with read tracking, a scored assessment with per-question breakdown and explanations, badge rewards on an 80% pass, and a module completion summary.</p>
+                    <h4>Quarterly Challenge</h4>
+                    <p>Learning is organised as a Quarterly Challenge with one Topic a month and one Bite a week. Each Bite opens its own screen with a reading and discussion, an optional video and scored questions. Short optional Extra Challenges run alongside.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Scored Quizzes</span>
-                        <span class="tech-badge">Badges</span>
+                        <span class="tech-badge">Topics &amp; Bites</span>
+                        <span class="tech-badge">Quiz Questions</span>
                     </div>
                 </div>
             </div>
@@ -96,11 +96,23 @@
             <div class="contribution-card">
                 <div class="contribution-icon"><i class="fas fa-trophy"></i></div>
                 <div class="contribution-content">
-                    <h4>Challenges &amp; Rewards</h4>
-                    <p>Multi-day habit challenges with streaks, milestone celebrations, a department leaderboard, and a WellPoints economy with configurable platform minimums and redemption channels.</p>
+                    <h4>Leaderboard &amp; Rewards</h4>
+                    <p>An individual leaderboard with an opt-out, milestone awards and WellPoints earned only from activity, never from how someone feels. Points can be spent on insurer-funded rewards such as a pharmacy voucher.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Streaks</span>
                         <span class="tech-badge">WellPoints</span>
+                        <span class="tech-badge">Opt-out</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contribution-card">
+                <div class="contribution-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                <div class="contribution-content">
+                    <h4>Support &amp; Medical Cover</h4>
+                    <p>A support screen with a toll-free line, counsellor booking and eight kinds of help. A cover screen shows a digital card, outpatient balance, places that accept it and a pharmacy order paid from cover. A USSD flow offers the check-in to feature phones.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Counsellor Booking</span>
+                        <span class="tech-badge">USSD</span>
                     </div>
                 </div>
             </div>
@@ -108,10 +120,10 @@
             <div class="contribution-card">
                 <div class="contribution-icon"><i class="fas fa-chart-line"></i></div>
                 <div class="contribution-content">
-                    <h4>HR &amp; Manager Analytics</h4>
-                    <p>Anonymized department drill-downs with domain breakdowns, trend charts, recommended interventions with persistent tracking, a balanced-scorecard view, and Kenya DPA-compliant report exports.</p>
+                    <h4>Anonymous Company Reports</h4>
+                    <p>The Contact Person sees reports under eight headings, grouped by age band, gender, location, tenure, work pattern or engagement. Groups under five people are hidden, and care figures are never broken down by group.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Anonymized</span>
+                        <span class="tech-badge">Small-group Protection</span>
                         <span class="tech-badge">Kenya DPA 2019</span>
                     </div>
                 </div>
@@ -120,23 +132,11 @@
             <div class="contribution-card">
                 <div class="contribution-icon"><i class="fas fa-pen-to-square"></i></div>
                 <div class="contribution-content">
-                    <h4>Content Management Back Office</h4>
-                    <p>Super-admin builders for modules, challenges, and the pulse question bank. Create, save as draft, or publish &mdash; published content persists to localStorage and surfaces in the Content Library for client HR admins to activate.</p>
+                    <h4>Sereniminds Back Office</h4>
+                    <p>Company onboarding with a checklist that gates the programme, a company page with billing and an activity log, a challenge builder with a live phone preview and AI suggestions, a Question Bank with approval of AI drafts, and insurance partners.</p>
                     <div class="project-tech">
-                        <span class="tech-badge">Module Builder</span>
+                        <span class="tech-badge">Challenge Builder</span>
                         <span class="tech-badge">Question Bank</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contribution-card">
-                <div class="contribution-icon"><i class="fas fa-user-shield"></i></div>
-                <div class="contribution-content">
-                    <h4>Employee Self-Service</h4>
-                    <p>Private journaling with mood tracking, a guided breathing exercise, kudos/peer recognition, personal data export as JSON, red-zone support, and first-run onboarding with a privacy agreement.</p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Private Journal</span>
-                        <span class="tech-badge">Data Export</span>
                     </div>
                 </div>
             </div>
@@ -158,17 +158,19 @@
             </div>
             <div class="arch-item">
                 <strong>Localization</strong>
-                <p>Kenyan context &mdash; Swahili touches (Karibu, Asante, Hongera), KES/WellPoints, and real client organizations.</p>
+                <p>Kenyan context: a Kiswahili option (beta) for the main employee screens, KES and WellPoints, and sample Kenyan organisations.</p>
             </div>
             <div class="arch-item">
                 <strong>Architecture</strong>
-                <p>Single self-contained HTML file. 30+ screens toggled via CSS, four role layouts, charts via Chart.js, persistence via localStorage.</p>
+                <p>Single self-contained HTML file. Screens are rendered from plain data objects by small template functions, with one localStorage key for saved state and the simulated AI kept in a separate set of pure functions.</p>
             </div>
         </div>
     </div>
 
     <div class="snb-detail-footer">
-        <a href="/wellness/" class="btn-project btn-project-primary">View Live Demo &rarr;</a>
+        <a href="/wellness/" class="btn-project btn-project-primary">Employee Demo &rarr;</a>
+        <a href="/wellness/#company" class="btn-project btn-project-outline">Contact Person Demo</a>
+        <a href="/wellness/#admin" class="btn-project btn-project-outline">Sereniminds Demo</a>
         <button class="btn-project btn-project-outline" onclick="closeSnbModal()">Close Details</button>
     </div>
 </div>
