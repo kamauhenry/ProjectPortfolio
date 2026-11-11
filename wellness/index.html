@@ -494,6 +494,15 @@ textarea.x-in{resize:vertical}
 .x-go:hover td{background:var(--s2)}
 .x-scroll{overflow-x:auto}
 .login-sub{display:block;margin-top:var(--sp5);font-size:.8125rem;font-weight:700;color:var(--teal);cursor:pointer;text-decoration:underline}
+.x-tour{position:fixed;z-index:1200;left:.75rem;right:.75rem;bottom:calc(var(--bnav) + .75rem);max-width:27rem;margin:0 auto;background:#134E4A;color:#fff;border-radius:var(--r-xl);padding:1rem 1.125rem;box-shadow:0 12px 40px rgba(0,0,0,.35);font-size:.875rem}
+.x-tour p{opacity:.92;line-height:1.55;margin:.25rem 0 .75rem;font-size:.8125rem}
+.x-tour-x{border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:50%;width:1.75rem;height:1.75rem;cursor:pointer}
+.x-tour-s{white-space:nowrap;border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:99px;padding:.25rem .5rem;font:inherit;font-size:.625rem;font-weight:800;cursor:pointer}
+.x-tour-s.on{background:#5EEAD4;color:#134E4A}
+.x-tour-b{background:rgba(255,255,255,.15);color:#fff}
+.x-guide{position:fixed;z-index:1100;right:.75rem;bottom:calc(var(--bnav) + .75rem);border:0;background:#134E4A;color:#fff;border-radius:99px;padding:.5rem .875rem;font:inherit;font-size:.75rem;font-weight:800;cursor:pointer;box-shadow:var(--sh3)}
+@media(min-width:64rem){.x-tour{left:auto;right:1.5rem;bottom:1.5rem;margin:0}.x-guide{bottom:1.5rem;right:1.5rem}}
+@media print{.x-tour,.x-guide{display:none}}
 @media(max-width:64rem){.x-build{grid-template-columns:1fr}}
 </style>
 </head>
@@ -1080,7 +1089,7 @@ function wsSelfCheck(){
    V2 SCREENS. Each R[id]() returns the HTML for <div id="scr-id">.
    V holds what is selected on screen; DB holds what is saved.
    ═══════════════════════════════════════════════════════════════ */
-const V={t:CUR_T,b:CUR_W,tab:0,ans:{},ci:{},ciT:'',wsel:null,chat:null,jp:0,rh:0,rg:'age',co:0,ctab:0,cpe:false,ws:0,nc:{},bs:{t:CUR_T,b:0},btab:0,qf:'all',qe:null};
+const V={tour:0,t:CUR_T,b:CUR_W,tab:0,ans:{},ci:{},ciT:'',wsel:null,chat:null,jp:0,rh:0,rg:'age',co:0,ctab:0,cpe:false,ws:0,nc:{},bs:{t:CUR_T,b:0},btab:0,qf:'all',qe:null};
 const R={};
 function paint(id){const el=$('scr-'+id);if(el&&R[id]){el.innerHTML=R[id]();applyLang(el)}}
 const hdr=(h,p,back,right='')=>`<div class="app-h hg">${back?`<button class="btn btn-sm x-back" onclick="${back}">← Back</button>`:''}<div class="row-b"><div><h1>${h}</h1>${p?`<p>${p}</p>`:''}</div>${right}</div></div>`;
@@ -1404,12 +1413,57 @@ function ussdSend(){const u=V.us,v=$('us-in').value.trim();
   else if(u.step==='act'&&v==='1'){DB.actions[today()]=1;save();u.step='pts'}
   ussdDraw()}
 
+/* ── Guided tour: walks a first-time visitor through every screen, signing in as each audience ── */
+const TOUR=[
+ ['Welcome',()=>tourLogin(''),'Three ways in','WellSpace has three kinds of user, each with a separate sign-in: employees, the company Contact Person, and the Sereniminds team. This guide visits all three. Everything you see is sample data, so click anything you like.',1],
+ ['Employee',()=>goE('eh'),'Home','What an employee sees each day. At the top, WellSpace AI suggests what to do next. Below are the daily check-in, the wellness wheel with eight areas (tap a slice), today\'s small action, and steps from Google Fit, which only the employee can see.'],
+ ['Employee',()=>goE('ec'),'Daily check-in','A one-minute check-in. The employee rates a few questions from 1 to 5 and can type a sentence. Try rating low, or typing a worry, then Submit: the AI responds privately and points to help. The employer never sees individual answers.'],
+ ['Employee',()=>goE('el'),'Learn: the Quarterly Challenge','Learning runs by the calendar. The quarter has one theme, each month has a Topic, and each week has a short Bite. Past Bites are done, this week\'s is open, and later ones unlock in turn.'],
+ ['Employee',()=>openBite(CUR_T,CUR_W),'A Bite','Each Bite has its own screen with tabs: a short reading with a discussion prompt, a video when there is one, and a few questions. Finishing a Bite earns WellPoints.'],
+ ['Employee',()=>goE('ecl'),'Challenges and rewards','The leaderboard ranks individuals by what they do (Bites, quiz answers, daily actions, check-in streaks), never by how they feel, and anyone can switch themselves off it. Below are optional Extra Challenges, awards, and rewards funded by the insurer.'],
+ ['Employee',()=>goE('ej'),'Journal','A private journal. The AI offers a writing prompt, and after an entry is saved it adds a short reflection. "Talk it through" opens a chat for anyone who wants one. Nobody else can read this.'],
+ ['Employee',()=>goE('eap'),'Get Support','One place to get help: the toll-free CareLine, booking a counsellor, asking for a referral, and the eight kinds of help on offer. The number shown is a sample.'],
+ ['Employee',()=>goE('ecv'),'My cover','The employee\'s medical insurance, linked through Smart. It shows a digital card, the balance left, places that accept the cover, and lets them order from a pharmacy and pay with the cover. Try "Order" on a pharmacy.'],
+ ['Employee',()=>goE('eau'),'Listen','Short guided sessions for stress, sleep and focus. In this demo they are read aloud by the device\'s own voice.'],
+ ['Employee',()=>goE('em'),'My Month','A private monthly summary: check-ins, Bites finished, how each wellbeing area is doing, and a short AI summary.'],
+ ['Employee',()=>goE('ep'),'Profile','Optional details about the employee (used only for anonymous group totals), their medical cover, language, and privacy controls including a download of their own data.'],
+ ['Employee',()=>{goE('eh');openUssd()},'No smartphone? USSD','Staff with a basic phone can dial a short code and reply with numbers to check in, ask for a CareLine call back or see today\'s action. Type 1 and press Send to try it.'],
+ ['Contact Person',()=>tourLogin('#company'),'The company sign-in','Each client company has a named Contact Person (often in HR). They sign in on their own page.',1],
+ ['Contact Person',()=>{V.rh=0;V.rg='pattern';goH('hh')},'Reports','The Contact Person sees anonymous totals only. Choose a heading along the top and a grouping (age band, gender, location and so on). Notice the "Field or remote" row is hidden: any group under five people is never shown, so nobody can be identified.'],
+ ['Contact Person',()=>{V.rh=6;goH('hh')},'Progress','Last quarter compared with this one, ready to show a board. The "Standards" heading next to it lists how the programme meets privacy and wellbeing guidelines.'],
+ ['Contact Person',()=>goH('ha'),'Programme','The company can tailor what its people get: hide a Topic, add its own check-in questions and daily actions, and send requests to Sereniminds.'],
+ ['Sereniminds',()=>tourLogin('#admin'),'The Sereniminds sign-in','Sereniminds runs the platform for all client companies and signs in separately.',1],
+ ['Sereniminds',()=>goSA('sa-ov'),'Overview','All companies at a glance, with a list of what needs attention: overdue reviews, unpaid invoices, companies still being set up and low participation.'],
+ ['Sereniminds',()=>goSA('sa-cl'),'Companies','Every client company with its status, how many employees have joined, the Contact Person, the Sereniminds lead, agreement dates and billing. Click a row to open a company.'],
+ ['Sereniminds',()=>openCo(2),'A company page','This company is still in Setup. The onboarding checklist must be complete before it can move to Pilot or be given a programme. The tabs cover the programme, employees, Contact Persons, cover, agreements, billing and a log of every change.'],
+ ['Sereniminds',()=>{V.nc={};V.ws=0;goSA('sa-add')},'Add a company','Six steps to bring on a new client: company details, the Contact Person, how employees join, support and cover, privacy and agreements, then a review.'],
+ ['Sereniminds',()=>{V.bs={t:CUR_T,b:CUR_W};V.btab=0;goSA('sa-cb')},'Challenge Builder','Where content is written. The outline on the left shows the quarter, its monthly Topics and weekly Bites. The middle is the editor, and the phone on the right shows what the employee will see. "Suggest with AI" drafts text for the author to check.'],
+ ['Sereniminds',()=>goSA('sa-xc'),'Extra Challenges','Short optional challenges, such as a hydration week, that sit outside the quarterly programme.'],
+ ['Sereniminds',()=>goSA('sa-qb'),'Question Bank','Every check-in question, tagged by wellbeing area and how often it comes round. Questions can be added, edited, archived or drafted by AI for approval. The preview at the bottom shows today\'s check-in.'],
+ ['Sereniminds',()=>goSA('sa-ins'),'Insurance Partners','Transnep Insurance is the main partner. The insurers below are connected through Smart, which is what lets employees link their cover.'],
+ ['Sereniminds',()=>goSA('sa-rq'),'Requests','Messages from Contact Persons, answered here. The reply appears on the company\'s Programme page.'],
+ ['Finish',()=>tourLogin(''),'That is the whole product','You are back at the employee sign-in. Sign in and explore freely, or press "Guide" at any time to restart this tour. The other two sign-ins are linked from this guide\'s section buttons.',1]
+];
+function tourLogin(hash){logout();history.replaceState(null,'',location.pathname+location.search+hash);renderLogin()}
+function tourAs(hash){const cont={'':'emp','#company':'hr','#admin':'sa-layout'}[hash];if($(cont).classList.contains('active'))return;logout();history.replaceState(null,'',location.pathname+location.search+hash);renderLogin();DB.onb=true;doLogin();$('onboard').classList.add('hidden')}
+function tourShow(){const st=TOUR[V.tour],sec=st[0];$('ussd')?.classList.add('hidden');
+  if(!st[4])tourAs({Employee:'','Contact Person':'#company',Sereniminds:'#admin'}[sec]);
+  try{st[1]()}catch(e){console.warn('tour step',V.tour,e)}
+  let p=$('tour');if(!p){p=document.createElement('div');p.id='tour';p.className='x-tour';document.body.appendChild(p)}
+  const secs=['Employee','Contact Person','Sereniminds'];
+  p.innerHTML=`<div class="row-b"><span class="x-lbl" style="color:#5EEAD4;margin:0">Step ${V.tour+1} of ${TOUR.length} · ${sec}</span><button class="x-tour-x" onclick="tourEnd()" aria-label="Close guide">✕</button></div><b style="font-size:1rem">${st[2]}</b><p>${st[3]}</p><div class="x-bar" style="background:rgba(255,255,255,.2)"><i style="width:${(V.tour+1)/TOUR.length*100}%;background:#5EEAD4"></i></div><div class="row-b wrap gap2" style="margin-top:.5rem"><div class="row gap2">${secs.map(s=>`<button class="x-tour-s ${s===sec?'on':''}" onclick="tourGo(${TOUR.findIndex(x=>x[0]===s)})">${s}</button>`).join('')}</div><div class="row gap2"><button class="btn btn-sm x-tour-b" ${V.tour?'':'disabled style="opacity:.4"'} onclick="tourGo(V.tour-1)">Back</button><button class="btn btn-sm btn-g" onclick="${V.tour<TOUR.length-1?'tourGo(V.tour+1)':'tourEnd()'}">${V.tour<TOUR.length-1?'Next →':'Done'}</button></div></div>`;
+  p.classList.remove('hidden');$('guide-btn')?.classList.add('hidden');window.scrollTo(0,0)}
+function tourGo(i){V.tour=Math.max(0,Math.min(TOUR.length-1,i));tourShow()}
+function tourStart(){tourGo(0)}
+function tourEnd(){$('tour')?.classList.add('hidden');$('ussd')?.classList.add('hidden');$('guide-btn')?.classList.remove('hidden')}
+function guideButton(){const b=document.createElement('button');b.id='guide-btn';b.className='x-guide';b.textContent='▶ Guide';b.onclick=()=>tourGo(V.tour||0);document.body.appendChild(b)}
+
 /* ── Sign-in pages (one per audience, chosen by the address) and navigation ── */
 const LOGIN={'':{role:'employee',logo:'W',h:'WellSpace',sub:'Sign in to your wellbeing space',f:[['Company code','SAF-2027'],['Work email','amara@safaricom.example']],alt:1,cls:'btn-g'},
   '#company':{role:'hr',logo:'W',h:'WellSpace for companies',sub:'Contact Person sign in',f:[['Work email','wanjiru@safaricom.example'],['Password','demo-password','password']],cls:'btn-g'},
   '#admin':{role:'superadmin',logo:'S',h:'Sereniminds Admin',sub:'Staff sign in',f:[['Sereniminds email','beatrice@sereniminds.example'],['Password','demo-password','password']],cls:'btn-p'}};
 function renderLogin(){const L=LOGIN[location.hash]||LOGIN[''];S.role=L.role;setTimeout(()=>applyLang($('login-box')));
-  $('login-box').innerHTML=`<div class="splash-logo" ${L.role==='superadmin'?'style="background:linear-gradient(135deg,var(--purple),var(--purple-700))"':''}><span>${L.logo}</span></div><h1 style="font-size:2rem;font-weight:900;letter-spacing:-.03em">${L.h}</h1><p style="color:var(--ink2);margin:.25rem 0 var(--sp5);font-weight:600">${L.sub}</p><div class="x-f" style="text-align:left">${L.f.map(f=>`<label>${f[0]}</label><input class="x-in" type="${f[2]||'text'}" value="${f[1]}" onkeydown="if(event.key==='Enter')doLogin()">`).join('')}</div><button class="btn ${L.cls} btn-lg w-full" style="margin-top:var(--sp5)" onclick="doLogin()">Sign in</button>${L.alt?`<button class="btn btn-o w-full" style="margin-top:var(--sp2)" onclick="doLogin()">Sign in with Google</button>`:''}${L.role==='employee'?empLinks():L.role==='hr'?'<a class="login-sub" href="#">Employee? Sign in here</a>':''}<div style="margin-top:var(--sp5)"><span class="priv">Privacy protected · Kenya DPA 2019</span></div>`}
+  $('login-box').innerHTML=`<div class="splash-logo" ${L.role==='superadmin'?'style="background:linear-gradient(135deg,var(--purple),var(--purple-700))"':''}><span>${L.logo}</span></div><h1 style="font-size:2rem;font-weight:900;letter-spacing:-.03em">${L.h}</h1><p style="color:var(--ink2);margin:.25rem 0 var(--sp5);font-weight:600">${L.sub}</p><div class="x-f" style="text-align:left">${L.f.map(f=>`<label>${f[0]}</label><input class="x-in" type="${f[2]||'text'}" value="${f[1]}" onkeydown="if(event.key==='Enter')doLogin()">`).join('')}</div><button class="btn ${L.cls} btn-lg w-full" style="margin-top:var(--sp5)" onclick="doLogin()">Sign in</button><button class="btn btn-o w-full" style="margin-top:var(--sp2)" onclick="tourStart()">▶ Take me through the demo</button>${L.alt?`<button class="btn btn-o w-full" style="margin-top:var(--sp2)" onclick="doLogin()">Sign in with Google</button>`:''}${L.role==='employee'?empLinks():L.role==='hr'?'<a class="login-sub" href="#">Employee? Sign in here</a>':''}<div style="margin-top:var(--sp5)"><span class="priv">Privacy protected · Kenya DPA 2019</span></div>`}
 function doLogin(){if([...document.querySelectorAll('#login-box input')].some(i=>!i.value.trim())){toast('⚠️','Missing details','Fill in every field','a');return}
   const s=$('scr-splash');s.classList.remove('active');s.style.display='none';document.body.classList.toggle('app-mode',S.role!=='superadmin');
   if(S.role==='superadmin'){$('sa-layout').classList.add('active');goSA('sa-ov')}
@@ -1422,7 +1476,7 @@ function nav(aId,nId,sId,map){$(aId).querySelectorAll('.screen').forEach(s=>s.cl
 function goSA(id){document.querySelectorAll('.sa-bd .screen').forEach(s=>s.classList.remove('active'));paint(id);$('scr-'+id)?.classList.add('active');const on=({'sa-cd':'sa-cl','sa-add':'sa-cl'})[id]||id;document.querySelectorAll('.sa-n').forEach(n=>n.classList.toggle('on',n.dataset.s===on));$('sa-tt').textContent=SA_TITLES[id]||'Overview';if(window.innerWidth<=1024){$('sa-s').classList.remove('open');$('sa-ov').classList.remove('open')}window.scrollTo(0,0)}
 window.addEventListener('hashchange',()=>{if($('scr-splash').classList.contains('active'))renderLogin()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('xmod').classList.add('hidden');closeKudos();endBreathe();$('sa-sr')?.classList.add('hidden');if(!$('nf-panel').classList.contains('hidden'))closeNotif()}});
-document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.sa,.app').forEach(e=>e.classList.remove('active'));renderLogin();lsGet('ws_team').forEach(addTeamRow);teamInit();loadSettings()});
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.sa,.app').forEach(e=>e.classList.remove('active'));renderLogin();lsGet('ws_team').forEach(addTeamRow);teamInit();loadSettings();guideButton();if(/[?&]tour\b/.test(location.search))tourStart()});
 </script>
 </body>
 </html>
