@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/(site.css|site.js|favicon.svg)",
+      "source": "/(site.css|site.js|icons.css|bootstrap-lite.css|favicon.svg)",
       "headers": [
         {
           "key": "Cache-Control",
