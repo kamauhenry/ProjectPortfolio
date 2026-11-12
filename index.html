@@ -57,7 +57,7 @@
 
     <main>
         <div id="content" class="section-padding">
-            <section id="about" class="hero reveal">
+            <section id="about" class="hero hero-compact reveal">
                 <div class="container">
                     <div class="hero-content">
                         <p class="hero-eyebrow">Full-Stack Developer &amp; Technical Support Engineer — Nairobi, Kenya</p>
@@ -84,6 +84,63 @@
                         <div class="hero-image-frame">
                             <img src="/photos/henry.webp" alt="Henry Kamau" width="600" height="668" fetchpriority="high" decoding="async">
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="glance" class="glance reveal" aria-labelledby="glance-title">
+                <div class="container">
+                    <div class="glance-head">
+                        <div>
+                            <p class="glance-eyebrow">At a glance</p>
+                            <h2 class="glance-title" id="glance-title">Selected projects</h2>
+                            <p class="glance-sub">Pick any project to see the details.</p>
+                        </div>
+                        <a class="glance-all" href="/#projects" hx-get="/projects.html" hx-target="#content" hx-swap="innerHTML">See all projects &rarr;</a>
+                    </div>
+                    <div class="glance-grid">
+                        <a class="glance-tile stagger-item" href="/#projects" hx-get="/snb-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.preventDefault(); openSnbModal()">
+                            <div class="glance-top"><div class="glance-icon"><i class="fas fa-building"></i></div><span class="glance-tag">Production</span></div>
+                            <h3>SnB Core Banking</h3>
+                            <p>Multi-tenant SACCO banking platform at Pendo Media Ltd, used by 9+ SACCOs on-premise and as SaaS.</p>
+                            <div class="project-tech"><span class="tech-badge">Laravel</span><span class="tech-badge">Vue 3</span><span class="tech-badge">MySQL</span><span class="tech-badge">M-Pesa Daraja</span></div>
+                            <span class="glance-cta">View details <span>&rarr;</span></span>
+                        </a>
+                        <a class="glance-tile stagger-item" href="/#projects" hx-get="/whatsapp-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.preventDefault(); openSnbModal()">
+                            <div class="glance-top"><div class="glance-icon"><i class="fab fa-whatsapp"></i></div><span class="glance-tag">Production</span></div>
+                            <h3>WhatsApp Business Messaging</h3>
+                            <p>Meta Embedded Signup, templates and billing, plus sending, scheduling and tracking messages and OTPs with SMS fallback.</p>
+                            <div class="project-tech"><span class="tech-badge">Node.js / Express</span><span class="tech-badge">Meta Cloud API</span><span class="tech-badge">RabbitMQ</span><span class="tech-badge">Laravel + Vue 3</span></div>
+                            <span class="glance-cta">View details <span>&rarr;</span></span>
+                        </a>
+                        <a class="glance-tile stagger-item" href="https://canva.link/vjyfjplchcorrzs" target="_blank" rel="noopener noreferrer">
+                            <div class="glance-top"><div class="glance-icon"><i class="fas fa-pen-to-square"></i></div><span class="glance-tag">Design</span></div>
+                            <h3>Design &amp; Video Portfolio</h3>
+                            <p>Company profiles, posters, flyers, a business card and short video designs in one presentation.</p>
+                            <div class="project-tech"><span class="tech-badge">Canva</span><span class="tech-badge">Company Profiles</span><span class="tech-badge">Posters &amp; Flyers</span><span class="tech-badge">Video</span></div>
+                            <span class="glance-cta">Open portfolio <span>&rarr;</span></span>
+                        </a>
+                        <a class="glance-tile stagger-item" href="/#projects" hx-get="/sereniminds-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.preventDefault(); openSnbModal()">
+                            <div class="glance-top"><div class="glance-icon"><i class="fas fa-notes-medical"></i></div><span class="glance-tag">UI/UX prototype</span></div>
+                            <h3>Sereniminds Wellness Clinic</h3>
+                            <p>Clinic management prototype with 42 interactive views: appointments, clinical notes, eTIMS billing and a client portal.</p>
+                            <div class="project-tech"><span class="tech-badge">HTML/CSS</span><span class="tech-badge">JavaScript</span><span class="tech-badge">42 views</span><span class="tech-badge">Client portal</span></div>
+                            <span class="glance-cta">View details <span>&rarr;</span></span>
+                        </a>
+                        <a class="glance-tile stagger-item" href="/#projects" hx-get="/mustard-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.preventDefault(); openSnbModal()">
+                            <div class="glance-top"><div class="glance-icon"><i class="fas fa-store"></i></div><span class="glance-tag">Complete build</span></div>
+                            <h3>Mustard E-Commerce</h3>
+                            <p>Wholesale group-buying platform with MOQ campaigns and M-Pesa payments. Built and complete; not live yet.</p>
+                            <div class="project-tech"><span class="tech-badge">Django 5 + DRF</span><span class="tech-badge">Vue 3</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">M-Pesa Daraja</span></div>
+                            <span class="glance-cta">View details <span>&rarr;</span></span>
+                        </a>
+                        <a class="glance-tile stagger-item" href="/#projects" hx-get="/wellness-details.html" hx-target="#snb-modal-body" hx-swap="innerHTML" onclick="event.preventDefault(); openSnbModal()">
+                            <div class="glance-top"><div class="glance-icon"><i class="fas fa-heart-pulse"></i></div><span class="glance-tag">UI/UX prototype</span></div>
+                            <h3>WellSpace</h3>
+                            <p>Corporate wellness prototype with three sign-ins, a daily check-in and a wellness wheel. Integrations are simulated in the browser.</p>
+                            <div class="project-tech"><span class="tech-badge">HTML/CSS</span><span class="tech-badge">Vanilla JS</span><span class="tech-badge">25+ screens</span><span class="tech-badge">3 sign-ins</span></div>
+                            <span class="glance-cta">View details <span>&rarr;</span></span>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -123,6 +180,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Project details modal (shared by the home tiles and the Work page) -->
+    <div id="snb-modal" class="project-modal-overlay" onclick="closeSnbModal(event)">
+        <div class="project-modal">
+            <button class="project-modal-close" onclick="closeSnbModal()" aria-label="Close details">&times;</button>
+            <div id="snb-modal-body"></div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>

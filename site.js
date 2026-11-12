@@ -59,6 +59,13 @@ function setupNavigation() {
     // Update state after HTMX swap
     document.body.addEventListener('htmx:afterSwap', function (e) {
         var path = e.detail.pathInfo ? e.detail.pathInfo.requestPath : '';
+        // Project details load into the modal: no page change, no scroll to top
+        if (e.target && e.target.id === 'snb-modal-body') {
+            initAnimations();
+            initMagneticButtons();
+            initCounterAnimation();
+            return;
+        }
         // Track current page by hx-get path
         if (path) {
             document.body.setAttribute('data-current-page', path);
@@ -147,7 +154,7 @@ function initAnimations() {
     });
 
     // Stagger grid items (project cards, service cards, skill items)
-    var staggerContainers = document.querySelectorAll('.projects-grid, .services-grid, .skills-list, .skill-tags');
+    var staggerContainers = document.querySelectorAll('.projects-grid, .glance-grid, .services-grid, .skills-list, .skill-tags');
     var staggerObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
